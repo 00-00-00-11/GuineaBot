@@ -9,7 +9,6 @@ module.exports = {
     category: 'moderation',
     description: "Change the guild's prefix for commands.",
     run: async (message, args, client) => {
-
         if (!message.member.hasPermission("ADMINISTRATOR", explicit = true)) {
             const permEmbed = new Discord.MessageEmbed()
                 .setColor('#9f5000')
@@ -85,7 +84,6 @@ module.exports = {
         if (args.join("") === PREFIX) {
             db.delete(`prefix_${message.guild.id}`)
             await message.channel.send(preEmbed5)
-            console.log(`Prefix resetted to default in ${message.guild.name} (${message.guild.id}).`)
             return
         }
 
@@ -100,6 +98,5 @@ module.exports = {
 
         db.set(`prefix_${message.guild.id}`, args[0])
         await message.channel.send(preEmbed6)
-        console.log(`Prefix changed to ${args[0]} in ${message.guild.name} (${message.guild.id}).`)
     }
 }

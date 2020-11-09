@@ -15,7 +15,6 @@ const fetch = require("node-fetch");
 const {
     setInterval
 } = require("timers");
-const mongoose = require("mongoose")
 const discordXP = require("discord-xp");
 
 discordXP.setURL(`${process.env.MONGODB_DATABASE}`)
