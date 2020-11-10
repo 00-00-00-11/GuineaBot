@@ -16,6 +16,7 @@ const {
     setInterval
 } = require("timers");
 const discordXP = require("discord-xp");
+const mongoose = require("mongoose")
 
 discordXP.setURL(`${process.env.MONGODB_DATABASE}`)
 
@@ -269,6 +270,12 @@ client.on('message', async (message) => {
         client.commands.get("coolkid").run(message, args)
     } else if (command === "debate") {
         client.commands.get("debate").run(message, args)
+    } else if (command === "warn") {
+        client.commands.get("warn").run(message, args)
+    } else if (command === "warnings") {
+        client.commands.get("warnings").run(message, args)
+    } else if (command === "removewarn") {
+        client.commands.get("removewarn").run(message, args)
     } else {
         message.channel.send('Invalid command')
     }

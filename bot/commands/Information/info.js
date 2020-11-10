@@ -35,7 +35,7 @@ module.exports = {
                     value: "`createtextchannel` | `deletetextchannel` | `createvoicechannel` | `deletevoicechannel`",
                 }, {
                     name: 'Moderation',
-                    value: '`chatmute` | `unchatmute` | `voicemute` | `unvoicemute` | `deafen` | `undeafen` | `ban` | `unban` | `clear` | `kick` | `prefix` | `setnick`',
+                    value: '`chatmute` | `unchatmute` | `voicemute` | `unvoicemute` | `deafen` | `undeafen` | `ban` | `unban` | `clear` | `kick` | `prefix` | `setnick` | `warn` | `warnings` | `removewarn`',
                 }, {
                     name: 'Music',
                     value: '`loop` | `lyrics` | `nowplaying` | `pause` | `play` | `playlist` | `pruning` | `queue` | `remove` | `resume` | `search` | `shuffle` | `skip` | `stop` | `skipto` | `volume` | `connect` | `disconnect`',
