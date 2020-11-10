@@ -279,6 +279,8 @@ client.on('message', async (message) => {
         client.commands.get("warnings").run(message, args)
     } else if (command === "removewarn") {
         client.commands.get("removewarn").run(message, args)
+    } else if (command === "sarcastic") {
+        client.commands.get("sarcastic").run(message, args)
     } else {
         message.channel.send('Invalid command')
     }
