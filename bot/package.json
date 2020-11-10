@@ -58,6 +58,7 @@
     "salvage-music": "^1.0.0",
     "sarcastic-text": "0.0.4",
     "simple-youtube-api": "^5.2.1",
+    "snakecord": "0.0.6",
     "soundcloud-downloader": "^0.1.8",
     "spotify-web-api-node": "^5.0.0",
     "string-progressbar": "^1.0.1",
