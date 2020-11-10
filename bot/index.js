@@ -16,10 +16,13 @@ const {
     setInterval
 } = require("timers");
 const discordXP = require("discord-xp");
-const mongoose = require("mongoose")
+const mongo = require("./mongo")
 
 discordXP.setURL(`${process.env.MONGODB_DATABASE}`)
 
+async () => {
+    await mongo()
+}
 
 let table = new ascii("Commands")
 table.setHeading("Command", "Load Status")

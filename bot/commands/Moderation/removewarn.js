@@ -61,8 +61,8 @@ module.exports = {
                         warnings: warning,
                     }
                 })
-            } finally {
-                mongoose.connection.close()
+            } catch (e) {
+                console.log(e)
             }
 
             message.channel.send(`Removed all warnings for ${target}`)

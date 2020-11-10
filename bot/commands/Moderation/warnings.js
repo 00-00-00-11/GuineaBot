@@ -45,8 +45,8 @@ module.exports = {
                 }
                 embed.setDescription(warnlist)
                 message.channel.send(embed)
-            } finally {
-                mongoose.connection.close()
+            } catch (e) {
+                console.log(e)
             }
         })
     }
