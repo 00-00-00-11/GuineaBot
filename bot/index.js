@@ -285,6 +285,10 @@ client.on('message', async (message) => {
         client.commands.get("snake").run(message, args)
     } else if (command === "minesweeper") {
         client.commands.get("minesweeper").run(message, args)
+    } else if (command === "simp") {
+        client.commands.get("simp").run(message, args)
+    } else if (command === "gamer") {
+        client.commands.get("gamer").run(message, args)
     } else {
         message.channel.send('Invalid command')
     }

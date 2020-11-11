@@ -47,7 +47,7 @@ module.exports = {
                     value: '`randomnumber` | `randomnumberrange` | `code` | `ping` | `binary` | `urban` | `google` | `spotify` | `weather` | `avatar` | `calc` | `anonymous`',
                 }, {
                     name: 'Fun',
-                    value: '`beep` | `foo` | `wheek` | `image` | `guineapig` | `dankmeme` | `wholesomememe` | `ascii` | `coolkid` | `debate` | `8ball` | `sarcastic`',
+                    value: '`beep` | `foo` | `wheek` | `image` | `guineapig` | `dankmeme` | `wholesomememe` | `ascii` | `coolkid` | `debate` | `8ball` | `sarcastic` | `simp` | `gamer`',
                 }, {
                     name: "Games",
                     value: "`snake` | `minesweeper`",
