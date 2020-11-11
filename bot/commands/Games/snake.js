@@ -3,7 +3,7 @@ const snake = require("snakecord")
 
 module.exports = {
     name: "snake",
-    category: "Fun",
+    category: "games",
     description: "Snake game in Discord!",
     run: async (message, args) => {
         const snakeGame = new snake({

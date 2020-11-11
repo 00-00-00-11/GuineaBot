@@ -3,7 +3,7 @@ const Minesweeper = require('discord.js-minesweeper');
 
 module.exports = {
     name: 'minesweeper',
-    category: 'fun',
+    category: 'games',
     description: 'Minesweeper in Discord!',
     run: async (message, args) => {
         const rows = parseInt(args[0]);
