@@ -289,6 +289,8 @@ client.on('message', async (message) => {
         client.commands.get("simp").run(message, args)
     } else if (command === "gamer") {
         client.commands.get("gamer").run(message, args)
+    } else if (command === "cleverbot") {
+        client.commands.get("cleverbot").run(message, args)
     } else {
         message.channel.send('Invalid command')
     }
