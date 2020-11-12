@@ -291,6 +291,16 @@ client.on('message', async (message) => {
         client.commands.get("gamer").run(message, args)
     } else if (command === "cleverbot") {
         client.commands.get("cleverbot").run(message, args)
+    } else if (command === "rps") {
+        client.commands.get("rps").run(message, args)
+    } else if (command === "guessnum") {
+        client.commands.get("guessnum").run(message, args)
+    } else if (command === "connect4") {
+        client.commands.get("connect4").run(message, args, client)
+    } else if (command === "hangman") {
+        client.commands.get("hangman").run(message, args, client)
+    } else if (command === "chess") {
+        client.commands.get("chess").run(message, args, client)
     } else {
         message.channel.send('Invalid command')
     }
