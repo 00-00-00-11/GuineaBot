@@ -301,6 +301,8 @@ client.on('message', async (message) => {
         client.commands.get("hangman").run(message, args, client)
     } else if (command === "chess") {
         client.commands.get("chess").run(message, args, client)
+    } else if (command === "tictactoe") {
+        client.commands.get("tictactoe").run(message, args, client, prefix, command)
     } else {
         message.channel.send('Invalid command')
     }

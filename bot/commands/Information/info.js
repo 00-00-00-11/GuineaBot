@@ -50,7 +50,7 @@ module.exports = {
                     value: '`beep` | `foo` | `wheek` | `image` | `guineapig` | `dankmeme` | `wholesomememe` | `ascii` | `coolkid` | `debate` | `8ball` | `sarcastic` | `simp` | `gamer` | `cleverbot`',
                 }, {
                     name: "Games",
-                    value: "`snake` | `minesweeper` | `rps` | `guessnum` | `connect4` | `hangman` | `chess`",
+                    value: "`snake` | `minesweeper` | `rps` | `guessnum` | `connect4` | `hangman` | `chess` | `tictactoe`",
                 }, {
                     name: "Image generation",
                     value: "`abandon` | `aborted`  | `affect` | `airpods` | `america` | `armor` | `balloon` | `banfilth` | `slap` | `bed` | `bongocat` | `boo` | `edgedetect` | `emboss` | `blur` | `sobel` | `sharpen` | `brain` | `byemom`",
