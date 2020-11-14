@@ -66,6 +66,7 @@
     "spotify-web-api-node": "^5.0.0",
     "string-progressbar": "^1.0.1",
     "table": "^6.0.3",
+    "thedankmemer": "^1.2.8",
     "weather-js": "^2.0.0",
     "ytdl-core": "^4.0.3",
     "ytdl-core-discord": "^1.2.4"

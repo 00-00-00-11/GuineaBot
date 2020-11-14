@@ -10,9 +10,13 @@ module.exports = {
     category: 'image',
     description: 'AMERICA',
     run: async (message, args, client) => {
+        message.channel.startTyping(true)
         message.channel.send("Please allow 30 - 45 seconds.").then(msg => msg.delete({
             timeout: 10000
+        }).then(() => {
+            message.channel.startTyping(true)
         }))
+
         const canvas = Canvas.createCanvas(480, 480)
         const ctx = canvas.getContext("2d")
         const encoder = new GIFEncoder(480, 480, "octree", true, 50)
@@ -46,6 +50,7 @@ module.exports = {
         writeFile(path.join(__dirname, "output", `${message.author} america.gif`), buffer, error => {})
 
         const attachment = new Discord.MessageAttachment(encoder.out.getData(), `${message.author} america.gif`)
+        message.channel.stopTyping(true)
         message.channel.send(attachment)
     }
 }

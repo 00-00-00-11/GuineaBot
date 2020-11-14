@@ -44,7 +44,7 @@ module.exports = {
                     value: '`rank` | `leaderboard` | `required` | `createuserxp` | `deleteuserxp` | `addxp` | `removexp` | `addlevel` | `removelevel` | `setxp` | `setlevel`',
                 }, {
                     name: "Utility",
-                    value: '`randomnumber` | `randomnumberrange` | `code` | `ping` | `binary` | `urban` | `google` | `spotify` | `weather` | `avatar` | `calc` | `anonymous`',
+                    value: '`randomnumber` | `randomnumberrange` | `code` | `ping` | `binary` | `urban` | `google` | `spotify` | `weather` | `avatar` | `calc` | `anonymous` | `temporary`',
                 }, {
                     name: 'Fun',
                     value: '`beep` | `foo` | `wheek` | `image` | `guineapig` | `dankmeme` | `wholesomememe` | `ascii` | `coolkid` | `debate` | `8ball` | `sarcastic` | `simp` | `gamer` | `cleverbot`',
@@ -53,7 +53,7 @@ module.exports = {
                     value: "`snake` | `minesweeper` | `rps` | `guessnum` | `connect4` | `hangman` | `chess` | `tictactoe`",
                 }, {
                     name: "Image generation",
-                    value: "`abandon` | `aborted`  | `affect` | `airpods` | `america` | `armor` | `balloon` | `banfilth` | `slap` | `bed` | `bongocat` | `boo` | `edgedetect` | `emboss` | `blur` | `sobel` | `sharpen` | `brain` | `byemom`",
+                    value: "`abandon` | `aborted`  | `affect` | `airpods` | `america` | `armor` | `balloon` | `banfilth` | `slap` | `bed` | `bongocat` | `boo` | `edgedetect` | `emboss` | `blur` | `sobel` | `sharpen` | `brain` | `byemom` | `deepfry`",
                 }, {
                     name: 'Info',
                     value: '`info` | `help (currently disabled)` | `stats` | `serverstats`',

@@ -82,6 +82,8 @@ client.on('message', async (message) => {
     const args = message.content.slice(prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
+    message.channel.startTyping(true)
+
     //help disabled
     if (command === 'setup') {
         client.commands.get('setup').run(message, args)
@@ -303,9 +305,17 @@ client.on('message', async (message) => {
         client.commands.get("chess").run(message, args, client)
     } else if (command === "tictactoe") {
         client.commands.get("tictactoe").run(message, args, client, prefix, command)
+    } else if (command === "temporary") {
+        client.commands.get("temporary").run(message, args)
+    } else if (command === "deepfry") {
+        client.commands.get("deepfry").run(message, args)
+    } else if (command === "fisheye") {
+        client.commands.get("fisheye").run(message, args)
     } else {
-        message.channel.send('Invalid command')
+        message.channel.send(`Invalid command. Perform \`${prefix}info commands\` to see all available commands.`)
     }
+
+    message.channel.stopTyping(true)
 })
 
 client.on('guildCreate', async joinedGuild => {
