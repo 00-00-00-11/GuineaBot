@@ -15,5 +15,9 @@ module.exports = {
                 timeout: ms
             })
         })
+
+        setTimeout(async () => {
+            message.delete()
+        }, 500)
     }
 }
