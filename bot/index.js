@@ -1,5 +1,6 @@
-//https://discord.com/oauth2/authorize?client_id=745047221099036724&scope=bot&permissions=2146958847 alpha
-//https://discord.com/oauth2/authorize?client_id=727288620221857843&scope=bot&permissions=2146958847
+// ? https://discord.com/oauth2/authorize?client_id=745047221099036724&scope=bot&permissions=2146958847 alpha
+// ! https://discord.com/oauth2/authorize?client_id=727288620221857843&scope=bot&permissions=2146958847
+
 const fs = require("fs")
 const Discord = require('discord.js');
 const client = new Discord.Client({
@@ -53,12 +54,8 @@ const config = {
     prefix: process.env.PREFIX
 }
 
-client.on('disconnect', () => {
-    console.log('Disconnect')
-})
-
-client.on("warn", (info) => console.log(info))
-client.on("error", console.error)
+client.on("warn", info => console.log(info))
+client.on("error", error => console.log(error))
 
 client.on('message', async (message) => {
     if (message.author.bot) return
@@ -87,7 +84,13 @@ client.on('message', async (message) => {
     message.channel.startTyping(true)
 
     if (commands.includes(command.toLowerCase())) {
-        client.commands.get(command).run(message, args, client, prefix, command)
+        try {
+            client.commands.get(command).run(message, args, client, prefix, command)
+        } catch (err) {
+            console.log(err)
+            message.channel.stopTyping()
+            message.channel.send(`An error has occured while trying to run the ${command.toLowerCase()} command: \`\`\`${err.message}\`\`\``)
+        }
     } else {
         message.channel.send(`Invalid command. Perform \`${prefix}info commands\` to see all available commands.`)
     }
@@ -111,8 +114,7 @@ client.on('guildCreate', async joinedGuild => {
 })
 
 client.once('ready', () => {
-    fetch("https://api.ipify.org/?format=json").then(results => results.json()).then(data => console.log(`Server IP: ${data.ip}`))
-    console.log("[GuineaBot] Ready                                                                                           wheek wheek");
+    fetch("https://api.ipify.org/?format=json").then(results => results.json()).then(data => console.log(`Logged in as [${client.user.tag}]\nServer IP: ${data.ip}`))
 
     let activityList = [
         "with some code",
@@ -126,13 +128,13 @@ client.once('ready', () => {
     const randS = Math.floor(Math.random() * (activityList.length - 1) + 1)
     client.user.setActivity(activityList[randS], {
         type: 'PLAYING'
-    }).catch(console.error);
+    }).catch(error => console.log(error));
 
     setInterval(function () {
         const index = Math.floor(Math.random() * activityList.length)
         client.user.setActivity(activityList[index], {
             type: 'PLAYING'
-        }).catch(console.error);
+        }).catch(error => console.log(error));
     }, 60000)
 })
 
