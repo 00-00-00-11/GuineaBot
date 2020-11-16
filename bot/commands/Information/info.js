@@ -44,7 +44,7 @@ module.exports = {
                     value: '`rank` | `leaderboard` | `required` | `createuserxp` | `deleteuserxp` | `addxp` | `removexp` | `addlevel` | `removelevel` | `setxp` | `setlevel`',
                 }, {
                     name: "Utility",
-                    value: '`randomnumber` | `randomnumberrange` | `code` | `ping` | `binary` | `urban` | `google` | `spotify` | `weather` | `avatar` | `calc` | `anonymous` | `temporary`',
+                    value: '`randomnumber` | `randomnumberrange` | `code` | `ping` | `binary` | `urban` | `google` | `spotify` | `weather` | `avatar` | `calc` | `anonymous` | `temporary` | `hex`',
                 }, {
                     name: 'Fun',
                     value: '`beep` | `foo` | `wheek` | `image` | `guineapig` | `dankmeme` | `wholesomememe` | `ascii` | `coolkid` | `debate` | `8ball` | `sarcastic` | `simp` | `gamer` | `cleverbot`',

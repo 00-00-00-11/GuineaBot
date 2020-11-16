@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const Canvas = require("canvas")
 module.exports = {
-    name: 'affected',
+    name: 'affect',
     category: 'images',
     description: '',
     run: async (message, args, client) => {
