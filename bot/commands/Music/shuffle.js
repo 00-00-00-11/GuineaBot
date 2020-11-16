@@ -5,7 +5,7 @@ const {
 module.exports = {
     name: "shuffle",
     description: "Shuffle music queue",
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         const queue = message.client.queue.get(message.guild.id)
         if (!queue) return message.channel.send("There is no queue.")
         if (!canModifyQueue(message.member, message.channel)) return

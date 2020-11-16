@@ -4,7 +4,7 @@ module.exports = {
     name: 'createuserxp',
     category: 'leveling',
     description: 'Create a XP entry in the database',
-    run: async (message, args) => {
+    run: async (message, args, client, prefix, command) => {
         if (message.author.id !== message.guild.ownerID) {
             const nopermsEmbed = new Discord.MessageEmbed()
                 .setColor("#9f5000")

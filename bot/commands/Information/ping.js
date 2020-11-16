@@ -3,7 +3,7 @@ module.exports = {
     name: 'ping',
     category: 'fun',
     description: 'Fetch your latency in ms',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         const m = await message.channel.send("Fetching ping...")
         const msglate = m.createdTimestamp - message.createdTimestamp
         const cy1der = message.client.users.cache.get('423222193032396801')

@@ -5,7 +5,7 @@ module.exports = {
     name: 'image',
     category: 'fun',
     description: 'Random image from a search',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         let imagesearch = args.slice(0).join(" ")
 
         if (!imagesearch) {

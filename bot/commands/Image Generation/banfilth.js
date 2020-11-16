@@ -4,7 +4,7 @@ module.exports = {
     name: 'banfilth',
     category: 'img',
     description: '',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         const canvas = Canvas.createCanvas(536, 751)
         const ctx = canvas.getContext("2d")
 

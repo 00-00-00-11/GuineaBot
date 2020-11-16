@@ -4,7 +4,7 @@ const {
 module.exports = {
     name: "remove",
     description: "Remove a song from the queue",
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         const queue = message.client.queue.get(message.guild.id)
         if (!queue) return message.channel.send("There is no queue.")
         if (!canModifyQueue(message.member, message.channel)) return

@@ -4,7 +4,7 @@ module.exports = {
     name: 'balloon',
     category: 'img',
     description: '',
-    run: async (message, args) => {
+    run: async (message, args, client, prefix, command) => {
         args = message.content.slice(9).trim().split("|")
         let balloonText = args[0]
         let arrowText = args[1]

@@ -8,7 +8,7 @@ module.exports = {
     name: "deepfry",
     category: "images",
     description: "Deepfry an image.",
-    run: async (message, args) => {
+    run: async (message, args, client, prefix, command) => {
         message.channel.startTyping(true)
         let image = message.attachments.array()
         if (image.length === 0) return message.channel.send("Please provide an image.")

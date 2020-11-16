@@ -5,7 +5,7 @@ module.exports = {
     name: 'guineapig',
     category: 'fun',
     description: 'Random picture of a Guinea Pig',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         function image(message) {
             var options = {
                 url: "http://results.dogpile.com/serp?qc=images&q=" + "guinea pig",

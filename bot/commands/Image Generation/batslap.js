@@ -4,7 +4,7 @@ module.exports = {
     name: 'slap',
     category: 'img',
     description: '',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         let batAvatar
         let robAvatar
 

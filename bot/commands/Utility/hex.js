@@ -2,7 +2,7 @@ module.exports = {
     name: "hex",
     category: "utility",
     description: "Convert/decode hex values",
-    run: async (message, args) => {
+    run: async (message, args, client, prefix, command) => {
         if (!args[0]) return message.channel.send("Please specify a valid codec, either decode or encode.")
 
         let choices = ["encode", "decode"]

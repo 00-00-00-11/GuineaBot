@@ -4,7 +4,7 @@ const config = require("../../config.json")
 module.exports = {
     name: "pruning",
     description: 'Prevent spam for music messages',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         config.PRUNING = !config.PRUNING
 
         fs.writeFile("./config.json", JSON.stringify(config, null, 2), (err) => {

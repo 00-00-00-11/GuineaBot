@@ -8,7 +8,7 @@ const youtube = new YoutubeApi(YOUTUBE_API_KEY)
 module.exports = {
     name: "search",
     description: "Search youtube for a specific song",
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         if (!args.length) return message.reply(`Usage: g?${module.exports.name} <video name>`)
 
         const search = args.join(" ")

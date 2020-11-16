@@ -4,7 +4,7 @@ module.exports = {
     name: 'leaderboard',
     category: 'leveling',
     description: 'Top 10 most active members in a guild',
-    run: async (message, args) => {
+    run: async (message, args, client, prefix, command) => {
         const rawLeaderboard = await discordXP.fetchLeaderboard(message.guild.id, 10)
         if (rawLeaderboard.length < 1) return message.channel.send("Nobody is in the leaderboard yet...")
 

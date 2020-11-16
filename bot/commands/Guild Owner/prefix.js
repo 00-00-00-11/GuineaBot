@@ -8,7 +8,7 @@ module.exports = {
     name: 'prefix',
     category: 'moderation',
     description: "Change the guild's prefix for commands.",
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         if (!message.member.hasPermission("ADMINISTRATOR", explicit = true)) {
             const permEmbed = new Discord.MessageEmbed()
                 .setColor('#9f5000')

@@ -3,7 +3,7 @@ module.exports = {
     name: 'info',
     category: 'guides',
     description: 'All the information you need about GuineaBot',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         if (args[0] === 'version') {
 
             const version = '0.4.7'

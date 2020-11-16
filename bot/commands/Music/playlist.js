@@ -16,7 +16,7 @@ module.exports = {
     name: "playlist",
     cooldown: 3,
     description: 'Queue in a whole playlist',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         const {
             PRUNING
         } = require("../../config.json")

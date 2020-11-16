@@ -9,7 +9,7 @@ module.exports = {
     name: "fisheye",
     category: "imges",
     description: "Bulge an image",
-    run: async (message, args) => {
+    run: async (message, args, client, prefix, command) => {
         message.channel.startTyping(true)
         let attachments = message.attachments.array();
         if (attachments.length === 0) return message.channel.send("Please provide an image.");

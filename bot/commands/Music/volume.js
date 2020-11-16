@@ -5,7 +5,7 @@ const {
 module.exports = {
     name: "volume",
     description: "Change music volume",
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         const queue = message.client.queue.get(message.guild.id)
 
         if (!queue) return message.reply("No song is playing right now.")

@@ -4,7 +4,7 @@ module.exports = {
     name: 'affect',
     category: 'images',
     description: '',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         var image = "./assets/images/affect/affect.bmp"
 
         const canvas = Canvas.createCanvas(500, 636)

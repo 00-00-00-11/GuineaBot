@@ -9,7 +9,7 @@ module.exports = {
     name: 'america',
     category: 'image',
     description: 'AMERICA',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         message.channel.startTyping(true)
         message.channel.send("Please allow 30 - 45 seconds.").then(msg => msg.delete({
             timeout: 10000

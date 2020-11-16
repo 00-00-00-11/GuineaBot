@@ -4,7 +4,7 @@ module.exports = {
     name: 'urban',
     category: 'utility',
     description: 'The urban dictionary',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         if (!args[0]) return message.channel.send("Please specify the query.")
 
         let result = await urban(args[0]).catch(e => {

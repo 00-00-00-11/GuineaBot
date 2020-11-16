@@ -6,7 +6,7 @@ const {
 module.exports = {
     name: 'queue',
     description: "Show song queue",
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         const queue = message.client.queue.get(message.guild.id)
         if (!queue) return message.reply("No song is being played right now.")
 

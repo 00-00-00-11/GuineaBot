@@ -3,7 +3,7 @@ module.exports = {
     name: 'ascii',
     category: 'fun',
     description: 'Text art',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         const arg = args.slice(0).join(" ")
 
         if (!arg) return message.channel.send("Input some text.")

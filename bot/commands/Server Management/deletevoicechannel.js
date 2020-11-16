@@ -3,7 +3,7 @@ module.exports = {
     name: 'deletevoicechannel',
     category: 'server management',
     description: 'Delete a voice channel',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         if (!message.member.hasPermission("MANAGE_CHANNELS", explicit = true)) {
             const permEmbed = new Discord.MessageEmbed()
                 .setColor('#9f5000')

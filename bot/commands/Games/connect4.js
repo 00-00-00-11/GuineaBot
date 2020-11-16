@@ -3,7 +3,7 @@ module.exports = {
     name: "connect4",
     category: "games",
     description: "Connect4 game",
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         const connect4 = new Connect4(client)
         connect4.newGame(message);
     }

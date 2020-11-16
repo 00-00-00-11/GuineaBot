@@ -4,7 +4,7 @@ module.exports = {
     name: 'bongocat',
     category: 'img',
     description: '',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         var image = "./assets/images/bongocat/bongocat.bmp"
 
         const canvas = Canvas.createCanvas(750, 750)

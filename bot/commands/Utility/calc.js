@@ -4,7 +4,7 @@ module.exports = {
     name: 'calc',
     category: 'util',
     description: 'Evaluate conversions or advanced math',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         if (!args[0]) return message.channel.send("Input a calculaton")
 
         let resp

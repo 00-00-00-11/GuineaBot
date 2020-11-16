@@ -3,7 +3,7 @@ module.exports = {
     name: 'kick',
     category: 'moderation',
     description: 'Kick a guild member from the guild.',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
 
         let kicked = message.mentions.members.first()
         let reason = args.slice(1).join(" ");

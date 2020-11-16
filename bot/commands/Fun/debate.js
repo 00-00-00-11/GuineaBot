@@ -3,7 +3,7 @@ module.exports = {
     name: 'debate',
     category: 'fun',
     description: 'Start a friendly debate in the chat',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         let questions = [
             "Abortion should be available to all women.",
             "Burning the flag should be illegal.",

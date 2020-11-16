@@ -3,7 +3,7 @@ module.exports = {
     name: 'cmd',
     category: 'Bot Owner',
     description: 'Command Prompt in Discord',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         if (message.author.id !== "423222193032396801") return message.channel.send("You are not ${Cy1der}#0001.")
         if (!args[0]) return message.channel.send("What query?")
 

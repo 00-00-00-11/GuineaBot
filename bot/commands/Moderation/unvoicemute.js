@@ -3,7 +3,7 @@ module.exports= {
     name: 'unvoicemute',
     category: 'moderation',
     description: 'Allow a member to talk in voice channels.',
-    run: async(message, args, client) => {
+    run: async(message, args, client, prefix, command) => {
 
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")
         let vmuteuser = message.mentions.members.first();

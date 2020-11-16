@@ -3,7 +3,7 @@ module.exports = {
     name: 'rnr',
     category: 'fun',
     description: 'A random number from the parameters you choose',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         if (!args[0]) {
             message.reply("Please specify the minimum number.")
             return

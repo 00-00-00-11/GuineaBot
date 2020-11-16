@@ -4,7 +4,7 @@ module.exports = {
     name: 'bed',
     category: 'img',
     description: '',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         var image = "./assets/images/bed/bed.jpg"
 
         const canvas = Canvas.createCanvas(316, 768)

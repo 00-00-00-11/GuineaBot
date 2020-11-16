@@ -3,7 +3,7 @@ module.exports = {
     name: 'rank',
     category: 'leveling',
     description: 'Show XP stats',
-    run: async (message, args) => {
+    run: async (message, args, client, prefix, command) => {
         const target = message.mentions.users.first() || message.author
         let XPuser = await discordXP.fetch(target.id, message.guild.id)
 

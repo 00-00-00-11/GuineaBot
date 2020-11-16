@@ -3,7 +3,7 @@ module.exports = {
     name: 'binary',
     category: 'binary',
     description: 'Convert a text to binary and vice versa',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         if (!args[0]) return message.channel.send("Unknown parameter. Please choose the method first, either decode or encode it.");
 
         let choice = ["encode", "decode"];

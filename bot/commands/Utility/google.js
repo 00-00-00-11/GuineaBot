@@ -4,7 +4,7 @@ module.exports = {
     name: 'google',
     category: 'utility',
     description: 'Search the world wide web',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         let config = {
             GOOGLE_API_KEY: process.env.GOOGLE_API_KEY
         }

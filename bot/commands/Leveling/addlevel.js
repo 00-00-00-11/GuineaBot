@@ -4,7 +4,7 @@ module.exports = {
     name: 'addlevel',
     category: 'leveling',
     description: 'Add levels to a specific member in a guild',
-    run: async (message, args) => {
+    run: async (message, args, client, prefix, command) => {
         if (!message.member.hasPermission("ADMINISTRATOR", explicit = true)) {
             const permEmbed = new Discord.MessageEmbed()
                 .setColor('#9f5000')

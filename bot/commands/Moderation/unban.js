@@ -3,7 +3,7 @@ module.exports = {
     name: 'unban',
     category: 'moderation',
     description: 'Pardon a member and allow them to join back to the guild.',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         if (!args[0]) {
             const errorEmbed2 = new Discord.MessageEmbed()
                 .setColor('#9f5000')

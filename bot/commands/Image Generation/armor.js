@@ -4,7 +4,7 @@ module.exports = {
     name: 'armor',
     category: 'inggen',
     description: '',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         var imageText = args.slice(0).join(" ")
         if (!imageText) {
             message.channel.send("Please specify what text to add.")

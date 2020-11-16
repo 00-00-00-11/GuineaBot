@@ -3,7 +3,7 @@ module.exports = {
     name: 'avatar',
     category: 'util',
     description: 'All options for downloading an avatar of someone' ,
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         let webp16 = message.author.displayAvatarURL({
             format: "webp",
             size: 16

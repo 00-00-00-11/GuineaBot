@@ -3,7 +3,7 @@ module.exports = {
     name: 'setup',
     category: '.mandatory',
     description: 'Create all the channels/roles the bot needs',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         if (message.author.id !== message.guild.ownerID) {
             const nopermsEmbed = new Discord.MessageEmbed()
                 .setColor("#9f5000")

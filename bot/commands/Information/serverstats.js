@@ -3,7 +3,7 @@ module.exports = {
     name: 'serverstats',
     category: 'info',
     description: 'Get stats on a guild.',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         const embed = new Discord.MessageEmbed()
             .setColor('#9f5000')
             .setTitle("Server stats")

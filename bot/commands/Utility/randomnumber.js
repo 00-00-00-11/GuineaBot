@@ -3,7 +3,7 @@ module.exports = {
     name: 'randomnumber',
     category: 'fun',
     description: 'A random number',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         var whichone
         var minORmaxDeterminator = Math.floor(Math.random() * 2)
         console.log(minORmaxDeterminator)

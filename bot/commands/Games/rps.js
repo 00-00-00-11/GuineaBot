@@ -2,7 +2,7 @@ module.exports = {
     name: "rps",
     category: "Fun",
     description: "Rock paper scissors",
-    run: async (message, args) => {
+    run: async (message, args, client, prefix, command) => {
         message.reply("Enter `r` for rock, `p` for paper, or `s` for scissors.")
 
         const filter = msg => msg.author.id === message.author.id;

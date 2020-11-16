@@ -3,7 +3,7 @@ module.exports= {
     name: 'disconnect',
     category: 'music',
     description: 'Leave a voice channel.',
-    run: async(message, args, client) => {
+    run: async(message, args, client, prefix, command) => {
         const channel = message.member.voice.channel
         if (!channel) return message.channel.send("You need to be in a voice channel first!").catch(console.error);
         if (!message.guild.me.voice.channel) return message.channel.send("I'm not connected to a voice channel.")

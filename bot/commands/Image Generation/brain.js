@@ -4,7 +4,7 @@ module.exports = {
     name: 'brain',
     category: 'img',
     description: '',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         args = message.content.slice(8).trim().split("|")
         let firstText = args[0]
         let secondText = args[1]

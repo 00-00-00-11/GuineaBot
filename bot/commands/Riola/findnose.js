@@ -3,7 +3,7 @@ module.exports = {
     name: "findnose",
     description: "Find Magyk14's nose",
     category: "riola",
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         if (message.guild.id !== "618454511685599268") {
             const riolaEmbed = new Discord.MessageEmbed()
                 .setColor('#9f5000')

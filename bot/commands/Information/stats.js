@@ -5,7 +5,7 @@ module.exports = {
     name: 'stats',
     category: 'owner',
     description: 'Hosting stats',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         cpuStat.usagePercent(function (err, precent, seconds) {
             if (err) {
                 return console.error(err)

@@ -2,7 +2,7 @@ module.exports = {
     name: 'kill',
     category: 'Bot Owner',
     description: 'Shut down the bot (restart if on heroku)',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         if (message.author.id !== "423222193032396801") {
             return message.reply("You are not the owner of the bot, also known as ${Cy1der}#0001.")
         }

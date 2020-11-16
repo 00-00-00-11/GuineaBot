@@ -3,7 +3,7 @@ module.exports = {
     name: 'ban',
     category: 'moderation',
     description: 'Ban a member from a guild',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
 
         let banned = message.mentions.members.first()
         let reason = args.slice(1).join(" ");

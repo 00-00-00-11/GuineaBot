@@ -3,7 +3,7 @@ module.exports = {
     name: 'unchatmute',
     category: 'moderation',
     description: 'Allow a member to chat in channels',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
 
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")
         let muteuser = message.mentions.members.first();

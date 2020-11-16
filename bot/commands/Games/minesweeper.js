@@ -5,7 +5,7 @@ module.exports = {
     name: 'minesweeper',
     category: 'games',
     description: 'Minesweeper in Discord!',
-    run: async (message, args) => {
+    run: async (message, args, client, prefix, command) => {
         const rows = parseInt(args[0]);
         const columns = parseInt(args[1]);
         const mines = parseInt(args[2]);

@@ -4,7 +4,7 @@ module.exports = {
     name: 'spotify',
     category: 'utility',
     description: 'See Spotify status info',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         let user;
         if (message.mentions.users.first()) {
             user = message.mentions.users.first();

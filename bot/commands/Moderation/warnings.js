@@ -6,7 +6,7 @@ module.exports = {
     name: "warnings",
     category: "Moderation",
     description: "Show a list of warnings for a member",
-    run: async (message, args) => {
+    run: async (message, args, client, prefix, command) => {
         let
          target = message.mentions.users.first()
         if (!target) {

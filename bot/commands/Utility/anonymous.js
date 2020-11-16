@@ -2,7 +2,7 @@ module.exports = {
     name: 'anonymous',
     category: 'util',
     description: 'Send a message anonymously',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         let attachments = message.attachments.array()
         if (attachments.length > 0) return message.reply("Please send attachments as links")
 

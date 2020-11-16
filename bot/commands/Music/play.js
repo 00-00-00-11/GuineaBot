@@ -13,7 +13,7 @@ const scdl = require("soundcloud-downloader")
 module.exports = {
     name: "play",
     description: "Play a song in a voice channel",
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         const channel = message.member.voice.channel
 
         const serverQueue = message.client.queue.get(message.guild.id)
@@ -42,9 +42,9 @@ module.exports = {
         const urlValid = videoPattern.test(args[0])
 
         if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
-            return message.client.commands.get("playlist").run(message, args)
+            return message.client.commands.get("playlist").run(message, args, client, prefix, command)
         } else if (scdl.isValidUrl(url) && url.includes("/sets/")) {
-            return message.client.commands.get("playlist").run(message, args)
+            return message.client.commands.get("playlist").run(message, args, client, prefix, command)
         }
 
         const queueConstruct = {

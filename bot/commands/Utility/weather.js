@@ -4,7 +4,7 @@ module.exports = {
     name: 'weather',
     category: 'utility',
     description: 'Weather for ANY city in the world',
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
         let city = args.join(" ")
         let degreetype = "C"
 

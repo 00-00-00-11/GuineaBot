@@ -3,7 +3,7 @@ module.exports = {
     name: 'setnick',
     category: 'moderation',
     description: "Set a member's nickname in a guild, or yours.",
-    run: async (message, args, client) => {
+    run: async (message, args, client, prefix, command) => {
 
         let member = message.mentions.members.first()
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")
