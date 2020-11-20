@@ -14,8 +14,11 @@ const scdl = require("soundcloud-downloader")
 
 module.exports = {
     name: "playlist",
-    cooldown: 3,
-    description: 'Queue in a whole playlist',
+    aliases: [ "pl"],
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <YouTube Playlist (name or URL) | soundcloud Playlist URL>`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         const {
             PRUNING

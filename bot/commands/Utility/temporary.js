@@ -1,7 +1,10 @@
 module.exports = {
     name: "temporary",
-    category: "utility",
-    description: "Send a message, then delete it after a set time.",
+    aliases: [ 'temp' ],
+    minArgs: 2,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <time until delete in ms> <text>`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         if (!args[0]) return message.channel.send("You need to provide how many milliseconds to wait before deleting the message. For example, 1 second is equivalent to 1000 milliseconds.");
         let ms = parseInt(args[0]);

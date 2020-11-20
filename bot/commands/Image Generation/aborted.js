@@ -2,14 +2,13 @@ const Discord = require("discord.js")
 const Canvas = require("canvas")
 module.exports = {
     name: 'aborted',
-    category: 'images',
-    description: '',
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <text>`",
+    description: "10 reason why I should be aborted",
     run: async (message, args, client, prefix, command) => {
+        //See abandon.js
         var imageText = args.slice(0).join(" ")
-        if (!imageText) {
-            message.channel.send("Please specify what text to add.")
-            return
-        }
 
         var image = "./assets/images/aborted/aborted.bmp"
 

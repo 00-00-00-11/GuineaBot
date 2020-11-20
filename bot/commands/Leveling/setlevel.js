@@ -2,22 +2,11 @@ const discordXP = require('discord-xp')
 const Discord = require("discord.js")
 module.exports= {
     name: 'setlevel',
-    category: 'leveling',
-    description: "Set a guild member's level",
+    minArgs: 1,
+    maxArgs: 2,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <number>` or `{PREFIX}{COMMAND} <number>`",
+    description: "set level command",
     run: async(message, args, client, prefix, command) => {
-        if(!message.member.hasPermission("ADMINISTRATOR", explicit = true)) {
-            const permEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
-                .setTitle('Level set unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription("You don't have the correct permissions.")
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(permEmbed)
-            return
-        }
-
         let target = message.mentions.members.first()
 
         if (target) {

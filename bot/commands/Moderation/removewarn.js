@@ -4,6 +4,7 @@ const Discord = require("discord.js")
 
 module.exports = {
     name: "removewarn",
+    aliases: [ "-warn"],
     category: "moderation",
     description: "Remove a warning to a member for a specific reason",
     run: async (message, args, client, prefix, command) => {

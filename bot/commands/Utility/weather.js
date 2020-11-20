@@ -2,8 +2,10 @@ const Discord = require("discord.js")
 const weather = require("weather-js")
 module.exports = {
     name: 'weather',
-    category: 'utility',
-    description: 'Weather for ANY city in the world',
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <city>`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         let city = args.join(" ")
         let degreetype = "C"

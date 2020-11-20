@@ -1,8 +1,11 @@
 const Discord = require('discord.js')
 module.exports = {
     name: 'unchatmute',
-    category: 'moderation',
-    description: 'Allow a member to chat in channels',
+    aliases: [ 'ucm' ],
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <reason (optional)>`",
+    description: "remove mute",
     run: async (message, args, client, prefix, command) => {
 
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")

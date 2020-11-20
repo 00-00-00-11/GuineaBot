@@ -4,7 +4,10 @@ const {
 
 module.exports = {
     name: "skipto",
-    description: "skip to a specific song in the queue",
+    minArgs: 1,
+    maxArgs: 1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <queue number>`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         if (!args.length) return message.reply(`Usage: g?${module.exports.name} <queue number>`)
         if (isNaN(args[0])) return message.reply(`Usage: g?${module.exports.name} <queue number>`)

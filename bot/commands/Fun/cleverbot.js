@@ -2,13 +2,16 @@ const cleverbot = require("cleverbot-free")
 
 module.exports = {
     name: "cleverbot",
-    category: "fun",
-    description: "This is Cleverbot but free and used in Discord!",
+    aliases: [ "clever"],
+    minArgs: 1, 
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <query>`",
+    description: "Smart chat bot with no context",
     run: async (message, args, client, prefix, command) => {
+        //Combine all the arguments it receives
         const text = args.slice(0).join(" ")
 
-        if (!text) return message.channel.send("Cleverbot won't respond to nothing. :P")
-
+        //Send it to cleverbot, recieve the response and send it back
         cleverbot(text).then(response => message.reply(response));
     }
 }

@@ -2,8 +2,10 @@ const Discord = require("discord.js")
 const Canvas = require("canvas")
 module.exports = {
     name: 'bongocat',
-    category: 'img',
-    description: '',
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    description: "bongocat overlay",
     run: async (message, args, client, prefix, command) => {
         var image = "./assets/images/bongocat/bongocat.bmp"
 

@@ -1,8 +1,11 @@
 const Discord = require('discord.js')
 module.exports = {
     name: 'clear',
-    category: 'moderation',
-    description: 'Delete messages in bulk',
+    aliases: [ 'purge' ],
+    minArgs: 1,
+    maxArgs: 1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <number (1-100)>`",
+    description: "bulk delete messages",
     run: async (message, args, client, prefix, command) => {
         const msgdel = parseInt(args[0])
         if (!message.member.hasPermission("MANAGE_MESSAGES", explicit = true)) {

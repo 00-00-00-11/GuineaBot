@@ -1,3 +1,4 @@
+//Thanks to https://github.com/TheTurkeyDev for this
 const Discord = require('discord.js');
 
 const WIDTH = 7;

@@ -1,8 +1,11 @@
 const Discord = require("discord.js")
 module.exports = {
     name: 'deletevoicechannel',
-    category: 'server management',
-    description: 'Delete a voice channel',
+    aliases: [ 'dvc' ],
+    minArgs: 1,
+    maxArgs: 1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <voice channel ID>`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         if (!message.member.hasPermission("MANAGE_CHANNELS", explicit = true)) {
             const permEmbed = new Discord.MessageEmbed()

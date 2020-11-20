@@ -2,8 +2,10 @@ const Discord = require("discord.js")
 const math = require("mathjs")
 module.exports = {
     name: 'calc',
-    category: 'util',
-    description: 'Evaluate conversions or advanced math',
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <equation>`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         if (!args[0]) return message.channel.send("Input a calculaton")
 

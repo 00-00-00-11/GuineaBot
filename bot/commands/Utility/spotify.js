@@ -2,8 +2,10 @@ const Discord = require("discord.js")
 const convert = require("parse-ms")
 module.exports = {
     name: 'spotify',
-    category: 'utility',
-    description: 'See Spotify status info',
+    minArgs: 0,
+    maxArgs: 1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention (optional)>`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         let user;
         if (message.mentions.users.first()) {

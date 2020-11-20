@@ -7,13 +7,13 @@ const request = require("node-superfetch");
 
 module.exports = {
     name: "fisheye",
-    category: "imges",
-    description: "Bulge an image",
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <image>`",
+    description: "bulge an image's center",
     run: async (message, args, client, prefix, command) => {
         message.channel.startTyping(true)
         let attachments = message.attachments.array();
-        if (attachments.length === 0) return message.channel.send("Please provide an image.");
-        else if (attachments.length > 1) return message.channel.send("Please provide one image.");
 
         var level = 50
 

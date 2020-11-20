@@ -1,8 +1,10 @@
 const Discord = require('discord.js')
 module.exports = {
     name: 'kick',
-    category: 'moderation',
-    description: 'Kick a guild member from the guild.',
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <reason (optional)>",
+    description: "kick members",
     run: async (message, args, client, prefix, command) => {
 
         let kicked = message.mentions.members.first()

@@ -2,8 +2,10 @@ const Discord = require("discord.js")
 const Canvas = require("canvas")
 module.exports = {
     name: 'boo',
-    category: 'images',
-    description: 'boo!',
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <first panel text> | <second panel text>`",
+    description: "boo!",
     run: async (message, args, client, prefix, command) => {
         args = message.content.slice(6).trim().split("|")
         let firstText = args[0]

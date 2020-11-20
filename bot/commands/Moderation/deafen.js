@@ -1,8 +1,11 @@
 const Discord = require('discord.js')
 module.exports = {
     name: 'deafen',
-    category: 'moderation',
-    description: 'Prevent a member from talking AND hearing others in a voice chat.',
+    aliases: [ "deaf" ],
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <reason (optional)>`",
+    description: "voice deaf",
     run: async (message, args, client, prefix, command) => {
 
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")

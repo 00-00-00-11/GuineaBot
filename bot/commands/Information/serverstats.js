@@ -1,8 +1,10 @@
 const Discord = require("discord.js")
 module.exports = {
     name: 'serverstats',
-    category: 'info',
-    description: 'Get stats on a guild.',
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    description: "guild stats",
     run: async (message, args, client, prefix, command) => {
         const embed = new Discord.MessageEmbed()
             .setColor('#9f5000')

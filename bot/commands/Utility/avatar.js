@@ -1,8 +1,11 @@
 const Discord = require("discord.js")
 module.exports = {
     name: 'avatar',
-    category: 'util',
-    description: 'All options for downloading an avatar of someone' ,
+    aliases: [ 'pfp' ],
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         let webp16 = message.author.displayAvatarURL({
             format: "webp",

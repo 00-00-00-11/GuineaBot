@@ -1,8 +1,11 @@
 const discordXP = require('discord-xp')
 module.exports = {
     name: 'rank',
-    category: 'leveling',
-    description: 'Show XP stats',
+    aliases: ["level"],
+    minArgs: 0,
+    maxArgs: 1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention>` or `{PREFIX}{COMMAND}`",
+    description: "rank command",
     run: async (message, args, client, prefix, command) => {
         const target = message.mentions.users.first() || message.author
         let XPuser = await discordXP.fetch(target.id, message.guild.id)

@@ -7,7 +7,10 @@ const youtube = new YoutubeApi(YOUTUBE_API_KEY)
 
 module.exports = {
     name: "search",
-    description: "Search youtube for a specific song",
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <youtube search>`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         if (!args.length) return message.reply(`Usage: g?${module.exports.name} <video name>`)
 

@@ -1,10 +1,12 @@
 const discordXP = require('discord-xp')
 module.exports = {
     name: 'required',
-    category: 'leveling',
-    description: 'Shows much much XP you need to reach a specific level',
+    aliases: ["req"],
+    minArgs: 1,
+    maxArgs: 1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <number>`",
+    description: "req command",
     run: async (message, args, client, prefix, command) => {
-        if (!args[0]) return message.channel.send("What level do you want me to display the required XP for?")
         let level = parseInt(args[0])
         if (isNaN(level)) return message.channel.send("Specify a **number** please.")
 

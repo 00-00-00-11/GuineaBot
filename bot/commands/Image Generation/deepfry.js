@@ -6,13 +6,14 @@ const request = require("node-superfetch")
 
 module.exports = {
     name: "deepfry",
-    category: "images",
-    description: "Deepfry an image.",
+    aliases: [ "fry" ],
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <image>`",
+    description: "want some fries?",
     run: async (message, args, client, prefix, command) => {
         message.channel.startTyping(true)
         let image = message.attachments.array()
-        if (image.length === 0) return message.channel.send("Please provide an image.")
-        else if (image.length > 1) return message.channel.send("Please provide a single image.")
 
         try {
             const {

@@ -2,8 +2,11 @@ const Discord = require("discord.js")
 const request = require("node-superfetch")
 module.exports = {
     name: 'google',
-    category: 'utility',
-    description: 'Search the world wide web',
+    aliases: [ "ggl" ],
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <search>`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         let config = {
             GOOGLE_API_KEY: process.env.GOOGLE_API_KEY

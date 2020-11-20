@@ -4,8 +4,10 @@ const Discord = require("discord.js")
 
 module.exports = {
     name: "warn",
-    category: "moderation",
-    description: "Give a warning to a member for a specific reason",
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <reason (optional)>`",
+    description: "command aliases",
     run: async (message, args, client, prefix, command) => {
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")
 

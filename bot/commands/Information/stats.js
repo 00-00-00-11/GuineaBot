@@ -3,8 +3,10 @@ let os = require("os")
 let cpuStat = require("cpu-stat")
 module.exports = {
     name: 'stats',
-    category: 'owner',
-    description: 'Hosting stats',
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    description: "host stats",
     run: async (message, args, client, prefix, command) => {
         cpuStat.usagePercent(function (err, precent, seconds) {
             if (err) {

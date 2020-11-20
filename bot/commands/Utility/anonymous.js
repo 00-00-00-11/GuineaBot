@@ -1,7 +1,9 @@
 module.exports = {
     name: 'anonymous',
-    category: 'util',
-    description: 'Send a message anonymously',
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <message>`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         let attachments = message.attachments.array()
         if (attachments.length > 0) return message.reply("Please send attachments as links")

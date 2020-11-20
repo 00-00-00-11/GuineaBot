@@ -1,9 +1,12 @@
 const Discord = require("discord.js")
 module.exports = {
     name: 'setup',
-    category: '.mandatory',
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: 'Create all the channels/roles the bot needs',
     run: async (message, args, client, prefix, command) => {
+        //Check for permissions
         if (message.author.id !== message.guild.ownerID) {
             const nopermsEmbed = new Discord.MessageEmbed()
                 .setColor("#9f5000")
@@ -30,22 +33,27 @@ module.exports = {
 
         var channelcount = 1
 
+        //Filter out message collector to only the owner of the server, aka the author of the message
         const filter = msg => msg.author.id === message.author.id;
         const options = {
             max: 1
         }
 
+        //Start process
         message.channel.send('**Starting setup process... Enter `cancel` anytime to end the process.**')
         message.channel.send('I am going to create a modlog channel, what is the minimum role that can access the channel? Perhaps the lowest level of moderator would work best.`Note: case sensitive, do NOT mention the role and my role has to be over the role you specify or I will not be able to access the channel.`')
 
+        //Catch answer
         let collector = await message.channel.awaitMessages(filter, options);
         let answer = collector.first().content;
 
+        //Check if its cancel and cancel
         if (answer === 'cancel' || answer === 'Cancel') {
             message.channel.send('**Setup process ended, requested by administrator.**')
             return;
         }
 
+        //Find the role and check if it exists
         let minrole = message.guild.roles.cache.find(x => x.name === answer)
 
         if (!minrole) {
@@ -53,6 +61,7 @@ module.exports = {
             return
         }
 
+        //Next step
         await message.channel.send('Great! Which category should I create the channel in? Perhaps a category made specifically for mods. `Note: case sensitive`')
 
         let collector2 = await message.channel.awaitMessages(filter, options);
@@ -63,6 +72,7 @@ module.exports = {
             return;
         }
 
+        //Find category and check if it exists
         let category = message.guild.channels.cache.find(cat => cat.name === `${answer2}` && cat.type === 'category')
 
         if (!category) {
@@ -70,6 +80,7 @@ module.exports = {
             return
         }
 
+        //Next step
         await message.channel.send('Ok. Would you like me to create a welcome channel? Respond with a `yes` or `no`. *actual welcome message in progress*')
 
         let collector3 = await message.channel.awaitMessages(filter, options);
@@ -80,6 +91,7 @@ module.exports = {
             return;
         }
 
+        //Create channel
         if (answer3 === 'yes' || answer3 === 'Yes') {
             message.guild.channels.create('g-welcome', {
                 type: 'text',
@@ -92,6 +104,7 @@ module.exports = {
             message.channel.send('**Ok then. Enjoy GuineaBot!**')
         }
 
+        //Create channel
         message.guild.channels.create('g-modlog', {
             reason: 'Created using setup command. Modlog for GuineaBot commands.',
             type: 'text',
@@ -107,7 +120,8 @@ module.exports = {
             ],
             parent: category.id
         }).then(console.log).catch(console.error)
-        // need to override perms
+        
+        // Create role
         message.guild.roles.create({
             data: {
                 name: 'gmuted',
@@ -119,8 +133,7 @@ module.exports = {
             reason: 'For the bad kids',
         }).then(console.log).catch(console.error);
 
-        console.log(`Setup in ${message.guild.name} (${message.guild.id})`)
-
+        //Find readme and send message that it ended
         let readme = message.guild.channels.cache.find(channel => channel.name === "read-me")
 
         if (readme) {
@@ -136,6 +149,7 @@ module.exports = {
             if (message.channel.id !== readme.id) {
                 message.reply('Setup successful, please check #read-me .')
             }
+            //check if readme was deleted
         } else if (!readme) {
             message.guild.channels.create('read-me', {
                 type: 'text'
@@ -157,6 +171,5 @@ module.exports = {
         }
 
         message.channel.send('Setup procedure successfully completed!')
-
     }
 }

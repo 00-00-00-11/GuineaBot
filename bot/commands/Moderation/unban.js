@@ -1,8 +1,10 @@
 const Discord = require('discord.js')
 module.exports = {
     name: 'unban',
-    category: 'moderation',
-    description: 'Pardon a member and allow them to join back to the guild.',
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <banned user ID> <reason (optional)>`",
+    description: "unban",
     run: async (message, args, client, prefix, command) => {
         if (!args[0]) {
             const errorEmbed2 = new Discord.MessageEmbed()

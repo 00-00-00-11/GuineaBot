@@ -3,14 +3,17 @@ const snake = require("snakecord")
 
 module.exports = {
     name: "snake",
-    category: "games",
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "Snake game in Discord!",
     run: async (message, args, client, prefix, command) => {
+        //Initiate the new class
         const snakeGame = new snake({
             title: "Snake Game",
             color: "#9f5000",
             timestamp: true,
-            gameOverTitle: "Game Over"
+            gameOverTitle: "You heckin won!"
         })
 
         snakeGame.newGame(message)

@@ -4,7 +4,11 @@ const {
 
 module.exports = {
     name: "volume",
-    description: "Change music volume",
+    aliases: [ "v"],
+    minArgs: 1,
+    maxArgs: 1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <number>`.",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         const queue = message.client.queue.get(message.guild.id)
 

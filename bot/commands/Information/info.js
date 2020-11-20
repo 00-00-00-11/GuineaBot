@@ -1,8 +1,10 @@
 const Discord = require("discord.js")
 module.exports = {
     name: 'info',
-    category: 'guides',
-    description: 'All the information you need about GuineaBot',
+    minArgs: 1,
+    maxArgs: 1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <choose between \`version\` \`commands\` \`server\` \`support\` \`riola\`>`",
+    description: "information about bot",
     run: async (message, args, client, prefix, command) => {
         if (args[0] === 'version') {
 
@@ -50,7 +52,7 @@ module.exports = {
                     value: '`beep` | `foo` | `wheek` | `image` | `guineapig` | `dankmeme` | `wholesomememe` | `ascii` | `coolkid` | `debate` | `8ball` | `sarcastic` | `simp` | `gamer` | `cleverbot`',
                 }, {
                     name: "Games",
-                    value: "`snake` | `minesweeper` | `rps` | `guessnum` | `connect4` | `hangman` | `chess` | `tictactoe`",
+                    value: "`snake` | `minesweeper` | `rps` | `guessnum` | `connect4` | `hangman` | `chess`",
                 }, {
                     name: "Image generation",
                     value: "`abandon` | `aborted`  | `affect` | `airpods` | `america` | `armor` | `balloon` | `banfilth` | `slap` | `bed` | `bongocat` | `boo` | `edgedetect` | `emboss` | `blur` | `sobel` | `sharpen` | `brain` | `byemom` | `deepfry` | `fisheye`",
@@ -112,21 +114,6 @@ module.exports = {
                 .setTimestamp()
                 .setFooter('Thank you for using GuineaBot!')
             message.channel.send(riolaEmbed)
-            return
-        } else {
-            const infoEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
-                .setTitle('Help navigation:')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription('Add one of the following options as an arguement.')
-                .setThumbnail(message.client.user.avatarURL())
-                .addFields({
-                    name: 'Options: ',
-                    value: '\`version\` \`commands\` \`server\` \`support\` \`riola\`'
-                })
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(infoEmbed)
             return
         }
     }

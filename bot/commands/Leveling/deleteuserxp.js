@@ -2,8 +2,11 @@ const discordXP = require('discord-xp')
 const Discord = require("discord.js")
 module.exports = {
     name: 'deleteuserxp',
-    category: 'leveling',
-    description: "Delete a member's XP in the database",
+    aliases: [ 'duxp'],
+    minArgs: 0,
+    maxArgs: 1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention>` or `{PREFIX}{COMMAND}`",
+    description: "Deletes xp entry",
     run: async (message, args, client, prefix, command) => {
         if (message.author.id !== message.guild.ownerID) {
             const nopermsEmbed = new Discord.MessageEmbed()

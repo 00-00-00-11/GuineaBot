@@ -4,8 +4,11 @@ const Discord = require("discord.js")
 
 module.exports = {
     name: "warnings",
-    category: "Moderation",
-    description: "Show a list of warnings for a member",
+    aliases: [ "warns"],
+    minArgs: 0,
+    maxArgs: 1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention (optional)>`",
+    description: "show warns",
     run: async (message, args, client, prefix, command) => {
         let
          target = message.mentions.users.first()

@@ -12,7 +12,11 @@ const scdl = require("soundcloud-downloader")
 
 module.exports = {
     name: "play",
-    description: "Play a song in a voice channel",
+    aliases: [ "p" ],
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <youtube search | youtube URL (video or playlist) | soundcloud URL (song or playlist)>`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         const channel = message.member.voice.channel
 
@@ -36,16 +40,9 @@ module.exports = {
 
         let search = args.join(" ")
         const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi
-        const playlistPattern = /^.*(playlist\?list=)([^#\&\?]*).*/gi
         const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/
         const url = args[0]
         const urlValid = videoPattern.test(args[0])
-
-        if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
-            return message.client.commands.get("playlist").run(message, args, client, prefix, command)
-        } else if (scdl.isValidUrl(url) && url.includes("/sets/")) {
-            return message.client.commands.get("playlist").run(message, args, client, prefix, command)
-        }
 
         const queueConstruct = {
             textChannel: message.channel,

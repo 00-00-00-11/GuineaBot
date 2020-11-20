@@ -5,7 +5,11 @@ const lyricsFinder = require("lyrics-finder")
 
 module.exports = {
     name: "lyrics",
-    description: "Song lyrics",
+    aliases: [ "ly" ],
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    description: "lyrics",
     run: async (message, args, client, prefix, command) => {
         const queue = message.client.queue.get(message.guild.id)
         if (!queue) return message.reply("No song is being played right now.")

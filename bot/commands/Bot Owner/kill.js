@@ -1,12 +1,14 @@
 module.exports = {
     name: 'kill',
-    category: 'Bot Owner',
-    description: 'Shut down the bot (restart if on heroku)',
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    description: "Shut down the bot, restart if hosted on heroku",
     run: async (message, args, client, prefix, command) => {
-        if (message.author.id !== "423222193032396801") {
-            return message.reply("You are not the owner of the bot, also known as ${Cy1der}#0001.")
-        }
+        //Check if you are not me (Cy1der)
+        if (message.author.id !== "423222193032396801") return message.reply("You are not the owner of the bot, also known as ${Cy1der}#0001.")
 
+        //Filter the person to respond to the message author, me
         const filter = msg => msg.author.id === message.author.id;
         const options = {
             max: 1
@@ -23,9 +25,10 @@ module.exports = {
         }
 
         if (answer === "yes" || answer === "Yes" || answer === "YES") {
-            console.log("[GuineaBot] has died                                                                                           wheek wheek");
+            console.log(`Logged out of [${client.user.tag}]`);
             message.channel.send("📴 Shutting down in 3 seconds...")
 
+            //After 3 seconds, the bot will automatically shut down, if the bot is hosted on heroku, it restarts instead
             setTimeout(() => {
                 process.exit()
             }, 3000)

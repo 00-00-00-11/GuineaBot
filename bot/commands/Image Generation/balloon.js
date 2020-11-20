@@ -2,16 +2,18 @@ const Discord = require("discord.js")
 const Canvas = require("canvas")
 module.exports = {
     name: 'balloon',
-    category: 'img',
-    description: '',
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <balloon text> | <arrow text>`",
+    description: "Baloon <-- meme",
     run: async (message, args, client, prefix, command) => {
         args = message.content.slice(9).trim().split("|")
         let balloonText = args[0]
         let arrowText = args[1]
 
-        if (!balloonText) return message.channel.send("Usage: g?balloon <balloon text> | <arrow text>")
-        if (!arrowText) return message.channel.send("Usage: g?balloon <balloon text> | <arrow text>")
-
+        if (!balloonText) return message.channel.send("Please provide the text to put on the arrow then the text to put on the balloon, separated by a |.")
+        if (!arrowText) return message.channel.send("Please provide the text to put on the arrow then the text to put on the balloon, separated by a |.")
+        
         var image = "./assets/images/balloon/balloon.bmp"
 
         const canvas = Canvas.createCanvas(800, 706)

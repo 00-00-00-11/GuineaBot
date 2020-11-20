@@ -1,8 +1,10 @@
 const Jimp = require("jimp")
 module.exports = {
     name: 'sharpen',
-    category: 'img',
-    description: '',
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <image>`",
+    description: "sharpen an image",
     run: async (message, args, client, prefix, command) => {
         let attachments = message.attachments.array()
         if (attachments.length === 0) return message.reply("Please upload an image, the caption should be this command.")

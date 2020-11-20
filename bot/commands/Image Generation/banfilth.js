@@ -2,8 +2,11 @@ const Discord = require("discord.js")
 const Canvas = require("canvas")
 module.exports = {
     name: 'banfilth',
-    category: 'img',
-    description: '',
+    aliases: [ 'filth'],
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    description: "ban this sick filth",
     run: async (message, args, client, prefix, command) => {
         const canvas = Canvas.createCanvas(536, 751)
         const ctx = canvas.getContext("2d")

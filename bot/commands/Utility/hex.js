@@ -1,7 +1,9 @@
 module.exports = {
     name: "hex",
-    category: "utility",
-    description: "Convert/decode hex values",
+    minArgs: 2,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <function either decode or encode> <hex or text>`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         if (!args[0]) return message.channel.send("Please specify a valid codec, either decode or encode.")
 

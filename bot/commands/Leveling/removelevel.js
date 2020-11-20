@@ -2,26 +2,15 @@ const discordXP = require('discord-xp')
 const Discord = require("discord.js")
 module.exports = {
     name: 'removelevel',
-    category: 'leveling',
-    description: 'Remove levels from a specific guild member',
+    aliases: ["-lvl"],
+    minArgs: 0,
+    maxArgs: 1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <number>` or `{PREFIX}{COMMAND} <number>`",
+    description: "remove levels",
     run: async (message, args, client, prefix, command) => {
-        if (!message.member.hasPermission("ADMINISTRATOR", explicit = true)) {
-            const permEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
-                .setTitle('Level remove unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription("You don't have the correct permissions.")
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(permEmbed)
-            return
-        }
-
         let target = message.mentions.members.first()
 
         if (target) {
-            if (!args[1]) return message.channel.send("How many levels do I remove?")
             let amountToremove = parseInt(args[1])
             if (isNaN(amountToremove)) return message.channel.send("Specify a **number** please.")
 
@@ -34,7 +23,6 @@ module.exports = {
                 message.channel.send(`${message.author} has taken **${amountToremove}** levels away from ${target}, they are now at level **${XPuser.level}**.`)
             }, 1000)
         } else if (!target) {
-            if (!args[0]) return message.channel.send("How many levels do I remove?")
             let amountToremove = parseInt(args[0])
             if (isNaN(amountToremove)) return message.channel.send("Specify a **number** please.")
 

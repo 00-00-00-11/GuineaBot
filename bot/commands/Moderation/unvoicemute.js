@@ -1,8 +1,11 @@
 const Discord = require('discord.js')
 module.exports= {
     name: 'unvoicemute',
-    category: 'moderation',
-    description: 'Allow a member to talk in voice channels.',
+    aliases: [ "uvm" ],
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <reason (optional)>`",
+    description: "uvm",
     run: async(message, args, client, prefix, command) => {
 
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")

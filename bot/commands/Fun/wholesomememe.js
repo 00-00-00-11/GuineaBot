@@ -2,9 +2,13 @@ const Discord = require("discord.js")
 const got = require("got")
 module.exports = {
     name: 'wholesomememe',
-    category: 'MEME',
+    aliases: [ "wm" ],
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: 'Random meme from r/wholesomememes',
     run: async (message, args, client, prefix, command) => {
+        //See dankmeme.js it's literally the same thing
         const embed = new Discord.MessageEmbed()
         got("https://www.reddit.com/r/wholesomememes/random/.json").then(response => {
             let content = JSON.parse(response.body)

@@ -1,14 +1,14 @@
 const Discord = require("discord.js")
 const Canvas = require("canvas")
-const {
-    writeFile
-} = require("fs")
+const {writeFile} = require("fs")
 const path = require("path")
 const GIFEncoder = require("gif-encoder-2")
 module.exports = {
     name: 'airpods',
-    category: 'image',
-    description: '',
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    description: "Flex on your friends",
     run: async (message, args, client, prefix, command) => {
         message.channel.startTyping(true)
         const canvas = Canvas.createCanvas(384, 128)

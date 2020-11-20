@@ -2,8 +2,10 @@ const Discord = require("discord.js")
 const Canvas = require("canvas")
 module.exports = {
     name: 'armor',
-    category: 'inggen',
-    description: '',
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    description: "Add a america flag over your Discord profile picture",
     run: async (message, args, client, prefix, command) => {
         var imageText = args.slice(0).join(" ")
         if (!imageText) {

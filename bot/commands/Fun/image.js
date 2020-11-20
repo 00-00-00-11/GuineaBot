@@ -3,17 +3,19 @@ const Discord = require("discord.js")
 const request = require("request")
 module.exports = {
     name: 'image',
-    category: 'fun',
+    aliases: [ 'i' ],
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <query>`",
     description: 'Random image from a search',
     run: async (message, args, client, prefix, command) => {
+        //Combine the command arguments together
         let imagesearch = args.slice(0).join(" ")
 
-        if (!imagesearch) {
-            return message.reply("Please specifiy what image to search for.")
-        }
-
+        //make a function
         function image(message) {
             var options = {
+                //search dogpile with the given query
                 url: "http://results.dogpile.com/serp?qc=images&q=" + imagesearch,
                 method: "GET",
                 headers: {
@@ -27,12 +29,14 @@ module.exports = {
 
                 $ = cheerio.load(responseBody)
 
+                //make a array with the image urls
                 var links = $(".image a.link")
                 var urls = new Array(links.length).fill(0).map((v, i) => links.eq(i).attr("href"))
 
-                console.log(urls)
+                //check if no image found
                 if (!urls.length) return
 
+                //Make it pretty
                 let embed = new Discord.MessageEmbed()
                     .setColor('#9f5000')
                     .setTitle(`Showing random image for: "${imagesearch}"`)
@@ -41,10 +45,12 @@ module.exports = {
                     .setFooter('Thank you for using GuineaBot!')
                     .setAuthor(message.author.tag, message.author.avatarURL())
 
+                    //send it back
                 message.channel.send(embed)
             })
         }
 
+        //call the function
         image(message)
     }
 }

@@ -2,11 +2,15 @@ const sarc = require("sarcastic-text")
 
 module.exports = {
     name: "sarcastic",
-    category: "Fun",
+    aliases: [ "sarc "],
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <text>`",
     description: "BrO yOu ArE sO fUnNy",
     run: async (message, args, client, prefix, command) => {
         let text = args.slice(0).join(" ")
-        if (!text) return message.channel.send("BrO, sPeCiFy WhAt TeXt To CoNvErT tO sArCaStIc")
+
+        //Simple as this, what to I describe here?
         let sarcasticText = sarc.getSarcastic(text)
         message.channel.send(sarcasticText)
     }

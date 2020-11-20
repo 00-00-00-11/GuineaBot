@@ -2,8 +2,11 @@ const discordXP = require('discord-xp')
 const Discord = require("discord.js")
 module.exports = {
     name: 'createuserxp',
-    category: 'leveling',
-    description: 'Create a XP entry in the database',
+    aliases: ["cuxp"],
+    minArgs: 0,
+    maxArgs: 1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention member>` or `{PREFIX}{COMMAND}`",
+    description: 'create xp entry',
     run: async (message, args, client, prefix, command) => {
         if (message.author.id !== message.guild.ownerID) {
             const nopermsEmbed = new Discord.MessageEmbed()

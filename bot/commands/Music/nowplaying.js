@@ -5,7 +5,11 @@ const {
 
 module.exports = {
     name: "nowplaying",
-    description: "Yoooo, what song is playing rn?",
+    aliases: [ "np"],
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    description: "np",
     run: async (message, args, client, prefix, command) => {
         const queue = message.client.queue.get(message.guild.id)
         if (!queue) return message.reply("No song is being played right now.")

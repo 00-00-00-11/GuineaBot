@@ -1,8 +1,10 @@
 const Discord = require("discord.js")
 module.exports = {
     name: "findnose",
-    description: "Find Magyk14's nose",
-    category: "riola",
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         if (message.guild.id !== "618454511685599268") {
             const riolaEmbed = new Discord.MessageEmbed()

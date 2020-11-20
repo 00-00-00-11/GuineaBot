@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 
 module.exports = async () => {
+    //Create a connection to the database with set options
     await mongoose.createConnection(`${process.env.MONGODB_DATABASE}`, {
         useFindAndModify: false,
         useNewUrlParser: true,

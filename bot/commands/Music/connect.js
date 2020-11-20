@@ -1,8 +1,11 @@
 const Discord = require("discord.js")
 module.exports= {
     name: 'connect',
-    category: 'music',
-    description: 'Connect to a voice channel.',
+    aliases: [ 'join'],
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    description: "connect",
     run: async(message, args, client, prefix, command) => {
         const channel = message.member.voice.channel
         if (!channel) return message.channel.send("You need to be in a voice channel first!").catch(console.error);

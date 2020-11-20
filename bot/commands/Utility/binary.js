@@ -1,8 +1,10 @@
 const Discord = require("discord.js")
 module.exports = {
     name: 'binary',
-    category: 'binary',
-    description: 'Convert a text to binary and vice versa',
+    minArgs: 2,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <function decode or encode> <text or binary>`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         if (!args[0]) return message.channel.send("Unknown parameter. Please choose the method first, either decode or encode it.");
 

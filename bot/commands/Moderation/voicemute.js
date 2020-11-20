@@ -1,8 +1,11 @@
 const Discord = require('discord.js')
 module.exports= {
     name: 'voicemute',
-    category: 'moderation',
-    description: 'Prevent a member from talking in voice channels',
+    aliases: [ "vm" ],
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <reason (optional)>`",
+    description: "mute",
     run: async(message, args, client, prefix, command) => {
 
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")

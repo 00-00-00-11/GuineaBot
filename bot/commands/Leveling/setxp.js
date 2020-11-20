@@ -2,26 +2,14 @@ const discordXP = require('discord-xp')
 const Discord = require("discord.js")
 module.exports= {
     name: 'setxp',
-    category: 'leveling',
-    description: "Set a guild member's XP",
+    minArgs: 1,
+    maxArgs: 2,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <number>` or `{PREFIX}{COMMAND} <number>`",
+    description: "setxp command",
     run: async(message, args, client, prefix, command) => {
-        if(!message.member.hasPermission("ADMINISTRATOR", explicit = true)) {
-            const permEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
-                .setTitle('XP set unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription("You don't have the correct permissions.")
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(permEmbed)
-            return
-        }
-
         let target = message.mentions.members.first()
 
         if (target) {
-            if (!args[1]) return message.channel.send("To what XP amount do I set?")
             let amountToAdd = parseInt(args[1])
             if (isNaN(amountToAdd)) return message.channel.send("Specify a **number** please.")
 
@@ -32,7 +20,6 @@ module.exports= {
                 message.channel.send(`${message.author} has set ${target}'s XP to **${amountToAdd}**.`)
             }, 1000)
         } else if (!target) {
-            if (!args[0]) return message.channel.send("To what XP amount do I set?")
             let amountToAdd = parseInt(args[0])
             if (isNaN(amountToAdd)) return message.channel.send("Specify a **number** please.")
 

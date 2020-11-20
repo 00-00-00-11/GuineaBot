@@ -1,8 +1,11 @@
 const Jimp = require("jimp")
+const Discord = require("discord.js")
 module.exports = {
     name: 'sobel',
-    category: 'img',
-    description: '',
+    minArgs: 1,
+    maxArgs: 1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <image>`",
+    description: "get the image's direction's look",
     run: async (message, args, client, prefix, command) => {
         let attachments = message.attachments.array()
         if (attachments.length === 0) return message.reply("Please upload an image, the caption should be this command.")
@@ -22,9 +25,7 @@ module.exports = {
                     [1, 0, -1]
                 ]).write("./image cache/sobel/modifiedIMG.png")
 
-                message.channel.send(``, {
-                    files: ["./image cache/sobel/modifiedIMG.png"]
-                })
+                
             })
         } else if (args[0] === "bottom") {
             Jimp.read(`${attachments[0].url}`, (err, lenna) => {
@@ -36,9 +37,7 @@ module.exports = {
                     [-1, 0, 1]
                 ]).write("./image cache/sobel/modifiedIMG.png")
 
-                message.channel.send(``, {
-                    files: ["./image cache/sobel/modifiedIMG.png"]
-                })
+                
             })
         } else if (args[0] === "right") {
             Jimp.read(`${attachments[0].url}`, (err, lenna) => {
@@ -50,9 +49,7 @@ module.exports = {
                     [1, 2, 1]
                 ]).write("./image cache/sobel/modifiedIMG.png")
 
-                message.channel.send(``, {
-                    files: ["./image cache/sobel/modifiedIMG.png"]
-                })
+                
             })
         } else if (args[0] === "left") {
             Jimp.read(`${attachments[0].url}`, (err, lenna) => {
@@ -64,10 +61,11 @@ module.exports = {
                     [-1, -2, -1]
                 ]).write("./image cache/sobel/modifiedIMG.png")
 
-                message.channel.send(``, {
-                    files: ["./image cache/sobel/modifiedIMG.png"]
-                })
+                
             })
         }
+
+        const attachment = new Discord.MessageAttachment("./image cache/sobel/modifiedIMG.png", "modified image.png")
+        message.channel.send(attachment)
     }
 }

@@ -2,7 +2,10 @@ const { canModifyQueue } = require("../../util/util")
 
 module.exports = {
     name: "loop",
-    description: 'Loop the currently playing song',
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    description: "loop",
     run: async(message, args, client, prefix, command) => {
         const queue = message.client.queue.get(message.guild.id)
         if (!queue) return message.reply("No song is being played right now.")

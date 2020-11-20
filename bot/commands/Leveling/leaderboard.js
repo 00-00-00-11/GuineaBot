@@ -2,8 +2,11 @@ const discordXP = require('discord-xp')
 const Discord = require("discord.js")
 module.exports = {
     name: 'leaderboard',
-    category: 'leveling',
-    description: 'Top 10 most active members in a guild',
+    aliases: [ 'lb' ],
+    minArgs: 0,
+    maxArgs: 0,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    description: "leaderboard",
     run: async (message, args, client, prefix, command) => {
         const rawLeaderboard = await discordXP.fetchLeaderboard(message.guild.id, 10)
         if (rawLeaderboard.length < 1) return message.channel.send("Nobody is in the leaderboard yet...")

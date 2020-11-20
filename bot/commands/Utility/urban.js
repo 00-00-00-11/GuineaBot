@@ -2,8 +2,10 @@ const Discord = require("discord.js")
 const urban = require("relevant-urban")
 module.exports = {
     name: 'urban',
-    category: 'utility',
-    description: 'The urban dictionary',
+    minArgs: 1,
+    maxArgs: -1,
+    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <search>`",
+    description: "dc",
     run: async (message, args, client, prefix, command) => {
         if (!args[0]) return message.channel.send("Please specify the query.")
 
