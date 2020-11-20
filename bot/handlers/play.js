@@ -32,7 +32,8 @@ module.exports = {
             //Check if the song is from YouTube again, and declare stream's value with the audio stream, then limit the memory usage (highWaterMark)
             if (song.video_url && song.video_url.includes("youtube.com")) {
                 stream = await ytdlDiscord(song.video_url, {
-                    highWaterMark: 1 << 12
+                    quality: 'highestaudio',
+                    highWaterMark: 1 << 25
                 })
             //If the song is from soundcloud
             } else if (song.video_url && song.video_url.includes("soundcloud.com")) {
