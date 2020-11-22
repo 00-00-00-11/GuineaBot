@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: 0,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "guild stats",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         const embed = new Discord.MessageEmbed()
             .setColor('#9f5000')
             .setTitle("Server stats")

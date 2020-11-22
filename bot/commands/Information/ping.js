@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: 0,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "fetch latency",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         const m = await message.channel.send("Fetching ping...")
         const msglate = m.createdTimestamp - message.createdTimestamp
         const msguser = message.client.users.cache.get(message.author.id)

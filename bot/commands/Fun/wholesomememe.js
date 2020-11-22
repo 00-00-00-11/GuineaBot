@@ -7,7 +7,7 @@ module.exports = {
     maxArgs: 0,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: 'Random meme from r/wholesomememes',
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         //See dankmeme.js it's literally the same thing
         const embed = new Discord.MessageEmbed()
         got("https://www.reddit.com/r/wholesomememes/random/.json").then(response => {

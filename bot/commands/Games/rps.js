@@ -4,7 +4,7 @@ module.exports = {
     maxArgs: 0,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "Rock paper scissors",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         //Notify the author that the game is running
         message.reply("Enter `r` for rock, `p` for paper, or `s` for scissors.")
 

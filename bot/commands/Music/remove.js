@@ -7,7 +7,7 @@ module.exports = {
     maxArgs: 1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <queue number>",
     description: "dc",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         const queue = message.client.queue.get(message.guild.id)
         if (!queue) return message.channel.send("There is no queue.")
         if (!canModifyQueue(message.member, message.channel)) return

@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: 0,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <image>`",
     description: "add emboss to a image",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         let attachments = message.attachments.array()
         console.log(attachments[0].url)
 

@@ -9,7 +9,7 @@ module.exports = {
     maxArgs: 0,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "Flex on your friends",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         message.channel.startTyping(true)
         const canvas = Canvas.createCanvas(384, 128)
         const ctx = canvas.getContext("2d")

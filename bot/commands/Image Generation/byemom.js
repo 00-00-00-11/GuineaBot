@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: -1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <text>`.",
     description: "boy better be not searching naughty videos",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         var imageText = args.slice(0).join(" ")
         if (!imageText) {
             message.channel.send("Please specify what text to add.")

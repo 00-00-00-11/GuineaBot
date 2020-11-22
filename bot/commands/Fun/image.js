@@ -8,7 +8,7 @@ module.exports = {
     maxArgs: -1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <query>`",
     description: 'Random image from a search',
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         //Combine the command arguments together
         let imagesearch = args.slice(0).join(" ")
 

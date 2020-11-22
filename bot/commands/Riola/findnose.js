@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: 0,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "dc",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         if (message.guild.id !== "618454511685599268") {
             const riolaEmbed = new Discord.MessageEmbed()
                 .setColor('#9f5000')

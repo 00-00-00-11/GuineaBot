@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: -1,
     syntax: 'You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <text>`',
     description: 'Convert text to fancy text',
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         //Combine all the arguments to a single string
         const arg = args.slice(0).join(" ")
 

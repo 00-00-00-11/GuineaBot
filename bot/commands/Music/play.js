@@ -17,7 +17,7 @@ module.exports = {
     maxArgs: -1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <youtube search | youtube URL (video or playlist) | soundcloud URL (song or playlist)>`",
     description: "dc",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         const channel = message.member.voice.channel
 
         const serverQueue = message.client.queue.get(message.guild.id)

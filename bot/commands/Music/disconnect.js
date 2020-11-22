@@ -6,7 +6,7 @@ module.exports= {
     maxArgs: 0,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "dc",
-    run: async(message, args, client, prefix, command) => {
+    run: async(message, args, text, client, prefix, instance) => {
         const channel = message.member.voice.channel
         if (!channel) return message.channel.send("You need to be in a voice channel first!").catch(console.error);
         if (!message.guild.me.voice.channel) return message.channel.send("I'm not connected to a voice channel.")

@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: 1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention (optional)>`",
     description: "dc",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         let user;
         if (message.mentions.users.first()) {
             user = message.mentions.users.first();

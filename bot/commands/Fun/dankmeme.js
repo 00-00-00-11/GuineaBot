@@ -7,7 +7,7 @@ module.exports = {
     maxArgs: 0,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: 'Random meme from r/dankmemes',
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         const embed = new Discord.MessageEmbed()
         got("https://www.reddit.com/r/dankmemes/random/.json").then(response => {
             //Fetch most of the data from the reddit post it recieves

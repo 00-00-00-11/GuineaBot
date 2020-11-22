@@ -8,7 +8,7 @@ module.exports = {
     maxArgs: 0,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <rows> <columns> <mines>`",
     description: 'Minesweeper in Discord!',
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         const rows = parseInt(args[0]);
         const columns = parseInt(args[1]);
         const mines = parseInt(args[2]);

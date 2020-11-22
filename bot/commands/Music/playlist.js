@@ -19,7 +19,7 @@ module.exports = {
     maxArgs: -1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <YouTube Playlist (name or URL) | soundcloud Playlist URL>`",
     description: "dc",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         const {
             PRUNING
         } = require("../../config.json")

@@ -4,28 +4,28 @@ module.exports = {
     maxArgs: -1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <function either decode or encode> <hex or text>`",
     description: "dc",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         if (!args[0]) return message.channel.send("Please specify a valid codec, either decode or encode.")
 
         let choices = ["encode", "decode"]
         if (!choices.includes(args[0].toLowerCase())) return message.channel.send("Unknown parameter. Please choose the method first, either decode or encode it.");
 
-        let text = args.slice(1).join(" ");
-        if (!text) return message.channel.send("Please input some text, preferably in ASCII encoding. See https://theasciicode.com.ar/ for a list of available characters to choose from.");
-        if (text.length > 1024) return message.channel.send("Maximum input is 1024 characters, sorry!");
+        let textIn = args.slice(1).join(" ");
+        if (!textIn) return message.channel.send("Please input some text, preferably in ASCII encoding. See https://theasciicode.com.ar/ for a list of available characters to choose from.");
+        if (textIn.length > 1024) return message.channel.send("Maximum input is 1024 characters, sorry!");
 
-        function encode(text) {
+        function encode(textOu) {
             let arr1 = [];
-            for (var n = 0, l = text.length; n < l; n++) {
-                var hex = Number(text.charCodeAt(n)).toString(16)
+            for (var n = 0, l = textOu.length; n < l; n++) {
+                var hex = Number(textOu.charCodeAt(n)).toString(16)
                 arr1.push(hex)
             }
 
             return arr1.join('');
         }
 
-        function decode(text) {
-            var hex = text.toString()
+        function decode(textOu) {
+            var hex = textOu.toString()
             var str = ""
 
             for (var n = 0; n < hex.length; n += 2) {
@@ -35,9 +35,9 @@ module.exports = {
         }
 
         if (args[0].toLowerCase() === "encode") {
-            return message.channel.send(encode(text));
+            return message.channel.send(encode(textIn));
         } else if (args[0].toLowerCase() === "decode") {
-            return message.channel.send(decode(text));
+            return message.channel.send(decode(textIn));
         }
     }
 }

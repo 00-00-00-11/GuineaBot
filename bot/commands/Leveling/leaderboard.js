@@ -7,7 +7,7 @@ module.exports = {
     maxArgs: 0,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "leaderboard",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         const rawLeaderboard = await discordXP.fetchLeaderboard(message.guild.id, 10)
         if (rawLeaderboard.length < 1) return message.channel.send("Nobody is in the leaderboard yet...")
 

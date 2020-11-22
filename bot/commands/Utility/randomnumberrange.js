@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: 2,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <minimum number> <maximum number>`",
     description: "dc",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         if (!args[0]) {
             message.reply("Please specify the minimum number.")
             return

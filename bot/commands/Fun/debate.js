@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: 0,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: 'Start a friendly debate in the chat',
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         //If you have any debate questions, don't hesitate to consult Cy1der (me)
         let questions = [
             "Abortion should be available to all women.",

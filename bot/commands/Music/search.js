@@ -11,7 +11,7 @@ module.exports = {
     maxArgs: -1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <youtube search>`",
     description: "dc",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         if (!args.length) return message.reply(`Usage: g?${module.exports.name} <video name>`)
 
         const search = args.join(" ")

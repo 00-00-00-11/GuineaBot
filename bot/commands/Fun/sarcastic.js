@@ -7,9 +7,7 @@ module.exports = {
     maxArgs: -1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <text>`",
     description: "BrO yOu ArE sO fUnNy",
-    run: async (message, args, client, prefix, command) => {
-        let text = args.slice(0).join(" ")
-
+    run: async (message, args, text, client, prefix, instance) => {
         //Simple as this, what to I describe here?
         let sarcasticText = sarc.getSarcastic(text)
         message.channel.send(sarcasticText)

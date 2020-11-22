@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: 1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <number>`",
     description: "req command",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         let level = parseInt(args[0])
         if (isNaN(level)) return message.channel.send("Specify a **number** please.")
 

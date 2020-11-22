@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: -1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <reason (optional)>`",
     description: "mute user from chatting",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
 
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")
         let muteuser = message.mentions.members.first();

@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: -1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <banned user ID> <reason (optional)>`",
     description: "unban",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         if (!args[0]) {
             const errorEmbed2 = new Discord.MessageEmbed()
                 .setColor('#9f5000')

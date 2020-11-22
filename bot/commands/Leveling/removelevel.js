@@ -7,7 +7,7 @@ module.exports = {
     maxArgs: 1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <number>` or `{PREFIX}{COMMAND} <number>`",
     description: "remove levels",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         let target = message.mentions.members.first()
 
         if (target) {

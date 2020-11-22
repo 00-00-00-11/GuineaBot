@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: -1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention (optional)> <new name>`",
     description: "set nick",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
 
         let member = message.mentions.members.first()
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")

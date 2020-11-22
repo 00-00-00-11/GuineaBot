@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: 1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <choose between \`version\` \`commands\` \`server\` \`support\` \`riola\`>`",
     description: "information about bot",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         if (args[0] === 'version') {
 
             const version = '0.4.7'
@@ -28,7 +28,7 @@ module.exports = {
                 .setDescription('Available GuineaBot commands:')
                 .addFields({
                     name: "Bot Owner ",
-                    value: "`kill` | `cmd`",
+                    value: "`kill` | `cmd` | `adminstats`",
                 }, {
                     name: 'Server Owner',
                     value: '`setup`',

@@ -7,7 +7,7 @@ module.exports = {
     aliases: [ "-warn"],
     category: "moderation",
     description: "Remove a warning to a member for a specific reason",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")
 
         if (!modlog) {

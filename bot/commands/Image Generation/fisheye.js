@@ -11,7 +11,7 @@ module.exports = {
     maxArgs: 0,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <image>`",
     description: "bulge an image's center",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         message.channel.startTyping(true)
         let attachments = message.attachments.array();
 

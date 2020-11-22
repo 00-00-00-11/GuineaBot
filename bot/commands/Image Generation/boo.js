@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: -1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <first panel text> | <second panel text>`",
     description: "boo!",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         args = message.content.slice(6).trim().split("|")
         let firstText = args[0]
         let secondText = args[1]

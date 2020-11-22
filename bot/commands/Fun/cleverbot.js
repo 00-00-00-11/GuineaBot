@@ -7,11 +7,11 @@ module.exports = {
     maxArgs: -1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <query>`",
     description: "Smart chat bot with no context",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         //Combine all the arguments it receives
-        const text = args.slice(0).join(" ")
+        const textIn = args.slice(0).join(" ")
 
         //Send it to cleverbot, recieve the response and send it back
-        cleverbot(text).then(response => message.reply(response));
+        cleverbot(textIn).then(response => message.reply(response));
     }
 }

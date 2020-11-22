@@ -8,7 +8,7 @@ module.exports = {
     maxArgs: 1,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <queue number>`",
     description: "dc",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         if (!args.length) return message.reply(`Usage: g?${module.exports.name} <queue number>`)
         if (isNaN(args[0])) return message.reply(`Usage: g?${module.exports.name} <queue number>`)
 

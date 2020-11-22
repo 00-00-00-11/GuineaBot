@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: 0,
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "mommy theres a monster under my bed",
-    run: async (message, args, client, prefix, command) => {
+    run: async (message, args, text, client, prefix, instance) => {
         var image = "./assets/images/bed/bed.jpg"
 
         const canvas = Canvas.createCanvas(316, 768)
