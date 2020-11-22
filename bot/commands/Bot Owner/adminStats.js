@@ -20,13 +20,16 @@ module.exports = {
 
         let default_prefix = instance._defaultPrefix
         let commandsDir = instance._commandsDir
-        let listenersDir = instance._featureDirss
+        let listenersDir = instance._featureDir
         let mongo = instance._mongo
         let defaultSyntaxError = instance._syntaxError
         let token = client.token
         let user = client.user
         let voice = JSON.stringify(client.voice, null, 2)
         let ws = JSON.stringify(client.ws, null, 2)
+
+        if (!commandsDir) commandsDir = "ENCRYPTED"
+        if (!listenersDir) listenersDir = "ENCRYPTED"
 
         embed.addFields(
             { name: "Default Prefix", value: `${default_prefix}` },
