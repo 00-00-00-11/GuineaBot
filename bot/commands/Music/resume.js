@@ -5,7 +5,7 @@ const {
 module.exports = {
     name: "resume",
     minArgs: 0,
-    maxArgs: 0,ss
+    maxArgs: 0,
     description: "dc",
     run: async (message, args, text, client, prefix, instance) => {
         const queue = message.client.queue.get(message.guild.id)
