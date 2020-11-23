@@ -5,7 +5,6 @@ module.exports = {
     aliases: [ "dm" ],
     minArgs: 0,
     maxArgs: 0,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: 'Random meme from r/dankmemes',
     run: async (message, args, text, client, prefix, instance) => {
         const embed = new Discord.MessageEmbed()

@@ -3,10 +3,11 @@ module.exports = {
     name: 'emboss',
     minArgs: 0,
     maxArgs: 0,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <image>`",
     description: "add emboss to a image",
     run: async (message, args, text, client, prefix, instance) => {
         let attachments = message.attachments.array()
+        if (attachments.length === 0) return message.reply("Please upload an image, the caption should be this command.")
+        if (attachments.length > 1) return message.reply("One image please!")
         console.log(attachments[0].url)
 
         Jimp.read(`${attachments[0].url}`, (err, lenna) => {

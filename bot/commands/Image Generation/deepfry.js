@@ -9,11 +9,12 @@ module.exports = {
     aliases: [ "fry" ],
     minArgs: 0,
     maxArgs: 0,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <image>`",
     description: "want some fries?",
     run: async (message, args, text, client, prefix, instance) => {
         message.channel.startTyping(true)
         let image = message.attachments.array()
+        if (image.length === 0) return message.reply("Please upload an image, the caption should be this command.")
+        if (image.length > 1) return message.reply("One image please!")
 
         try {
             const {

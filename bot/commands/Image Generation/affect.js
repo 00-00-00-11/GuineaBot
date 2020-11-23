@@ -4,7 +4,6 @@ module.exports = {
     name: 'affect',
     minArgs: 0,
     maxArgs: 0,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "This does not affect my baby",
     run: async (message, args, text, client, prefix, instance) => {
         //See abandon.js

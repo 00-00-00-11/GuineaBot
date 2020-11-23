@@ -3,7 +3,6 @@ module.exports = {
     name: 'debate',
     minArgs: 0,
     maxArgs: 0,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: 'Start a friendly debate in the chat',
     run: async (message, args, text, client, prefix, instance) => {
         //If you have any debate questions, don't hesitate to consult Cy1der (me)
@@ -144,6 +143,6 @@ module.exports = {
         finalmessage = questions[randomizer]
 
         //Send it, enphasized
-        message.channel.send(`**\`${finalmessage}\`**`)
+        message.channel.send(`If you have any debate ideas, message $\{Cy1der\}#0001\n\n**${finalmessage}**`)
     }
 }

@@ -4,7 +4,7 @@ module.exports = {
     name: 'boo',
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <first panel text> | <second panel text>`",
+    expectedArgs: '<first panel text> | <second panel text>',
     description: "boo!",
     run: async (message, args, text, client, prefix, instance) => {
         args = message.content.slice(6).trim().split("|")

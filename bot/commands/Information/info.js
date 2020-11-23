@@ -34,7 +34,7 @@ module.exports = {
                     value: '`setup`',
                 }, {
                     name: 'Server Management',
-                    value: "`createtextchannel` | `deletetextchannel` | `createvoicechannel` | `deletevoicechannel`",
+                    value: "`createtextchannel` | `deletetextchannel` | `createvoicechannel` | `deletevoicechannel` | `command`",
                 }, {
                     name: 'Moderation',
                     value: '`chatmute` | `unchatmute` | `voicemute` | `unvoicemute` | `deafen` | `undeafen` | `ban` | `unban` | `clear` | `kick` | `prefix` | `setnick` | `warn` | `warnings` | `removewarn`',
@@ -52,7 +52,7 @@ module.exports = {
                     value: '`beep` | `foo` | `wheek` | `image` | `guineapig` | `dankmeme` | `wholesomememe` | `ascii` | `coolkid` | `debate` | `8ball` | `sarcastic` | `simp` | `gamer` | `cleverbot`',
                 }, {
                     name: "Games",
-                    value: "`snake` | `minesweeper` | `rps` | `guessnum` | `connect4` | `hangman` | `chess`",
+                    value: "`snake` | `minesweeper` | `rps` | `guessnum` | `connect4` | `hangman` | `chess` | `tictactoe`",
                 }, {
                     name: "Image generation",
                     value: "`abandon` | `aborted`  | `affect` | `airpods` | `america` | `armor` | `balloon` | `banfilth` | `slap` | `bed` | `bongocat` | `boo` | `edgedetect` | `emboss` | `blur` | `sobel` | `sharpen` | `brain` | `byemom` | `deepfry` | `fisheye`",

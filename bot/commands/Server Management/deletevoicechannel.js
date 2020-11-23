@@ -4,7 +4,7 @@ module.exports = {
     aliases: [ 'dvc' ],
     minArgs: 1,
     maxArgs: 1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <voice channel ID>`",
+    expectedArgs: "<channel ID>",
     description: "dc",
     run: async (message, args, text, client, prefix, instance) => {
         if (!message.member.hasPermission("MANAGE_CHANNELS", explicit = true)) {

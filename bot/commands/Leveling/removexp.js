@@ -3,9 +3,9 @@ const Discord = require("discord.js")
 module.exports = {
     name: 'removexp',
     aliases: ["-xp"],
-    minArgs: 0,
-    maxArgs: 1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <number>` or `{PREFIX}{COMMAND} <number>`",
+    minArgs: 1,
+    maxArgs: 2,
+    expectedArgs: "[mention] <amount>",
     description: "xp remove command",
     run: async (message, args, text, client, prefix, instance) => {
         let target = message.mentions.members.first()

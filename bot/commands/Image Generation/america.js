@@ -7,7 +7,8 @@ const path = require('path')
 const GIFEncoder = require("gif-encoder-2")
 module.exports = {
     name: 'america',
-    category: 'image',
+    minArgs: 0,
+    maxArgs: 0,
     description: 'AMERICA',
     run: async (message, args, text, client, prefix, instance) => {
         message.channel.startTyping(true)

@@ -6,7 +6,7 @@ module.exports = {
     name: "warn",
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <reason (optional)>`",
+    expectedArgs: "<mention> [reason]",
     description: "command aliases",
     run: async (message, args, text, client, prefix, instance) => {
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")

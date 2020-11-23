@@ -4,7 +4,7 @@ module.exports = {
     name: 'spotify',
     minArgs: 0,
     maxArgs: 1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention (optional)>`",
+    expectedArgs: "[mention]",
     description: "dc",
     run: async (message, args, text, client, prefix, instance) => {
         let user;

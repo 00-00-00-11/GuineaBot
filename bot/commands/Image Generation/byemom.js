@@ -4,7 +4,7 @@ module.exports = {
     name: 'byemom',
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <text>`.",
+    expectedArgs: "<text>",
     description: "boy better be not searching naughty videos",
     run: async (message, args, text, client, prefix, instance) => {
         var imageText = args.slice(0).join(" ")

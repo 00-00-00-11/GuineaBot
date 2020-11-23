@@ -3,7 +3,7 @@ module.exports = {
     name: 'ban',
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <reason (optional)>`",
+    expectedArgs: "<mention> [reason]",
     description: "ban",
     run: async (message, args, text, client, prefix, instance) => {
 

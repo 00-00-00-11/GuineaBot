@@ -5,8 +5,10 @@ const Discord = require("discord.js")
 module.exports = {
     name: "removewarn",
     aliases: [ "-warn"],
-    category: "moderation",
-    description: "Remove a warning to a member for a specific reason",
+    minArgs: 1,
+    maxArgs: 1,
+    expectedArgs: "<mention>",
+    description: "Remove a warnings to a member",
     run: async (message, args, text, client, prefix, instance) => {
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")
 

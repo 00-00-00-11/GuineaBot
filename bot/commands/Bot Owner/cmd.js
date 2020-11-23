@@ -3,7 +3,7 @@ module.exports = {
     name: 'cmd',
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <command to run>`",
+    expectedArgs: "<command to run>",
     description: 'Run command prompt (or at least try to) in Discord, DANGEROUS!!!!',
     run: async (message, args, text, client, prefix, instance) => {
         //Check if you are not me (Cy1der)

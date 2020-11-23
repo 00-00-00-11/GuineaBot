@@ -6,7 +6,6 @@ module.exports = {
     aliases: [ 'pig' ],
     minArgs: 0,
     maxArgs: 0,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: 'Random picture of a Guinea Pig',
     run: async (message, args, text, client, prefix, instance) => {
         //All images come from dogpile, it is much easier and faster than google images

@@ -3,7 +3,6 @@ module.exports = {
     name: "findnose",
     minArgs: 0,
     maxArgs: 0,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "dc",
     run: async (message, args, text, client, prefix, instance) => {
         if (message.guild.id !== "618454511685599268") {
@@ -22,7 +21,7 @@ module.exports = {
                 })
                 .setTimestamp()
                 .setFooter('Thank you for using GuineaBot!')
-            message.reply("You are not a member of the Riola Discord server.", riolaEmbed)
+            message.reply("You are not using this command in the Riola Discord server.", riolaEmbed)
             return
         }
 

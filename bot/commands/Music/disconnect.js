@@ -4,7 +4,6 @@ module.exports= {
     aliases: [ 'dc' ],
     minArgs: 0,
     maxArgs: 0,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "dc",
     run: async(message, args, text, client, prefix, instance) => {
         const channel = message.member.voice.channel

@@ -7,7 +7,7 @@ module.exports = {
     aliases: [ "v"],
     minArgs: 1,
     maxArgs: 1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <number>`.",
+    expectedArgs: "<number (0-100)>",
     description: "dc",
     run: async (message, args, text, client, prefix, instance) => {
         const queue = message.client.queue.get(message.guild.id)

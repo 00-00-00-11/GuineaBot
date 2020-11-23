@@ -4,7 +4,7 @@ module.exports = {
     name: 'balloon',
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <balloon text> | <arrow text>`",
+    expectedArgs: '<balloon text> | <arrow text>',
     description: "Baloon <-- meme",
     run: async (message, args, text, client, prefix, instance) => {
         args = message.content.slice(9).trim().split("|")

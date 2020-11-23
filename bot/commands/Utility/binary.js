@@ -3,7 +3,7 @@ module.exports = {
     name: 'binary',
     minArgs: 2,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <function decode or encode> <text or binary>`",
+    expectedArgs: "<either `encode` or `decode`> <value>",
     description: "dc",
     run: async (message, args, text, client, prefix, instance) => {
         if (!args[0]) return message.channel.send("Unknown parameter. Please choose the method first, either decode or encode it.");

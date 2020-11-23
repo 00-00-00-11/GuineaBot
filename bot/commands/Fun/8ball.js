@@ -2,7 +2,7 @@ module.exports = {
     name: '8ball',
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <query>`",
+    expectedArgs: "<query>",
     description: "The magic 8ball toy, but in Discord",
     run: async (message, args, text, client, prefix, instance) => {
         //The default messages it can produce

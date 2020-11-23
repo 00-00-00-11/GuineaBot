@@ -5,7 +5,7 @@ module.exports = {
     aliases: [ "sarc "],
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <text>`",
+    expectedArgs: "<text>",
     description: "BrO yOu ArE sO fUnNy",
     run: async (message, args, text, client, prefix, instance) => {
         //Simple as this, what to I describe here?

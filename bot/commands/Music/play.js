@@ -15,7 +15,7 @@ module.exports = {
     aliases: [ "p" ],
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <youtube search | youtube URL (video or playlist) | soundcloud URL (song or playlist)>`",
+    expectedArgs: "<one of the following: Youtube search, Youtube video URL, soundcloud song URL>",
     description: "dc",
     run: async (message, args, text, client, prefix, instance) => {
         const channel = message.member.voice.channel

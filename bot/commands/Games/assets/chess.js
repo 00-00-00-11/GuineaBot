@@ -480,7 +480,10 @@ class Chess {
     }
 }
 
-module.exports = Chess;
+module.exports = {
+    Chess, 
+    description: "chess"
+}
 
 const pawnEvalWhite =
     [

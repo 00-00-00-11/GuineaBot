@@ -5,7 +5,7 @@ module.exports = {
     aliases: [ 'duxp'],
     minArgs: 0,
     maxArgs: 1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention>` or `{PREFIX}{COMMAND}`",
+    expectedArgs: "[mention]",
     description: "Deletes xp entry",
     run: async (message, args, text, client, prefix, instance) => {
         if (message.author.id !== message.guild.ownerID) {

@@ -17,7 +17,7 @@ module.exports = {
     aliases: [ "pl"],
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <YouTube Playlist (name or URL) | soundcloud Playlist URL>`",
+    expectedArgs: "<one of the following: Youtube search, Youtube playlist URL, Soundcloud playlist URL>",
     description: "dc",
     run: async (message, args, text, client, prefix, instance) => {
         const {

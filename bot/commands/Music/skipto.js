@@ -6,7 +6,7 @@ module.exports = {
     name: "skipto",
     minArgs: 1,
     maxArgs: 1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <queue number>`",
+    expectedArgs: "<queue position number>",
     description: "dc",
     run: async (message, args, text, client, prefix, instance) => {
         if (!args.length) return message.reply(`Usage: g?${module.exports.name} <queue number>`)

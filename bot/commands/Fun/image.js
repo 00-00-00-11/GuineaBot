@@ -6,6 +6,7 @@ module.exports = {
     aliases: [ 'i' ],
     minArgs: 1,
     maxArgs: -1,
+    expectedArgs: "<query>",
     syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <query>`",
     description: 'Random image from a search',
     run: async (message, args, text, client, prefix, instance) => {

@@ -4,7 +4,7 @@ module.exports = {
     name: 'sobel',
     minArgs: 1,
     maxArgs: 1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <image>`",
+    expectedArgs: '<direction (left, right, top, bottom)>',
     description: "get the image's direction's look",
     run: async (message, args, text, client, prefix, instance) => {
         let attachments = message.attachments.array()

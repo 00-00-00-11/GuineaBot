@@ -4,7 +4,7 @@ module.exports = {
     aliases: [ 'rnr' ],
     minArgs: 2,
     maxArgs: 2,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <minimum number> <maximum number>`",
+    expectedArgs: "<minimum number> <maximum number>",
     description: "dc",
     run: async (message, args, text, client, prefix, instance) => {
         if (!args[0]) {

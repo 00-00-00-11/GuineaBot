@@ -5,7 +5,6 @@ module.exports = {
     aliases: [ 'filth'],
     minArgs: 0,
     maxArgs: 0,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "ban this sick filth",
     run: async (message, args, text, client, prefix, instance) => {
         const canvas = Canvas.createCanvas(536, 751)

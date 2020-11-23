@@ -153,4 +153,7 @@ class HangmanGame {
     }
 }
 
-module.exports = HangmanGame;
+module.exports = {
+    HangmanGame, 
+    description: "hang man"
+}

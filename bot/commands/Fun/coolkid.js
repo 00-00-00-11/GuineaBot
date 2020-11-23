@@ -4,7 +4,6 @@ module.exports = {
     aliases: [ 'cool' ],
     minArgs: 0,
     maxArgs: 0,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "Welcome to downtown coolsville",
     run: async (message, args, text, client, prefix, instance) => {
         //Get a random number from the range of 100

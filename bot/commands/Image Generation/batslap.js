@@ -3,8 +3,8 @@ const Canvas = require("canvas")
 module.exports = {
     name: 'slap',
     minArgs: 0,
-    maxArgs: 0,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
+    maxArgs: 1,
+    expectedArgs: "[mention]",
     description: "batman slapping robin",
     run: async (message, args, text, client, prefix, instance) => {
         let batAvatar

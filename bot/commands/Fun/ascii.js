@@ -3,7 +3,7 @@ module.exports = {
     name: 'ascii',
     minArgs: 1,
     maxArgs: -1,
-    syntax: 'You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <text>`',
+    expectedArgs: "<text>",
     description: 'Convert text to fancy text',
     run: async (message, args, text, client, prefix, instance) => {
         //Combine all the arguments to a single string

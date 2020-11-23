@@ -4,7 +4,7 @@ module.exports = {
     name: 'weather',
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <city>`",
+    expectedArgs: "<city>",
     description: "dc",
     run: async (message, args, text, client, prefix, instance) => {
         let city = args.join(" ")

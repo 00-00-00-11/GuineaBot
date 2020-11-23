@@ -4,7 +4,7 @@ module.exports = {
     aliases: [ "nick" ],
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention (optional)> <new name>`",
+    expectedArgs: "[mention] <new nickname>",
     description: "set nick",
     run: async (message, args, text, client, prefix, instance) => {
 
@@ -95,6 +95,8 @@ module.exports = {
                 return
             }
 
+            if (memberArg.length > 32) return message.channel.send("Nickname must be between 2 and 32 characters long.")
+            if (memberArg.length < 2) return message.channel.send("Nickname must be between 2 and 32 characters long.")
             await member.setNickname(memberArg)
 
             const successping = new Discord.MessageEmbed()
@@ -185,6 +187,8 @@ module.exports = {
                 return
             }
 
+            if (selfArg.length > 32) return message.channel.send("Nickname must be between 2 and 32 characters long.")
+            if (selfArg.length < 2) return message.channel.send("Nickname must be between 2 and 32 characters long.")
             await message.member.setNickname(selfArg)
 
             const successSelf = new Discord.MessageEmbed()

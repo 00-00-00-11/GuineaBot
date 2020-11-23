@@ -4,7 +4,7 @@ module.exports = {
     aliases: [ 'purge' ],
     minArgs: 1,
     maxArgs: 1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <number (1-100)>`",
+    expectedArgs: "<amount (2-100)>",
     description: "bulk delete messages",
     run: async (message, args, text, client, prefix, instance) => {
         const msgdel = parseInt(args[0])

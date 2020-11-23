@@ -4,7 +4,7 @@ module.exports = {
     name: 'abandon',
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <text>`",
+    expectedArgs: "<text>",
     description: "Abandoning your baby",
     run: async (message, args, text, client, prefix, instance) => {
         //Combine all arguments

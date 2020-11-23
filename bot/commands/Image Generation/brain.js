@@ -4,7 +4,7 @@ module.exports = {
     name: 'brain',
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <first panel> | <second panel> | <third panel> | <fourth panel>`",
+    expectedArgs: "<first panel text> | <second panel text> | <third panel text> | <fourth panel text>", 
     description: "expanding brain command",
     run: async (message, args, text, client, prefix, instance) => {
         args = message.content.slice(8).trim().split("|")
@@ -13,10 +13,10 @@ module.exports = {
         let thirdText = args[2]
         let fourthText = args[3]
 
-        if (!firstText) return message.reply("Usage: g?brain <first panel> | <second panel> | <third panel> | <fourth panel>")
-        if (!secondText) return message.reply("Usage: g?brain <first panel> | <second panel> | <third panel> | <fourth panel>")
-        if (!thirdText) return message.reply("Usage: g?brain <first panel> | <second panel> | <third panel> | <fourth panel>")
-        if (!fourthText) return message.reply("Usage: g?brain <first panel> | <second panel> | <third panel> | <fourth panel>")
+        if (!firstText) return message.reply("Usage: <first panel> | <second panel> | <third panel> | <fourth panel>")
+        if (!secondText) return message.reply("Usage: <first panel> | <second panel> | <third panel> | <fourth panel>")
+        if (!thirdText) return message.reply("Usage: <first panel> | <second panel> | <third panel> | <fourth panel>")
+        if (!fourthText) return message.reply("Usage: <first panel> | <second panel> | <third panel> | <fourth panel>")
 
         var image = "./assets/images/brain/brain.bmp"
 

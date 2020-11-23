@@ -4,9 +4,9 @@ const Minesweeper = require('discord.js-minesweeper');
 module.exports = {
     name: 'minesweeper',
     aliases: [ "sweeper" ],
-    minArgs: 0,
-    maxArgs: 0,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <rows> <columns> <mines>`",
+    minArgs: 3,
+    maxArgs: 3,
+    expectedArgs: "<rows> <columns> <mine count>",
     description: 'Minesweeper in Discord!',
     run: async (message, args, text, client, prefix, instance) => {
         const rows = parseInt(args[0]);

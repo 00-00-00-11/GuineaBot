@@ -4,7 +4,7 @@ module.exports = {
     name: 'aborted',
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <text>`",
+    expectedArgs: "<text>",
     description: "10 reason why I should be aborted",
     run: async (message, args, text, client, prefix, instance) => {
         //See abandon.js

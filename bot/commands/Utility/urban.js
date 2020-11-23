@@ -4,7 +4,7 @@ module.exports = {
     name: 'urban',
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <search>`",
+    expectedArgs: "<search query (one word)>",
     description: "dc",
     run: async (message, args, text, client, prefix, instance) => {
         if (!args[0]) return message.channel.send("Please specify the query.")

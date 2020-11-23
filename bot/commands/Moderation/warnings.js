@@ -4,14 +4,13 @@ const Discord = require("discord.js")
 
 module.exports = {
     name: "warnings",
-    aliases: [ "warns"],
+    aliases: ["warns"],
     minArgs: 0,
     maxArgs: 1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention (optional)>`",
+    expectedArgs: "[mention]",
     description: "show warns",
     run: async (message, args, text, client, prefix, instance) => {
-        let
-         target = message.mentions.users.first()
+        let target = message.mentions.users.first()
         if (!target) {
             target = message.author
         }
@@ -34,7 +33,7 @@ module.exports = {
                     .setTitle(`Previous warnings for ${target.tag}`)
                     .setTimestamp()
                     .setFooter('Thank you for using GuineaBot!')
-                
+
                 let warnlist = ""
 
                 for (const warning of results.warnings) {

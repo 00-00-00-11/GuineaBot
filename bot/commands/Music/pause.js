@@ -6,7 +6,6 @@ module.exports = {
     name: "pause",
     minArgs: 0,
     maxArgs: 0,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "pause",
     run: async (message, args, text, client, prefix, instance) => {
         const queue = message.client.queue.get(message.guild.id)

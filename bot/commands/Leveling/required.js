@@ -4,7 +4,7 @@ module.exports = {
     aliases: ["req"],
     minArgs: 1,
     maxArgs: 1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <number>`",
+    expectedArgs: "<level>",
     description: "req command",
     run: async (message, args, text, client, prefix, instance) => {
         let level = parseInt(args[0])

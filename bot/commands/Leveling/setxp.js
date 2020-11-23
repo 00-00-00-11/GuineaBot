@@ -4,7 +4,7 @@ module.exports= {
     name: 'setxp',
     minArgs: 1,
     maxArgs: 2,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention> <number>` or `{PREFIX}{COMMAND} <number>`",
+    expectedArgs: "[mention] <xp>",
     description: "setxp command",
     run: async(message, args, text, client, prefix, instance) => {
         let target = message.mentions.members.first()

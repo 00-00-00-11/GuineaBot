@@ -4,7 +4,6 @@ module.exports = {
     name: 'adminstats',
     minArgs: 0,
     maxArgs: 0,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND}`",
     description: "dangerous stats",
     run: async (message, args, text, client, prefix, instance) => {
         //Check if you are not me (Cy1der)

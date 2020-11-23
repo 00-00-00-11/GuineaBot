@@ -188,4 +188,7 @@ class Connect4 {
     }
 }
 
-module.exports = Connect4;
+module.exports = {
+    Connect4, 
+    description: "connect four"   
+}

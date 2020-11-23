@@ -5,7 +5,7 @@ module.exports = {
     aliases: [ "ggl" ],
     minArgs: 1,
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <search>`",
+    expectedArgs: "<search query>",
     description: "dc",
     run: async (message, args, text, client, prefix, instance) => {
         let config = {

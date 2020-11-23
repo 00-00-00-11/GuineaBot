@@ -5,7 +5,7 @@ module.exports = {
     aliases: [ "clever"],
     minArgs: 1, 
     maxArgs: -1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <query>`",
+    expectedArgs: "<query>",
     description: "Smart chat bot with no context",
     run: async (message, args, text, client, prefix, instance) => {
         //Combine all the arguments it receives

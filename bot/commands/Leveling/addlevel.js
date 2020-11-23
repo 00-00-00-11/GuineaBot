@@ -5,7 +5,7 @@ module.exports = {
     aliases: [ "+lvl"],
     minArgs: 1,
     maxArgs: 2,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention member> <amount>` or `{PREFIX}{COMMAND} <amount>`",
+    expectedArgs: "[mention] <amount>",
     description: "Adds levels",
     run: async (message, args, text, client, prefix, instance) => {
         let target = message.mentions.members.first()

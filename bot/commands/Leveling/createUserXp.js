@@ -5,7 +5,7 @@ module.exports = {
     aliases: ["cuxp"],
     minArgs: 0,
     maxArgs: 1,
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <mention member>` or `{PREFIX}{COMMAND}`",
+    expectedArgs: "[mention]",
     description: 'create xp entry',
     run: async (message, args, text, client, prefix, instance) => {
         if (message.author.id !== message.guild.ownerID) {
