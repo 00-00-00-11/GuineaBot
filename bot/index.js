@@ -35,13 +35,17 @@ client.on('ready', async () => {
     //Initiate the command handler and many more features including a prebuilt prefix command, all data is stored in mongoDB
     new WOKCommands(client, "commands", "listeners").setMongoPath(`${config.mongodb}`).setDefaultPrefix("g?").setSyntaxError("*Arguments wrapped in <> are required, [] means it is optional*\n\nYou provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} {ARGUMENTS}`\nFor a list of all commands, do `{PREFIX}info commands`\nFor a list of all command aliases, do `{PREFIX}aliases`")
 
+    client.user.setActivity(`${client.guilds.cache.size} servers`, {
+        type: 'COMPETING',
+    }).catch(error => console.log(error));
+
     //Fetch the server's IP address, this is optional
     fetch("https://api.ipify.org/?format=json").then(results => results.json()).then(data => console.log(`Logged in as [${client.user.tag}]\nServer IP: ${data.ip}`))
 })
 
 client.on("message", async (message) => {
     //Check if the person who sent the message is registered as a Discord Bot
-    if (message.author.bot) return
+    if (message.author.id === client.user.id || message.author.bot) return
 
     //Bot commands only work in servers, so add this to prevent permission errors originating from the DM
     if (!message.guild) return message.channel.send("I do not function in DM's, please use my commands in a server.");
