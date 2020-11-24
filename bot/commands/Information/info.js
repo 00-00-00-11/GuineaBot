@@ -3,7 +3,7 @@ module.exports = {
     name: 'info',
     minArgs: 1,
     maxArgs: 1,
-    expectedArgs: "<one of the following: `version`, `commands`, `server`, `support`, `riola`>",
+    expectedArgs: "<one of the following: version, commands, server, support, riola>",
     description: "information about bot",
     run: async (message, args, text, client, prefix, instance) => {
         if (args[0] === 'version') {
@@ -58,7 +58,7 @@ module.exports = {
                     value: "`abandon` | `aborted`  | `affect` | `airpods` | `america` | `armor` | `balloon` | `banfilth` | `slap` | `bed` | `bongocat` | `boo` | `edgedetect` | `emboss` | `blur` | `sobel` | `sharpen` | `brain` | `byemom` | `deepfry` | `fisheye`",
                 }, {
                     name: "Stocks",
-                    value: "`timeindex` | `technicalindicator`",
+                    value: "`timeindex` | `technicalindicator`, `sectorperformance`",
                 }, {
                     name: 'Info',
                     value: '`info` | `help (currently disabled)` | `stats` | `serverstats`',
