@@ -11,7 +11,7 @@ module.exports = {
         if (rawLeaderboard.length < 1) return message.channel.send("Nobody is in the leaderboard yet...")
 
         const leaderboard = discordXP.computeLeaderboard(message.client, rawLeaderboard)
-        const lb = leaderboard.map(e => `**${e.position}.** ${e.username}#${e.discriminator}\nLevel: ${e.level}\nXP: ${e.xp.toLocaleString()}`)
+        const lb = (await leaderboard).map(e => `**${e.position}.** ${e.username}#${e.discriminator}\nLevel: ${e.level}\nXP: ${e.xp.toLocaleString()}`)
 
         const embed = new Discord.MessageEmbed()
             .setColor('#9f5000')

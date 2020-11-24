@@ -58,7 +58,7 @@ module.exports = {
                     value: "`abandon` | `aborted`  | `affect` | `airpods` | `america` | `armor` | `balloon` | `banfilth` | `slap` | `bed` | `bongocat` | `boo` | `edgedetect` | `emboss` | `blur` | `sobel` | `sharpen` | `brain` | `byemom` | `deepfry` | `fisheye`",
                 }, {
                     name: "Stocks",
-                    value: "`timeindex` | `technicalindicator`, `sectorperformance`",
+                    value: "`timeindex` | `technicalindicator` | `sectorperformance`",
                 }, {
                     name: 'Info',
                     value: '`info` | `help (currently disabled)` | `stats` | `serverstats`',

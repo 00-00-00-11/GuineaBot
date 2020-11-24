@@ -34,8 +34,6 @@ module.exports = {
         try {
             let results = await stocks.sectorPerformance(options)
 
-            console.log(results)
-
             let str = ""
 
             for (let i = 0; i < Object.keys(results).length; i++) {
