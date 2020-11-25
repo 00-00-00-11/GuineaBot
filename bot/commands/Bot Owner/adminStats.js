@@ -4,13 +4,14 @@ module.exports = {
     name: 'adminstats',
     minArgs: 0,
     maxArgs: 0,
-    description: "dangerous stats",
+    description: "Display statistics not availeble for the public",
+    category: "Bot Owner",
     run: async (message, args, text, client, prefix, instance) => {
         //Check if you are not me (Cy1der)
         if (message.author.id !== "423222193032396801") return message.reply("You are not the owner of the bot, also known as ${Cy1der}#0001.")
 
         const embed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle("Administrative bot stats")
             .setAuthor(message.author.tag, message.author.avatarURL())
             .setThumbnail(message.client.user.avatarURL())

@@ -5,7 +5,8 @@ module.exports = {
     minArgs: 2,
     maxArgs: 2,
     expectedArgs: "<minimum number> <maximum number>",
-    description: "dc",
+    description: "Generate a random number within the range",
+    category: "Utility",
     run: async (message, args, text, client, prefix, instance) => {
         if (!args[0]) {
             message.reply("Please specify the minimum number.")

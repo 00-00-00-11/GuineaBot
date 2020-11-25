@@ -5,7 +5,8 @@ module.exports = {
     minArgs: 0,
     maxArgs: 1,
     expectedArgs: "[mention]",
-    description: "dc",
+    description: "Displays a user's Spotify status",
+    category: "Utility",
     run: async (message, args, text, client, prefix, instance) => {
         let user;
         if (message.mentions.users.first()) {

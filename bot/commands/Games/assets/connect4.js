@@ -5,7 +5,15 @@ const WIDTH = 7;
 const HEIGHT = 7;
 const gameBoard = [];
 
-const reactions = { "1️⃣": 1, "2️⃣": 2, "3️⃣": 3, "4️⃣": 4, "5️⃣": 5, "6️⃣": 6, "7️⃣": 7 }
+const reactions = {
+    "1️⃣": 1,
+    "2️⃣": 2,
+    "3️⃣": 3,
+    "4️⃣": 4,
+    "5️⃣": 5,
+    "6️⃣": 6,
+    "7️⃣": 7
+}
 
 class Connect4 {
     constructor() {
@@ -37,12 +45,11 @@ class Connect4 {
 
         this.inGame = true;
         const embed = new Discord.MessageEmbed()
-            .setColor("#9f5000")
-            .setTitle("Connect 4")
+            .setColor('#000b9e')
+            .setTitle('Connect-4')
             .setDescription(this.gameBoardToString())
-            .addField("Turn:", this.getChipFromTurn())
-            .setTimestamp()
-            .setFooter('Thank you for using GuineaBot!')
+            .addField('Turn:', this.getChipFromTurn())
+            .setTimestamp();
 
         msg.channel.send(embed).then(emsg => {
             this.gameEmbed = emsg;
@@ -57,12 +64,11 @@ class Connect4 {
     step() {
         this.redTurn = !this.redTurn;
         const editEmbed = new Discord.MessageEmbed()
-            .setColor("#9f5000")
-            .setTitle("Connect 4")
+            .setColor('#000b9e')
+            .setTitle('Connect-4')
             .setDescription(this.gameBoardToString())
-            .addField("Turn:", this.getChipFromTurn())
-            .setTimestamp()
-            .setFooter('Thank you for using GuineaBot!')
+            .addField('Turn:', this.getChipFromTurn())
+            .setTimestamp();
         this.gameEmbed.edit(editEmbed);
 
         this.waitForReaction();
@@ -71,11 +77,10 @@ class Connect4 {
     gameOver(winner) {
         this.inGame = false;
         const editEmbed = new Discord.MessageEmbed()
-            .setColor("#9f5000")
-            .setTitle("Connect 4")
-            .setDescription("Game over!" + this.getWinnerText(winner))
-            .setTimestamp()
-            .setFooter('Thank you for using GuineaBot!')
+            .setColor('#000b9e')
+            .setTitle('Connect-4')
+            .setDescription("GAME OVER! " + this.getWinnerText(winner))
+            .setTimestamp();
         this.gameEmbed.edit(editEmbed);
         this.gameEmbed.reactions.removeAll();
     }
@@ -85,7 +90,11 @@ class Connect4 {
     }
 
     waitForReaction() {
-        this.gameEmbed.awaitReactions((reaction, user) => this.filter(reaction, user), { max: 1, time: 300000, errors: ['time'] })
+        this.gameEmbed.awaitReactions((reaction, user) => this.filter(reaction, user), {
+                max: 1,
+                time: 300000,
+                errors: ['time']
+            })
             .then(collected => {
                 const reaction = collected.first();
                 const column = reactions[reaction.emoji.name] - 1;
@@ -105,14 +114,12 @@ class Connect4 {
                 reaction.users.remove(reaction.users.cache.filter(user => user.id !== this.gameEmbed.author.id).first().id).then(() => {
                     if (placedY == 0)
                         this.gameEmbed.reactions.cache.get(reaction.emoji.name).remove();
-                        
+
                     if (this.hasWon(placedX, placedY)) {
                         this.gameOver(this.getChipFromTurn());
-                    }
-                    else if (this.isBoardFull()) {
+                    } else if (this.isBoardFull()) {
                         this.gameOver("tie");
-                    }
-                    else {
+                    } else {
                         this.step();
                     }
                 });
@@ -139,7 +146,7 @@ class Connect4 {
             }
         }
 
-        //Vertical Check
+        //Verticle Check
         for (var i = Math.max(0, placedY - 3); i <= placedY; i++) {
             var adj = placedX + (i * WIDTH);
             if (i + 3 < HEIGHT) {
@@ -182,13 +189,17 @@ class Connect4 {
     }
 
     getWinnerText(winner) {
-        if (winner === "🔴" || winner === "🟡") return " " + winner + " has won!"
-        else if (winner == "tie") return " It was a tie!"
-        else if (winner == "timeout") return " The game went unfinished :("
+        if (winner === "🔴" || winner === "🟡")
+            return winner + " Has Won!";
+        else if (winner == "tie")
+            return "It was a tie!";
+        else if (winner == "timeout")
+            return "The game went unfinished :(";
     }
 }
 
 module.exports = {
-    Connect4, 
-    description: "connect four"   
+    Connect4,
+    description: "Connect Four game against an opponent",
+    category: "Games",
 }

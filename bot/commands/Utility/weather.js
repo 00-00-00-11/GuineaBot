@@ -5,7 +5,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<city>",
-    description: "dc",
+    description: "Fetch weather information",
+    category: "Utility",
     run: async (message, args, text, client, prefix, instance) => {
         let city = args.join(" ")
         let degreetype = "C"

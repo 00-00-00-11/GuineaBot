@@ -6,7 +6,8 @@ module.exports = {
     name: "skip",
     minArgs: 0,
     maxArgs: 0,
-    description: "dc",
+    description: "Play the next song",
+    category: "Music",
     run: async (message, args, text, client, prefix, instance) => {
         const queue = message.client.queue.get(message.guild.id)
         if (!queue) return message.reply("No song is being played right now.")

@@ -10,6 +10,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 0,
     description: "want some fries?",
+    category: "Images",
     run: async (message, args, text, client, prefix, instance) => {
         message.channel.startTyping(true)
         let image = message.attachments.array()

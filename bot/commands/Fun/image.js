@@ -7,8 +7,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<query>",
-    syntaxError: "You provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} <query>`",
     description: 'Random image from a search',
+    category: 'Fun',
     run: async (message, args, text, client, prefix, instance) => {
         //Combine the command arguments together
         let imagesearch = args.slice(0).join(" ")
@@ -39,7 +39,7 @@ module.exports = {
 
                 //Make it pretty
                 let embed = new Discord.MessageEmbed()
-                    .setColor('#9f5000')
+                    .setColor("RANDOM")
                     .setTitle(`Showing random image for: "${imagesearch}"`)
                     .setTimestamp()
                     .setImage(urls[Math.floor(Math.random() * urls.length)])

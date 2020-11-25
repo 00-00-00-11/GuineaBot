@@ -6,11 +6,12 @@ module.exports = {
     minArgs: 0,
     maxArgs: 1,
     expectedArgs: "[mention]",
-    description: "Deletes xp entry",
+    description: "Deletes xp entry in the database",
+    category: "Leveling",
     run: async (message, args, text, client, prefix, instance) => {
         if (message.author.id !== message.guild.ownerID) {
             const nopermsEmbed = new Discord.MessageEmbed()
-                .setColor("#9f5000")
+                .setColor("RANDOM")
                 .setTitle('Delete user XP unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("You are not the owner of the server.")

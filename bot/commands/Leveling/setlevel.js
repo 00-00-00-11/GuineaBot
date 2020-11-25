@@ -5,7 +5,8 @@ module.exports= {
     minArgs: 1,
     maxArgs: 2,
     expectedArgs: '[mention] <level>',
-    description: "set level command",
+    description: "Set a level of someone's xp profile",
+    category: "Leveling",
     run: async(message, args, text, client, prefix, instance) => {
         let target = message.mentions.members.first()
 

@@ -8,7 +8,8 @@ module.exports = {
     aliases: ["q"],
     minArgs: 0,
     maxArgs: 0,
-    description: "dc",
+    description: "Music queue",
+    category: "Music",
     run: async (message, args, text, client, prefix, instance) => {
         const queue = message.client.queue.get(message.guild.id)
         if (!queue) return message.reply("No song is being played right now.")
@@ -22,7 +23,7 @@ module.exports = {
         }
 
         let queueEmbed = new MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('GuineaBot music queue')
             .setDescription(descriptionString)
             .setThumbnail(message.client.user.avatarURL())

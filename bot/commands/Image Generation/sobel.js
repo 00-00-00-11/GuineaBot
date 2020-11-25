@@ -5,7 +5,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
     expectedArgs: '<direction (left, right, top, bottom)>',
-    description: "get the image's direction's look",
+    description: "Get the image's direction's look",
+    category: "Images",
     run: async (message, args, text, client, prefix, instance) => {
         let attachments = message.attachments.array()
         if (attachments.length === 0) return message.reply("Please upload an image, the caption should be this command.")

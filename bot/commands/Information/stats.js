@@ -5,7 +5,8 @@ module.exports = {
     name: 'stats',
     minArgs: 0,
     maxArgs: 0,
-    description: "host stats",
+    description: "Host stats",
+    category: "Information",
     run: async (message, args, text, client, prefix, instance) => {
         cpuStat.usagePercent(function (err, precent, seconds) {
             if (err) {
@@ -24,7 +25,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
             embed.addField("GuineaBot Statistics:", `Servers: ${guild}\nUsers: ${user}\nChannels: ${channel}\nMemory usage: ${usage}\nNode version: ${Node}\nCPU Usage: ${CPU}%`)
             embed.addField("Physical Statistics:", `CPU: ${cpuModel}\nCPU core count: ${cores}\nUptime: ${parseDur(message.client.uptime)}`)
-            embed.setColor("#9f5000")
+            embed.setColor("RANDOM")
             embed.setFooter("Thank you for using GuineaBot!")
             embed.setTimestamp()
             embed.setAuthor(message.author.tag, message.author.avatarURL())

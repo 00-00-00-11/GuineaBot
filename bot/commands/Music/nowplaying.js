@@ -8,7 +8,8 @@ module.exports = {
     aliases: [ "np"],
     minArgs: 0,
     maxArgs: 0,
-    description: "np",
+    description: "Shows a progress bar",
+    category: "Music",
     run: async (message, args, text, client, prefix, instance) => {
         const queue = message.client.queue.get(message.guild.id)
         if (!queue) return message.reply("No song is being played right now.")
@@ -17,7 +18,7 @@ module.exports = {
         const left = song.duration - seek
 
         let nowPlaying = new MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Now playing')
             .setDescription(`${song.title}\n${song.video_url}`)
             .setTimestamp()

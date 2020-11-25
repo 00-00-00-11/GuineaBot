@@ -5,12 +5,13 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
     expectedArgs: "<amount (2-100)>",
-    description: "bulk delete messages",
+    description: "Delete messages in bulk",
+    category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
         const msgdel = parseInt(args[0])
         if (!message.member.hasPermission("MANAGE_MESSAGES", explicit = true)) {
             const clearpermEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Clear unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("You don't have the correct permissions.")
@@ -20,7 +21,7 @@ module.exports = {
             message.channel.send(clearpermEmbed)
         } else if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) {
             const clearpermEmbed2 = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Clear unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("I don't have the correct permissions. Try re-inviting me and adding `Manage Messages` permission. If this problem occurs, do g?info support.")
@@ -30,7 +31,7 @@ module.exports = {
             message.channel.send(clearpermEmbed2)
         } else if (!args[0]) {
             const arg2Embed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Clear unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('Please define how many messages to delete, between `2` and `100` (including the command).')
@@ -41,7 +42,7 @@ module.exports = {
         } else if (msgdel < 2 || msgdel > 100) {
             const arg2Embed2 = new Discord.MessageEmbed()
                 .setTitle('Clear unsuccessful')
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('You cannot clear more than `100` messages and less than `2` messages (including the command).')
                 .setThumbnail(message.client.user.avatarURL())

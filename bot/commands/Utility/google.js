@@ -6,7 +6,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<search query>",
-    description: "dc",
+    description: "Surf the web",
+    category: "Utility",
     run: async (message, args, text, client, prefix, instance) => {
         let config = {
             GOOGLE_API_KEY: process.env.GOOGLE_API_KEY
@@ -20,7 +21,7 @@ module.exports = {
         if (!href) return message.channel.send("Unknown search.")
 
         const embed = new Discord.MessageEmbed()
-            .setColor("#9f5000")
+            .setColor("RANDOM")
             .setTitle(href.title)
             .setDescription(href.snippet)
             .setImage(href.pagemap ? href.pagemap.cse_thumbnail[0].src : null)

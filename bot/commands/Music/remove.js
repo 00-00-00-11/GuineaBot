@@ -6,7 +6,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
     expectedArgs: "<queue position number>",
-    description: "dc",
+    description: "Remove a song from the queue",
+    category: "Music",
     run: async (message, args, text, client, prefix, instance) => {
         const queue = message.client.queue.get(message.guild.id)
         if (!queue) return message.channel.send("There is no queue.")

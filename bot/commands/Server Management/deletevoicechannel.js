@@ -5,11 +5,12 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
     expectedArgs: "<channel ID>",
-    description: "dc",
+    description: "Delete a voice channel",
+    category: "Server Management",
     run: async (message, args, text, client, prefix, instance) => {
         if (!message.member.hasPermission("MANAGE_CHANNELS", explicit = true)) {
             const permEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Delete voice channel unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("You don't have the correct permissions.")
@@ -20,7 +21,7 @@ module.exports = {
             return
         } else if (!message.guild.me.hasPermission("MANAGE_CHANNELS")) {
             const permEmbed2 = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Delete voice channel unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("I don't have the correct permissions. Try re-inviting me and adding `Manage Channels` permission. If this problem occurs, do g?info support.")
@@ -35,7 +36,7 @@ module.exports = {
 
         if (!modlog) {
             const modlogEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Delete voice channel unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription(`It looks like \`setup\` command has not been performed yet. Please contact an administrator`)
@@ -48,7 +49,7 @@ module.exports = {
 
         if (!args[0]) {
             const nochnlEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Delete voice channel unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription(`Please provide a voice channel's ID.`)
@@ -68,7 +69,7 @@ module.exports = {
 
         if (!channel) {
             const nochnlEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Delete voice channel unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription(`Please provide a voice channel's ID.`)
@@ -81,7 +82,7 @@ module.exports = {
 
         if (channel.type === "text") {
             const WRONGCOMMANDBITCH = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Delete voice channel unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription(`This command is meant to delete **voice** channels, if you wish to delete a text channel, please use g?deletetextchannel or dtc for short.`)
@@ -95,7 +96,7 @@ module.exports = {
         channel.delete()
 
         const success = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Delete voice channel successful')
             .setAuthor(message.author.tag, message.author.avatarURL())
             .setDescription(`Successfully deleted ${channel.name}`)
@@ -105,7 +106,7 @@ module.exports = {
         message.channel.send(success)
 
         const logEmbed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Voice channel deleted')
             .setAuthor('Modlog')
             .addFields({

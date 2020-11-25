@@ -48,7 +48,7 @@
     "minimist": "^1.2.5",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
-    "mongoose": "^5.10.15",
+    "mongoose": "^5.10.16",
     "ms": "^2.1.2",
     "node-fetch": "^2.6.1",
     "node-gyp": "^7.1.2",
@@ -74,8 +74,8 @@
     "thedankmemer": "^1.2.8",
     "utf-8-validate": "^5.0.3",
     "weather-js": "^2.0.0",
-    "wokcommands": "^1.0.1",
-    "ytdl-core": "^4.0.6",
+    "wokcommands": "github:AlexzanderFlores/WOKCommands#dev",
+    "ytdl-core": "^4.1.0",
     "ytdl-core-discord": "^1.2.4",
     "zlib-sync": "^0.1.7"
   },
@@ -84,6 +84,7 @@
     "@typescript-eslint/parser": "^4.8.2",
     "eslint": "^7.14.0",
     "nodemon": "^2.0.6",
+    "prettier": "^2.2.0",
     "typescript": "^4.1.2"
   }
 }

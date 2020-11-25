@@ -33,7 +33,26 @@ let recentMsg = new Set();
 
 client.on('ready', async () => {
     //Initiate the command handler and many more features including a prebuilt prefix command, all data is stored in mongoDB
-    new WOKCommands(client, "commands", "listeners").setMongoPath(`${config.mongodb}`).setDefaultPrefix("g?").setSyntaxError("*Arguments wrapped in <> are required, [] means it is optional*\n\nYou provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} {ARGUMENTS}`\nFor a list of all commands, do `{PREFIX}info commands`\nFor a list of all command aliases, do `{PREFIX}aliases`")
+    new WOKCommands(client, "commands", "listeners")
+    .setMongoPath(`${config.mongodb}`)
+    .setDefaultPrefix("g?")
+    .setSyntaxError("*Arguments wrapped in <> are required, [] means it is optional*\n\nYou provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} {ARGUMENTS}`\nFor a list of all commands, do `{PREFIX}help`\nFor a list of all command aliases, do `{PREFIX}aliases`")
+    .setDisplayName("Guineabot")
+    .setColor("RANDOM")
+    .setCategoryEmoji("Bot Owner", "🤖")
+    .setCategoryEmoji("Fun", "😂")
+    .setCategoryEmoji("Games", "🎮")
+    .setCategoryEmoji("Economy", "💸")
+    .setCategoryEmoji("Server Owner", "👑")
+    .setCategoryEmoji("Images", "📷")
+    .setCategoryEmoji("Information", "ℹ")
+    .setCategoryEmoji("Leveling", "🌀")
+    .setCategoryEmoji("Moderation", "🔨")
+    .setCategoryEmoji("Music", "🎶")
+    .setCategoryEmoji("Riola", "🐦")
+    .setCategoryEmoji("Server Management", "⚡")
+    .setCategoryEmoji("Stocks", "📈")
+    .setCategoryEmoji("Utility", "🧠")
 
     client.user.setActivity(`${client.guilds.cache.size} servers`, {
         type: 'COMPETING',
@@ -49,7 +68,7 @@ client.on("message", async (message) => {
 
     //Bot commands only work in servers, so add this to prevent permission errors originating from the DM
     if (!message.guild) return message.channel.send("I do not function in DM's, please use my commands in a server.");
-    
+
     //Points system
     if (recentMsg.has(message.author.id)) return
     else {

@@ -4,7 +4,8 @@ module.exports = {
     name: 'bongocat',
     minArgs: 0,
     maxArgs: 0,
-    description: "bongocat overlay",
+    description: "bongocat overlay on your profile picture",
+    category: "Images",
     run: async (message, args, text, client, prefix, instance) => {
         var image = "./assets/images/bongocat/bongocat.bmp"
 

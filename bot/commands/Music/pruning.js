@@ -5,7 +5,8 @@ module.exports = {
     name: "pruning",
     minArgs: 0,
     maxArgs: 0,
-    description: "dc",
+    description: "Prevents spam when it comes to playing playlists",
+    category: "Music",
     run: async (message, args, text, client, prefix, instance) => {
         config.PRUNING = !config.PRUNING
 

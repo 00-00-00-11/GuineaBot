@@ -8,7 +8,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
     expectedArgs: "<number (0-100)>",
-    description: "dc",
+    description: "Set the volume",
+    category: "Music",
     run: async (message, args, text, client, prefix, instance) => {
         const queue = message.client.queue.get(message.guild.id)
 

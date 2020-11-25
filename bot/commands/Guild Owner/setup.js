@@ -4,11 +4,12 @@ module.exports = {
     minArgs: 0,
     maxArgs: 0,
     description: 'Create all the channels/roles the bot needs',
+    category: 'Server Owner',
     run: async (message, args, text, client, prefix, instance) => {
         //Check for permissions
         if (message.author.id !== message.guild.ownerID) {
             const nopermsEmbed = new Discord.MessageEmbed()
-                .setColor("#9f5000")
+                .setColor("RANDOM")
                 .setTitle('Setup unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("You are not the owner of the server.")
@@ -19,7 +20,7 @@ module.exports = {
             return
         } else if (!message.guild.me.hasPermission("ADMINISTRATOR", explicit = true)) {
             const nopermsEmbed = new Discord.MessageEmbed()
-                .setColor("#9f5000")
+                .setColor("RANDOM")
                 .setTitle('Setup unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("I don't have the correct permissions. Try re-inviting me and adding `Administrator` permission. If this problem occurs, do g?info support.")
@@ -137,7 +138,7 @@ module.exports = {
 
         if (readme) {
             const readmeEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Setup successful')
                 .setDescription(`Created: **1** role and **${channelcount}** channels.\n\`You may delete this channel now\``)
                 .setThumbnail(message.client.user.avatarURL())
@@ -155,7 +156,7 @@ module.exports = {
             })
             readme = await message.guild.channels.create("read-me")
             const readmeEmbed2 = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Setup successful')
                 .setDescription(`Created: **1** roles and **${channelcount}** channels.\n\`You may delete this channel now\``)
                 .setThumbnail(message.client.user.avatarURL())

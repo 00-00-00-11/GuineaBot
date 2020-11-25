@@ -4,7 +4,8 @@ module.exports = {
     aliases: [ 'rn' ],
     minArgs: 0,
     maxArgs: 0,
-    description: "dc",
+    description: "Generate a random number",
+    category: "Utility",
     run: async (message, args, text, client, prefix, instance) => {
         var whichone
         var minORmaxDeterminator = Math.floor(Math.random() * 2)

@@ -4,7 +4,8 @@ module.exports = {
     name: 'bed',
     minArgs: 0,
     maxArgs: 0,
-    description: "mommy theres a monster under my bed",
+    description: "Mommy theres a monster under my bed",
+    category: "Images",
     run: async (message, args, text, client, prefix, instance) => {
         var image = "./assets/images/bed/bed.jpg"
 

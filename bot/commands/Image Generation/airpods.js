@@ -8,6 +8,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 0,
     description: "Flex on your friends",
+    category: "Images",
     run: async (message, args, text, client, prefix, instance) => {
         message.channel.startTyping(true)
         const canvas = Canvas.createCanvas(384, 128)

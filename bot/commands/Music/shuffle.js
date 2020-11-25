@@ -6,7 +6,8 @@ module.exports = {
     name: "shuffle",
     minArgs: 0,
     maxArgs: 0,
-    description: "dc",
+    description: "Shuffle the queue",
+    category: "Music",
     run: async (message, args, text, client, prefix, instance) => {
         const queue = message.client.queue.get(message.guild.id)
         if (!queue) return message.channel.send("There is no queue.")

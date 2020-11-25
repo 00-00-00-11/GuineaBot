@@ -6,11 +6,12 @@ module.exports = {
     minArgs: 0,
     maxArgs: 1,
     expectedArgs: "[mention]",
-    description: 'create xp entry',
+    description: 'Create an XP entry in the database',
+    category: "Leveling",
     run: async (message, args, text, client, prefix, instance) => {
         if (message.author.id !== message.guild.ownerID) {
             const nopermsEmbed = new Discord.MessageEmbed()
-                .setColor("#9f5000")
+                .setColor("RANDOM")
                 .setTitle('Create user XP unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("You are not the owner of the server.")

@@ -5,7 +5,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: '<text>',
-    description: "armor",
+    description: "Nothing gets through this armor",
+    category: "Images",
     run: async (message, args, text, client, prefix, instance) => {
         var imageText = args.slice(0).join(" ")
         if (!imageText) {

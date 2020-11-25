@@ -7,7 +7,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
     expectedArgs: "<queue position number>",
-    description: "dc",
+    description: "Play a specified queue song",
+    category: "Music",
     run: async (message, args, text, client, prefix, instance) => {
         if (!args.length) return message.reply(`Usage: g?${module.exports.name} <queue number>`)
         if (isNaN(args[0])) return message.reply(`Usage: g?${module.exports.name} <queue number>`)

@@ -4,6 +4,8 @@ const { PRUNING } = require("../config.json")
 const { canModifyQueue } = require("../util/util")
 
 module.exports = {
+    category: "Music",
+    description: "Music handler",
     async play(song, message) {
         const playconfig = {
             PRUNING: process.env.PRUNING,

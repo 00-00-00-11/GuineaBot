@@ -5,7 +5,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<mention> [reason]",
-    description: "mute user from chatting",
+    description: "Prevent user from chatting in text channels",
+    category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
 
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")
@@ -14,7 +15,7 @@ module.exports = {
 
         if (!modlog) {
             const modlogEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Chat mute unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL)
                 .setDescription('It looks like \`setup\` command has not been performed yet. Please contact an administrator')
@@ -26,7 +27,7 @@ module.exports = {
 
         if (!muteuser) {
             const errorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Chat mute unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('Specify who to chat mute.')
@@ -39,7 +40,7 @@ module.exports = {
 
         if (message.author === muteuser) {
             const errorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Chat mute unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('You cannot chat mute yourself. Why would you do that?')
@@ -56,7 +57,7 @@ module.exports = {
 
         if (!message.member.hasPermission("MANAGE_ROLES", explicit = true)) {
             const mutepermEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Chat mute unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("You don't have the correct permissions.")
@@ -67,7 +68,7 @@ module.exports = {
             return
         } else if (!message.member.hasPermission("MANAGE_ROLES", explicit = true)) {
             const mutepermEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Chat mute unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("I don't have the correct permissions. Try re-inviting me and adding `Manage roles` permission. If this problem occurs, do info command with support argument.")
@@ -80,7 +81,7 @@ module.exports = {
 
         if (message.member.roles.highest.position < muteuser.roles.highest.position || message.member.roles.highest.position === muteuser.roles.highest.position) {
             const superiorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Chat mute unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('The person you are trying to chat mute has a role superior or equal to you.')
@@ -93,7 +94,7 @@ module.exports = {
 
         if (muteuser.id === message.author.id) {
             const errorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Chat mute unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('You cannot chat mute yourself. Why would you do that?')
@@ -113,7 +114,7 @@ module.exports = {
 
         if (!muterole) {
             const modlogEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Chat mute unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL)
                 .setDescription('It looks like \`setup\` command has not been performed yet. Please contact an administrator')
@@ -123,7 +124,7 @@ module.exports = {
             return
         } else if (muteuser.roles.cache.has(muterole.id)) {
             const mutemmutedEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Chat mute unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("That user is already chat muted.")
@@ -136,7 +137,7 @@ module.exports = {
             //need to override perms
             muteuser.roles.add(muterole)
             const muteEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Chat mute successful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription(`Successfully chat muted **${muteuser.user.username}** for **${reason}**.`)
@@ -148,7 +149,7 @@ module.exports = {
         }
 
         const logEmbed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Chat mute command executed')
             .setAuthor('Modlog')
             .addFields({

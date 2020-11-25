@@ -4,7 +4,8 @@ module.exports = {
     minArgs: 2,
     maxArgs: -1,
     expectedArgs: "<time until delete (in MS)> <message>",
-    description: "dc",
+    description: "Send a message anonymously temporarily",
+    category: "Utility",
     run: async (message, args, text, client, prefix, instance) => {
         if (!args[0]) return message.channel.send("You need to provide how many milliseconds to wait before deleting the message. For example, 1 second is equivalent to 1000 milliseconds.");
         let ms = parseInt(args[0]);

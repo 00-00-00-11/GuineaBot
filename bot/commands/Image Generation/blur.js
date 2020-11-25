@@ -3,7 +3,8 @@ module.exports = {
     name: 'blur',
     minArgs: 0,
     maxArgs: 0,
-    description: "Blur the image",
+    description: "Blur an image",
+    category: "Images",
     run: async (message, args, text, client, prefix, instance) => {
         let attachments = message.attachments.array()
         if (attachments.length === 0) return message.reply("Please upload an image, the caption should be this command.")

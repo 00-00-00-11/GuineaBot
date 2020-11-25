@@ -5,7 +5,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<first panel text> | <second panel text> | <third panel text> | <fourth panel text>", 
-    description: "expanding brain command",
+    description: "Expanding brain command",
+    category: "Images",
     run: async (message, args, text, client, prefix, instance) => {
         args = message.content.slice(8).trim().split("|")
         let firstText = args[0]

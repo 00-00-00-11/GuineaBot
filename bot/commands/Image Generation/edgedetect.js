@@ -3,7 +3,8 @@ module.exports = {
     name: 'edgedetect',
     minArgs: 0,
     maxArgs: 0,
-    description: "detect edges in an image",
+    description: "Detect edges in an image",
+    category: "Images",
     run: async (message, args, text, client, prefix, instance) => {
         let attachments = message.attachments.array()
         if (attachments.length === 0) return message.reply("Please upload an image, the caption should be this command.")

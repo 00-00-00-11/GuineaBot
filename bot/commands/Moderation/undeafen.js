@@ -5,7 +5,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<mention> [reason]",
-    description: "command aliases",
+    description: "Allow a user to hear and talk in voice chats",
+    category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
 
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")
@@ -15,7 +16,7 @@ module.exports = {
 
         if (!modlog) {
             const modlogEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Undeafen unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL)
                 .setDescription('It looks like \`setup\` command has not been performed yet. Please contact an administrator')
@@ -27,7 +28,7 @@ module.exports = {
 
         if (!vmuteuser) {
             const errorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Undeafen unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('Specify who to undeafen.')
@@ -40,7 +41,7 @@ module.exports = {
 
         if (message.author === vmuteuser) {
             const errorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Undeafen unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('You cannot undeafen yourself. Why would you do that?')
@@ -57,7 +58,7 @@ module.exports = {
 
         if (!message.member.hasPermission("MUTE_MEMBERS", explicit = true)) {
             const vmutepermEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Undeafen unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("You don't have the correct permissions.")
@@ -68,7 +69,7 @@ module.exports = {
             return
         } else if (!message.member.hasPermission("MUTE_MEMBERS", explicit = true)) {
             const vmutepermEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Undeafen unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("I don't have the correct permissions. Try re-inviting me and adding `Mute members` permission. If this problem occurs, do info command with support argument.")
@@ -81,7 +82,7 @@ module.exports = {
 
         if (message.member.roles.highest.position < vmuteuser.roles.highest.position || message.member.roles.highest.position === vmuteuser.roles.highest.position) {
             const superiorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Undeafen unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('The person you are trying to undeafen has a role superior or equal to you.')
@@ -94,7 +95,7 @@ module.exports = {
 
         if (vmuteuser.id === message.author.id) {
             const errorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Undeafen unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('You cannot undeafen yourself. Why would you do that?')
@@ -112,7 +113,7 @@ module.exports = {
 
         if (!vmuteuser.voice.channel) {
             const novcembed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Undeafen unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('The member you specified is not connected to a voice channel.')
@@ -125,7 +126,7 @@ module.exports = {
 
         if (vmuteuser.voice.serverMute) {
             const alreadyEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Undeafen unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('The member you specified is already undeafened.')
@@ -137,7 +138,7 @@ module.exports = {
         } else {
             vmuteuser.voice.setDeaf(false, reason)
             const vmuteEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Undeafen successful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription(`Successfully undeafened **${vmuteuser.user.username}** for **${reason}**.`)
@@ -149,7 +150,7 @@ module.exports = {
         }
 
         const logEmbed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Undeafen command executed')
             .setAuthor('Modlog')
             .addFields({

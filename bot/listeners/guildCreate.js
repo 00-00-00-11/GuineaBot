@@ -10,7 +10,7 @@ module.exports = (client) => {
         let readme = joinedGuild.channels.cache.find(channel => channel.name === "read-me")
         
         const readmeEmbed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Read before using GuineaBot')
             .setDescription("**Before you use me please do the following or I will not work properly:\n**\n¬ @everyone should **NOT** have `send messages` enabled\n¬ Do not modify the permissions I generated for myself or I will **NOT** work properly\n¬ Perform `g?setup`\n¬ The higher my role is, the better the `chatmute` command will work")
             .setThumbnail(client.user.avatarURL())

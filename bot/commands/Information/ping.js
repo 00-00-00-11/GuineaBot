@@ -3,7 +3,8 @@ module.exports = {
     name: 'ping',
     minArgs: 0,
     maxArgs: 0,
-    description: "fetch latency",
+    description: "Fetch latency",
+    category: "Information",
     run: async (message, args, text, client, prefix, instance) => {
         const m = await message.channel.send("Fetching ping...")
         const msglate = m.createdTimestamp - message.createdTimestamp
@@ -17,5 +18,6 @@ module.exports = {
         if (message.client.ws.ping >= 500) {
             msguser.send(`**${message.author.tag}**, sorry your message latency is **${message.client.ws.ping}**. If you would like to, contact Discord support to find out why. https://support.discord.com/hc/en-us`)
             console.log(`${message.author.tag} aquired ${message.client.ws.ping} Discord API latency in ${message.guild.name} (${message.guild.id}).`)
-        }    }
+        }    
+    }
 }

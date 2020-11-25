@@ -9,7 +9,8 @@ module.exports = {
     name: 'america',
     minArgs: 0,
     maxArgs: 0,
-    description: 'AMERICA',
+    description: 'American flag over your profile picture',
+    category: "Images",
     run: async (message, args, text, client, prefix, instance) => {
         message.channel.startTyping(true)
         message.channel.send("Please allow 30 - 45 seconds.").then(msg => msg.delete({

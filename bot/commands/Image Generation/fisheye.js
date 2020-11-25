@@ -9,7 +9,8 @@ module.exports = {
     name: "fisheye",
     minArgs: 0,
     maxArgs: 0,
-    description: "bulge an image's center",
+    description: "Bulge an image's center",
+    category: "Images",
     run: async (message, args, text, client, prefix, instance) => {
         message.channel.startTyping(true)
         let attachments = message.attachments.array();

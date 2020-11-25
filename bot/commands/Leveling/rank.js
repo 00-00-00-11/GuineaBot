@@ -5,7 +5,8 @@ module.exports = {
     minArgs: 0,
     maxArgs: 1,
     expectedArgs: "[mention]",
-    description: "rank command",
+    description: "Display your/someone's xp profile",
+    category: "Leveling",
     run: async (message, args, text, client, prefix, instance) => {
         const target = message.mentions.users.first() || message.author
         let XPuser = await discordXP.fetch(target.id, message.guild.id)

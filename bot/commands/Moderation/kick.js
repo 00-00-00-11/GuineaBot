@@ -4,7 +4,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<mention> [reason]",
-    description: "kick members",
+    description: "Kick a member from your server",
+    category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
 
         let kicked = message.mentions.members.first()
@@ -13,7 +14,7 @@ module.exports = {
 
         if (!modlog) {
             const modlogEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Kick unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL)
                 .setDescription('It looks like \`setup\` command has not been performed yet. Please contact an administrator')
@@ -25,7 +26,7 @@ module.exports = {
 
         if (!kicked) {
             const errorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Kick unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('Specify who to kick.')
@@ -38,7 +39,7 @@ module.exports = {
 
         if (message.author === kicked) {
             const errorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Kick unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('You cannot kick yourself. Why would you do that?')
@@ -60,7 +61,7 @@ module.exports = {
 
         if (!message.member.hasPermission("KICK_MEMBERS", explicit = true)) {
             const kickpermEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Kick unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("You don't have the correct permissions.")
@@ -71,7 +72,7 @@ module.exports = {
             return
         } else if (!message.guild.me.hasPermission("KICK_MEMBERS")) {
             const kickpermEmbed2 = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Kick unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("I don't have the correct permissions. Try re-inviting me and adding `Kick Members` permission. If this problem occurs, do info command with support argument.")
@@ -84,7 +85,7 @@ module.exports = {
 
         if (message.member.roles.highest.position < kicked.roles.highest.position || message.member.roles.highest.position === kicked.roles.highest.position) {
             const superiorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Kick unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('The person you are trying to kick has a role superior or equal to you.')
@@ -97,7 +98,7 @@ module.exports = {
 
         if (kicked.id === message.author.id) {
             const errorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Kick unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('You cannot kick yourself. Why would you do that?')
@@ -110,7 +111,7 @@ module.exports = {
 
         if (kicked.id === '727288620221857843') {
             const errorEmbed2 = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Kick unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('You cannot kick me using me! Why would you do that?')
@@ -124,7 +125,7 @@ module.exports = {
         message.guild.member(kicked).kick(reason);
 
         const kickSuccessEmbed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Kick successful')
             .setAuthor(message.author.tag, message.author.avatarURL())
             .setDescription(`Successfully kicked **${kicked.user.tag}** for **${reason}**.`)
@@ -133,7 +134,7 @@ module.exports = {
             .setFooter('Thank you for using GuineaBot!')
         message.channel.send(kickSuccessEmbed).catch(err => {
             const errorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Kick unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('An unexpected error occurred, if this problem persists, please do g?info support.')
@@ -147,7 +148,7 @@ module.exports = {
         kicked.send(`You were kicked from **${message.guild.name}** for **${reason}**.`).catch(() => message.channel.send("I wasn't able to send a DM to the kicked user. Don't worry! He was kicked anyway."))
 
         const logEmbed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Kick command executed')
             .setAuthor('Modlog')
             .addFields({

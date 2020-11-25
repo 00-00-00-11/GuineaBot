@@ -18,7 +18,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<one of the following: Youtube search, Youtube playlist URL, Soundcloud playlist URL>",
-    description: "dc",
+    description: "Play a playlist",
+    category: "Music",
     run: async (message, args, text, client, prefix, instance) => {
         const {
             PRUNING
@@ -35,7 +36,7 @@ module.exports = {
 
         if (!message.guild.me.hasPermission("CONNECT", explicit = true) || !message.guild.me.hasPermission("SPEAK", explicit = true)) {
             const permEmbed = new MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Playlist unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("I don't have the correct permissions. Try re-inviting me and adding `Connect` and `Speak` permissions. If this problem occurs, do g?info support.")
@@ -120,7 +121,7 @@ module.exports = {
         })
 
         let playlistEmbed = new MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle(`${playlist.title}`)
             .setURL(playlist.url)
             .setAuthor(message.author.tag, message.author.avatarURL())

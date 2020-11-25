@@ -8,7 +8,8 @@ module.exports = {
     minArgs: 0,
     maxArgs: 1,
     expectedArgs: "[mention]",
-    description: "show warns",
+    description: "Display a user's warnings",
+    category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
         let target = message.mentions.users.first()
         if (!target) {
@@ -28,7 +29,7 @@ module.exports = {
                 if (!results) return message.channel.send(`${target.tag} has no warnings. :)`)
 
                 const embed = new Discord.MessageEmbed()
-                    .setColor('#9f5000')
+                    .setColor("RANDOM")
                     .setAuthor(message.author.tag, message.author.avatarURL())
                     .setTitle(`Previous warnings for ${target.tag}`)
                     .setTimestamp()

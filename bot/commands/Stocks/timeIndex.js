@@ -8,7 +8,8 @@ module.exports = {
     maxArgs: 4,
     expectedArgs: "<symbol> <time interval> <time> <amount>",
     syntaxError: "*Arguments wrapped in <> are required, [] means it is optional*\n\nYou provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} {ARGUMENTS}`\nFor a list of all commands, do `{PREFIX}info commands`\nFor a list of all command aliases, do `{PREFIX}aliases`\n\nHere is the documentation for the stocks API: <https://www.alphavantage.co/documentation/>",
-    description: "i. have. no. idea.",
+    description: "See how a stock is performing over time",
+    category: "Stocks",
     run: async (message, args, text, client, prefix, instance) => {
         message.channel.send("If no data is given to you, it probably means that you provided invalid data.").then(emsg => emsg.delete({
             timeout: 5000
@@ -30,7 +31,7 @@ module.exports = {
         }
 
         const embed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle(`Showing data for stock ${options.symbol.toUpperCase()}`)
             .setAuthor(message.author.tag, message.author.avatarURL())
             .setThumbnail(message.client.user.avatarURL())

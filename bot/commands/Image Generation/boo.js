@@ -5,7 +5,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: '<first panel text> | <second panel text>',
-    description: "boo!",
+    description: "Ghost saying some facts",
+    category: "Images",
     run: async (message, args, text, client, prefix, instance) => {
         args = message.content.slice(6).trim().split("|")
         let firstText = args[0]

@@ -4,11 +4,12 @@ module.exports = {
     aliases: [ 'cvc' ],
     minArgs: 0,
     maxArgs: 0,
-    description: "dc",
+    description: "Create a voice channel",
+    category: "Server Management",
     run: async (message, args, text, client, prefix, instance) => {
         if (!message.member.hasPermission("MANAGE_CHANNELS", explicit = true)) {
             const permEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Create voice channel unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("You don't have the correct permissions.")
@@ -19,7 +20,7 @@ module.exports = {
             return
         } else if (!message.guild.me.hasPermission("MANAGE_CHANNELS")) {
             const permEmbed2 = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Create voice channel unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("I don't have the correct permissions. Try re-inviting me and adding `Manage Channels` permission. If this problem occurs, do g?info support.")
@@ -34,7 +35,7 @@ module.exports = {
 
         if (!modlog) {
             const modlogEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Create voice channel unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription(`It looks like \`setup\` command has not been performed yet. Please contact an administrator`)
@@ -218,7 +219,7 @@ module.exports = {
         let channel = await message.guild.channels.create(name, settings)
 
         const setupcomplete = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Setup complete!')
             .setAuthor(message.author.tag, message.author.avatarURL())
             .setDescription("Enjoy your new channel!")
@@ -231,7 +232,7 @@ module.exports = {
         console.log(settingsset)
 
         const logEmbed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Channel created')
             .setAuthor('Modlog')
             .addFields({

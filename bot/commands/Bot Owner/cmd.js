@@ -4,7 +4,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<command to run>",
-    description: 'Run command prompt (or at least try to) in Discord, DANGEROUS!!!!',
+    description: 'Run a child process in Discord',
+    category: 'Bot Owner',
     run: async (message, args, text, client, prefix, instance) => {
         //Check if you are not me (Cy1der)
         if (message.author.id !== "423222193032396801") return message.channel.send("You are not ${Cy1der}#0001.")

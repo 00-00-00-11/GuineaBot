@@ -5,7 +5,8 @@ module.exports = {
     aliases: [ "ttt" ],
     minArgs: 0,
     maxArgs: 0,
-    description: "Simple game of ttt against an AI",
+    description: "Simple game of TicTacToe against an unbeatable AI",
+    category: "Games",
     run: async (message, args, text, client, prefix, instance) => {
         new ttt({
             language: "en",

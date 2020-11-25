@@ -3,11 +3,12 @@ module.exports = {
     name: "findnose",
     minArgs: 0,
     maxArgs: 0,
-    description: "dc",
+    description: "Find Magyk14's nose",
+    category: "Riola",
     run: async (message, args, text, client, prefix, instance) => {
         if (message.guild.id !== "618454511685599268") {
             const riolaEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Riola Info')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('Riola member? You have exclusive commands!')

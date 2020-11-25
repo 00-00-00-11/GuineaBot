@@ -6,6 +6,7 @@ module.exports = {
     maxArgs: -1,
     expectedArgs: "<text>",
     description: "10 reason why I should be aborted",
+    category: "Images",
     run: async (message, args, text, client, prefix, instance) => {
         //See abandon.js
         var imageText = args.slice(0).join(" ")

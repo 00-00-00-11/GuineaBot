@@ -3,6 +3,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 0,
     description: "Shut down the bot, restart if hosted on heroku",
+    category: "Bot Owner",
     run: async (message, args, text, client, prefix, instance) => {
         //Check if you are not me (Cy1der)
         if (message.author.id !== "423222193032396801") return message.reply("You are not the owner of the bot, also known as ${Cy1der}#0001.")

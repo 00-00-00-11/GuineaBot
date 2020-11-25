@@ -1,9 +1,10 @@
-const Chess = require("./assets/chess")
+const { Chess } = require("./assets/chess")
 module.exports = {
     name: "chess",
     minArgs: 0,
     maxArgs: 0,
     description: "Simple game of chess against an AI",
+    category: "Games",
     run: async (message, args, text, client, prefix, instance) => {
         //Call the class
         const game = new Chess(client)

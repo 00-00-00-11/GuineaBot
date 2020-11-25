@@ -4,7 +4,8 @@ module.exports= {
     aliases: [ 'join'],
     minArgs: 0,
     maxArgs: 0,
-    description: "connect",
+    description: "Connect to your current voice channel",
+    category: "Music",
     run: async(message, args, text, client, prefix, instance) => {
         const channel = message.member.voice.channel
         if (!channel) return message.channel.send("You need to be in a voice channel first!").catch(console.error);

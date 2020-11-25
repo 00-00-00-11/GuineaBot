@@ -8,7 +8,8 @@ module.exports = {
     aliases: [ "ly" ],
     minArgs: 0,
     maxArgs: 0,
-    description: "lyrics",
+    description: "Displays the lyrics of the current song",
+    category: "Music",
     run: async (message, args, text, client, prefix, instance) => {
         const queue = message.client.queue.get(message.guild.id)
         if (!queue) return message.reply("No song is being played right now.")
@@ -28,7 +29,7 @@ module.exports = {
         }
 
         let lyricsEmbed = new MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Lyrics')
             .setDescription(lyrics)
             .setThumbnail(message.client.user.avatarURL())

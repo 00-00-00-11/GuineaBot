@@ -3,10 +3,11 @@ module.exports = {
     name: 'serverstats',
     minArgs: 0,
     maxArgs: 0,
-    description: "guild stats",
+    description: "Current server stats",
+    category: "Information",
     run: async (message, args, text, client, prefix, instance) => {
         const embed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle("Server stats")
             .setAuthor(message.author.tag, message.author.avatarURL())
             .setThumbnail(message.client.user.avatarURL())

@@ -5,7 +5,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<search query (one word)>",
-    description: "dc",
+    description: "Urban dictionary",
+    category: "Utility",
     run: async (message, args, text, client, prefix, instance) => {
         if (!args[0]) return message.channel.send("Please specify the query.")
 
@@ -14,7 +15,7 @@ module.exports = {
         })
 
         const embed = new Discord.MessageEmbed()
-            .setColor("#9f5000")
+            .setColor("RANDOM")
             .setTitle(result.word)
             .setURL(result.urbanURL)
             .setDescription(`**Definition:**\n${result.definition}\n\n**Example:**\n${result.example}`)

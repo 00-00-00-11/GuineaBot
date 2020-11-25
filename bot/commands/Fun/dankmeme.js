@@ -6,6 +6,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 0,
     description: 'Random meme from r/dankmemes',
+    category: 'Fun',
     run: async (message, args, text, client, prefix, instance) => {
         const embed = new Discord.MessageEmbed()
         got("https://www.reddit.com/r/dankmemes/random/.json").then(response => {
@@ -23,7 +24,7 @@ module.exports = {
             embed.setTitle(`${memeTitle}`)
             embed.setURL(`${memeUrl}`)
             embed.setImage(memeImage)
-            embed.setColor("#9f5000")
+            embed.setColor("RANDOM")
             embed.setFooter(`👍 ${memeUpvotes} 👎 ${memeDownvotes} 💬 ${memeNumComments}`)
             embed.setTimestamp()
 

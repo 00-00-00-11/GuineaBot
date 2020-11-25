@@ -4,6 +4,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 0,
     description: 'Start a friendly debate in the chat',
+    category: 'Fun',
     run: async (message, args, text, client, prefix, instance) => {
         //If you have any debate questions, don't hesitate to consult Cy1der (me)
         let questions = [

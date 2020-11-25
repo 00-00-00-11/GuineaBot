@@ -8,13 +8,14 @@ module.exports = {
     minArgs: 1,
     maxArgs: 1,
     expectedArgs: "<mention>",
-    description: "Remove a warnings to a member",
+    description: "Remove all warnings from a member",
+    category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
         let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")
 
         if (!modlog) {
             const modlogEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Removewarn unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription(`It looks like \`setup\` command has not been performed yet. Please contact an administrator`)
@@ -27,7 +28,7 @@ module.exports = {
 
         if (!message.member.hasPermission("KICK_MEMBERS", explicit = true)) {
             const warnpermEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Removewarn unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("You don't have the correct permissions.")
@@ -72,7 +73,7 @@ module.exports = {
         })
 
         const logEmbed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Removewarn command executed')
             .setAuthor('Modlog')
             .addFields({

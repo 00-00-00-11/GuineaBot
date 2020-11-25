@@ -4,7 +4,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<mention> [reason]",
-    description: "ban",
+    description: "Ban a member from your server",
+    category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
 
         let banned = message.mentions.members.first()
@@ -13,7 +14,7 @@ module.exports = {
 
         if (!modlog) {
             const modlogEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Ban unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription(`It looks like \`setup\` command has not been performed yet. Please contact an administrator`)
@@ -26,7 +27,7 @@ module.exports = {
 
         if (!banned) {
             const errorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Ban unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('Specify who to ban.')
@@ -39,7 +40,7 @@ module.exports = {
 
         if (message.author === banned) {
             const errorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Ban unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('You cannot ban yourself. Why would you do that?')
@@ -56,7 +57,7 @@ module.exports = {
 
         if (!message.member.hasPermission("BAN_MEMBERS", explicit = true)) {
             const banpermEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Ban unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("You don't have the correct permissions.")
@@ -67,7 +68,7 @@ module.exports = {
             return
         } else if (!message.guild.me.hasPermission("BAN_MEMBERS")) {
             const banpermEmbed2 = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Ban unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("I don't have the correct permissions. Try re-inviting me and adding `Ban Members` permission. If this problem occurs, do g?info support.")
@@ -80,7 +81,7 @@ module.exports = {
 
         if (message.member.roles.highest.position < banned.roles.highest.position || message.member.roles.highest.position === banned.roles.highest.position) {
             const superiorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Ban unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('The person you are trying to ban has a role superior or equal to you.')
@@ -93,7 +94,7 @@ module.exports = {
 
         if (banned.id === message.author.id) {
             const errorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Ban unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('You cannot ban yourself. Why would you do that?')
@@ -114,7 +115,7 @@ module.exports = {
         })
 
         const banSuccessEmbed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Ban successful')
             .setAuthor(message.author.tag, message.author.avatarURL())
             .setDescription(`Successfully banned **${banned.user.tag}** for **${reason}**.`)
@@ -123,7 +124,7 @@ module.exports = {
             .setFooter('Thank you for using GuineaBot!')
         message.channel.send(banSuccessEmbed).catch(err => {
             const errorEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Ban unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription('An unexpected error occurred, if this problem persists, please do g?info support.')
@@ -137,7 +138,7 @@ module.exports = {
         banned.send(`You were banned from **${message.guild.name}** for **${reason}**.`).catch(() => message.channel.send("I wasn't able to send a DM to the banned user. Don't worry! He was banned anyway."))
 
         const logEmbed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Ban command executed')
             .setAuthor('Modlog')
             .addFields({

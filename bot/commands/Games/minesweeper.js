@@ -7,7 +7,8 @@ module.exports = {
     minArgs: 3,
     maxArgs: 3,
     expectedArgs: "<rows> <columns> <mine count>",
-    description: 'Minesweeper in Discord!',
+    description: 'Minesweeper game using spoilers',
+    category: 'Games',
     run: async (message, args, text, client, prefix, instance) => {
         const rows = parseInt(args[0]);
         const columns = parseInt(args[1]);

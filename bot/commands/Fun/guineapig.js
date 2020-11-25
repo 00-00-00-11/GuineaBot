@@ -7,6 +7,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 0,
     description: 'Random picture of a Guinea Pig',
+    category: 'Fun',
     run: async (message, args, text, client, prefix, instance) => {
         //All images come from dogpile, it is much easier and faster than google images
         function image(message) {
@@ -42,7 +43,7 @@ module.exports = {
 
                 //Make it pretty
                 let embed = new Discord.MessageEmbed()
-                    .setColor('#9f5000')
+                    .setColor("RANDOM")
                     .setTitle(messageTitle)
                     .setTimestamp()
                     .setImage(urls[Math.floor(Math.random() * urls.length)])

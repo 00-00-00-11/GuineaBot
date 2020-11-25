@@ -10,14 +10,15 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<Youtube search>",
-    description: "dc",
+    description: "Search for a song on YouTube",
+    category: "Music",
     run: async (message, args, text, client, prefix, instance) => {
         if (!args.length) return message.reply(`Usage: g?${module.exports.name} <video name>`)
 
         const search = args.join(" ")
 
         let resultsEmbed = new MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle(`Results for: ${search}`)
             .setAuthor(message.author.tag, message.author.avatarURL())
             .setThumbnail(message.client.user.avatarURL())

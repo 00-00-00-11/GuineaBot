@@ -4,7 +4,8 @@ module.exports = {
     aliases: [ 'pfp' ],
     minArgs: 0,
     maxArgs: 0,
-    description: "dc",
+    description: "Fetch your profile avatar",
+    category: "Utility",
     run: async (message, args, text, client, prefix, instance) => {
         let webp16 = message.author.displayAvatarURL({
             format: "webp",
@@ -201,7 +202,7 @@ module.exports = {
         })
 
         const embed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle(`Profile picture for ${message.author.tag}`)
             .setAuthor(message.author.tag, message.author.avatarURL())
             .setDescription("Choose your desired file format and size:")

@@ -6,6 +6,7 @@ module.exports = {
     maxArgs: -1,
     expectedArgs: "<text>",
     description: "Abandoning your baby",
+    category: "Images",
     run: async (message, args, text, client, prefix, instance) => {
         //Combine all arguments
         var imageText = args.slice(0).join(" ")

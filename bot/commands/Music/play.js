@@ -16,7 +16,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<one of the following: Youtube search, Youtube video URL, soundcloud song URL>",
-    description: "dc",
+    description: "Play a song",
+    category: "Music",
     run: async (message, args, text, client, prefix, instance) => {
         const channel = message.member.voice.channel
 
@@ -27,7 +28,7 @@ module.exports = {
 
         if (!message.guild.me.hasPermission("CONNECT", explicit = true) || !message.guild.me.hasPermission("SPEAK")) {
             const permsEmbed = new Discord.MessageEmbed()
-                .setColor('#9f5000')
+                .setColor("RANDOM")
                 .setTitle('Play unsuccessful')
                 .setAuthor(message.author.tag, message.author.avatarURL())
                 .setDescription("I don't have the correct permissions. Try re-inviting me and adding `Connect` and `Speak` permissions. If this problem occurs, do g?info support.")

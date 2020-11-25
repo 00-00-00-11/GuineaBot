@@ -5,7 +5,8 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<math input>",
-    description: "dc",
+    description: "Math calculator",
+    category: "Utility",
     run: async (message, args, text, client, prefix, instance) => {
         if (!args[0]) return message.channel.send("Input a calculaton")
 
@@ -18,7 +19,7 @@ module.exports = {
         }
 
         const embed = new Discord.MessageEmbed()
-            .setColor('#9f5000')
+            .setColor("RANDOM")
             .setTitle('Calculator')
             .setAuthor(message.author.tag, message.author.avatarURL())
             .setThumbnail(message.client.user.avatarURL())
