@@ -65,8 +65,6 @@ module.exports = {
                         })
                     })
                 }
-                console.log(delsize.size)
-                console.log(msgdel)
             })
         }
     }

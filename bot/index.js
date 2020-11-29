@@ -7,6 +7,7 @@ const client = new Discord.Client();
 const fetch = require("node-fetch");
 const WOKCommands = require("wokcommands");
 const discordXP = require("discord-xp");
+const cleverbot = require("cleverbot-free");
 
 //Hide sensitive information from the public using dotenv-flow, all the "passwords" are stored in a file named ".env" located in the root directory
 require('dotenv-flow').config()
@@ -67,7 +68,7 @@ client.on("message", async (message) => {
     if (message.author.id === client.user.id || message.author.bot) return
 
     //Bot commands only work in servers, so add this to prevent permission errors originating from the DM
-    if (!message.guild) return message.channel.send("I do not function in DM's, please use my commands in a server.");
+    if (!message.guild) return cleverbot(message.content).then(response => message.channel.send(response));
 
     //Points system
     if (recentMsg.has(message.author.id)) return

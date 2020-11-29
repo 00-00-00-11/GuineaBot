@@ -8,7 +8,7 @@ module.exports = {
     category: "Fun",
     run: async (message, args, text, client, prefix, instance) => {
         //Get a random number from the range of 100
-        let precent = Math.floor(Math.random() * 100)
+        let precent = Math.floor(Math.random() * 101)
 
         //Send it back
         message.reply(`You are ${precent}% cool kid. 😎`)

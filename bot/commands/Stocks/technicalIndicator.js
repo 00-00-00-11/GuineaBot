@@ -12,8 +12,8 @@ module.exports = {
     description: "DM ${Cy1der}#0001 if you know",
     category: "Stocks",
     run: async (message, args, text, client, prefix, instance) => {
-        message.channel.send("If no data is given to you, it probably means that you provided invalid data.").then(emsg => emsg.delete({
-            timeout: 5000
+        message.channel.send("If no data is given to you, it probably means that you provided invalid data.\n\nHere is the documentation for the stocks API: <https://www.alphavantage.co/documentation/>").then(emsg => emsg.delete({
+            timeout: 30000
         }))
 
         let symbol = args[0].toUpperCase()

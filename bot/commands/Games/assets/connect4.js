@@ -130,7 +130,7 @@ class Connect4 {
     }
 
     getChipFromTurn() {
-        return this.redTurn ? "🔴" : "🟡";
+        return this.redTurn ? "😡" : "🤪";
     }
 
     hasWon(placedX, placedY) {
@@ -189,7 +189,7 @@ class Connect4 {
     }
 
     getWinnerText(winner) {
-        if (winner === "🔴" || winner === "🟡")
+        if (winner === "😡" || winner === "🤪")
             return winner + " Has Won!";
         else if (winner == "tie")
             return "It was a tie!";
