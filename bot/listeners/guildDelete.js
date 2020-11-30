@@ -6,7 +6,7 @@ module.exports = (client) => {
             activity: {
                 name: `g?help | ${client.guilds.cache.size} servers`,
                 type: "STREAMING",
-                url: `https://www.twitch.tv/cy1der`,
+                url: `https://www.youtube.com/watch?v=dQw4w9WgXcQ`,
             },
             status: "online"
         })
