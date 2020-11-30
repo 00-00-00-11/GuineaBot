@@ -94,7 +94,7 @@ module.exports = {
                         userId: userId1
                     }, {
                         userId: userId1,
-                        bank: currentbank1 + roundedStolen,
+                        wallet: currentbank1 + roundedStolen,
                     }, {
                         upsert: true,
                     })

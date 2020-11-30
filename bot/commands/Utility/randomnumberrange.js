@@ -1,6 +1,6 @@
 const Discord = require("discord.js")
 module.exports = {
-    name: 'rnr',
+    name: 'randomnumberrange',
     aliases: [ 'rnr' ],
     minArgs: 2,
     maxArgs: 2,
