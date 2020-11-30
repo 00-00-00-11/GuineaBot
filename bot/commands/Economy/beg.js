@@ -46,20 +46,17 @@ module.exports = {
 
                     return message.reply(`You must wait **${seconds} seconds** before begging again!`)
                 } else {
-                    /*
                     await profileSchema.findOneAndUpdate({
                         userId: userId
                     }, {
                         userId: userId,
                         begCooldown: Date.now() + ms("1m")
                     })
-                    */
 
                     let currentWallet = data.wallet
 
                     let yesno = Math.floor(Math.random() * 4)
                     let begornobeg
-                    console.log(yesno)
 
                     if (yesno === 3) begornobeg = true
                     else if (yesno < 3) begornobeg = false

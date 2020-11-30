@@ -3,7 +3,9 @@
 
 //Initiate dependencies required to run index.js and create a new client
 const Discord = require('discord.js');
-const client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
+const client = new Discord.Client({
+    partials: ['MESSAGE', 'CHANNEL', 'REACTION']
+});
 const fetch = require("node-fetch");
 const WOKCommands = require("wokcommands");
 const discordXP = require("discord-xp");
@@ -35,29 +37,34 @@ let recentMsg = new Set();
 client.on('ready', async () => {
     //Initiate the command handler and many more features including a prebuilt prefix command, all data is stored in mongoDB
     new WOKCommands(client, "commands", "listeners")
-    .setMongoPath(`${config.mongodb}`)
-    .setDefaultPrefix("g?")
-    .setSyntaxError("*Arguments wrapped in <> are required, [] means it is optional*\n\nYou provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} {ARGUMENTS}`\nFor a list of all commands, do `{PREFIX}help`")
-    .setDisplayName("Guineabot")
-    .setColor("RANDOM")
-    .setCategoryEmoji("Bot Owner", "🤖")
-    .setCategoryEmoji("Fun", "😂")
-    .setCategoryEmoji("Games", "🎮")
-    .setCategoryEmoji("Economy", "💸")
-    .setCategoryEmoji("Server Owner", "👑")
-    .setCategoryEmoji("Images", "📷")
-    .setCategoryEmoji("Information", "ℹ")
-    .setCategoryEmoji("Leveling", "🌀")
-    .setCategoryEmoji("Moderation", "🔨")
-    .setCategoryEmoji("Music", "🎶")
-    .setCategoryEmoji("Riola", "🐦")
-    .setCategoryEmoji("Server Management", "⚡")
-    .setCategoryEmoji("Stocks", "📈")
-    .setCategoryEmoji("Utility", "🧠")
+        .setMongoPath(`${config.mongodb}`)
+        .setDefaultPrefix("g?")
+        .setSyntaxError("*Arguments wrapped in <> are required, [] means it is optional*\n\nYou provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} {ARGUMENTS}`\nFor a list of all commands, do `{PREFIX}help`")
+        .setDisplayName("Guineabot")
+        .setColor("RANDOM")
+        .setCategoryEmoji("Bot Owner", "🤖")
+        .setCategoryEmoji("Fun", "😂")
+        .setCategoryEmoji("Games", "🎮")
+        .setCategoryEmoji("Economy", "💸")
+        .setCategoryEmoji("Server Owner", "👑")
+        .setCategoryEmoji("Images", "📷")
+        .setCategoryEmoji("Information", "ℹ")
+        .setCategoryEmoji("Leveling", "🌀")
+        .setCategoryEmoji("Moderation", "🔨")
+        .setCategoryEmoji("Music", "🎶")
+        .setCategoryEmoji("Riola", "🐦")
+        .setCategoryEmoji("Server Management", "⚡")
+        .setCategoryEmoji("Stocks", "📈")
+        .setCategoryEmoji("Utility", "🧠")
 
-    client.user.setActivity(`${client.guilds.cache.size} servers`, {
-        type: 'COMPETING',
-    }).catch(error => console.log(error));
+    client.user.setPresence({
+        activity: {
+            name: `g?help | ${client.guilds.cache.size} servers`,
+            type: "STREAMING",
+            url: `https://www.twitch.tv/cy1der`,
+        },
+        status: "online"
+    })
 
     //Fetch the server's IP address, this is optional
     fetch("https://api.ipify.org/?format=json").then(results => results.json()).then(data => console.log(`Logged in as [${client.user.tag}]\nServer IP: ${data.ip}`))

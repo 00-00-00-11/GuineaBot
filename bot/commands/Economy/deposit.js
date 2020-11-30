@@ -43,8 +43,8 @@ module.exports = {
                 let currentWallet = data.wallet
                 let currentBank = data.bank
 
-                if (isNaN(toDeposit)) return message.channel.send("Please provide a numerical value.")
                 let toDeposit = parseInt(args[0])
+                if (isNaN(toDeposit)) return message.channel.send("Please provide a numerical value.")
 
                 if (toDeposit > data.wallet) return message.reply("You don't have that many coins in your wallet!")
 
