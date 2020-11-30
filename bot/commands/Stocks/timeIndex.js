@@ -7,7 +7,7 @@ module.exports = {
     minArgs: 4,
     maxArgs: 4,
     expectedArgs: "<symbol> <time interval> <time> <amount>",
-    syntaxError: "*Arguments wrapped in <> are required, [] means it is optional*\n\nYou provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} {ARGUMENTS}`\nFor a list of all commands, do `{PREFIX}info commands`\nFor a list of all command aliases, do `{PREFIX}aliases`\n\nHere is the documentation for the stocks API: <https://www.alphavantage.co/documentation/>",
+    syntaxError: "*Arguments wrapped in <> are required, [] means it is optional*\n\nYou provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} {ARGUMENTS}`\nFor a list of all commands, do `{PREFIX}help`\n\nHere is the documentation for the stocks API: <https://www.alphavantage.co/documentation/>",
     description: "See how a stock is performing over time",
     category: "Stocks",
     run: async (message, args, text, client, prefix, instance) => {

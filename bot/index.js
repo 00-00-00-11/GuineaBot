@@ -37,7 +37,7 @@ client.on('ready', async () => {
     new WOKCommands(client, "commands", "listeners")
     .setMongoPath(`${config.mongodb}`)
     .setDefaultPrefix("g?")
-    .setSyntaxError("*Arguments wrapped in <> are required, [] means it is optional*\n\nYou provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} {ARGUMENTS}`\nFor a list of all commands, do `{PREFIX}help`\nFor a list of all command aliases, do `{PREFIX}aliases`")
+    .setSyntaxError("*Arguments wrapped in <> are required, [] means it is optional*\n\nYou provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} {ARGUMENTS}`\nFor a list of all commands, do `{PREFIX}help`")
     .setDisplayName("Guineabot")
     .setColor("RANDOM")
     .setCategoryEmoji("Bot Owner", "🤖")
