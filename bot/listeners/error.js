@@ -3,3 +3,9 @@
 module.exports = (client) => {
     client.on("error", error => console.log(error))
 }
+
+module.exports.config = {
+    displayName: "error", 
+    dbName: "GBOTerror",
+    loadDBFirst: true
+}

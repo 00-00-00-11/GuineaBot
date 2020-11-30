@@ -26,3 +26,9 @@ module.exports = (client) => {
         }).catch(error => console.log(error));
     });
 };
+
+module.exports.config = {
+    displayName: "Server Join", 
+    dbName: "GBOTguildcreate",
+    loadDBFirst: true
+}

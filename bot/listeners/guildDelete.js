@@ -7,3 +7,9 @@ module.exports = (client) => {
         }).catch(error => console.log(error));
     });
 }
+
+module.exports.config = {
+    displayName: "Server Leave", 
+    dbName: "GBOTguilddelete",
+    loadDBFirst: true
+}
