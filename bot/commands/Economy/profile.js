@@ -42,16 +42,8 @@ module.exports = {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor("RANDOM")
-                    .setTitle(`${target.tag}'s coin balance`)
+                    .setTitle(`${target.tag}'s profie`)
                     .addFields({
-                        name: "Total experience",
-                        value: `${data.experience}`,
-                        inline: true
-                    }, {
-                        name: "Level",
-                        value: `${data.level}`,
-                        inline: true
-                    }, {
                         name: "Current job",
                         value: `${data.job}`
                     }, {

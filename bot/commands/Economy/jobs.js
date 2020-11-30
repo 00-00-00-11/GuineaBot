@@ -6,7 +6,7 @@ module.exports = {
     name: "jobs",
     minArgs: 1,
     maxArgs: -1,
-    expectedArgs: "[either resign, assign or list (<job name> if assign)]",
+    expectedArgs: "<either resign, assign or list (<job name> if assign)>",
     description: "Change jobs or display them",
     category: "Economy",
     run: async (message, args, text, client, prefix, instance) => {
@@ -174,7 +174,10 @@ module.exports = {
                 }
             } catch (e) {
                 console.log(e)
-                message.channel.send(`An error occurred: \`${e.message}\`\nUsually this happens once, please try again.`)
+                let str = e.message
+
+                if (e.message === "Cannot read property 'job' of null") return message.channel.send("Sorry, please do the command again, this is normal for anyone who has not done an economy command before.\n${Cy1der}#0001 is trying to fix this.")
+                else return message.channel.send(`An error occurred: \`${str}\`\nUsually this happens once, please try again.`)
             }
         })
     }
