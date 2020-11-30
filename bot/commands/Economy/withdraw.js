@@ -45,6 +45,8 @@ module.exports = {
 
                 let toWith = parseInt(args[0])
 
+                if (isNaN(toWith)) return message.channel.send("Please provide a numerical value.")
+
                 if (toWith > data.bank) return message.reply("You don't have that many coins in your bank!")
 
                 await profileSchema.findOneAndUpdate({

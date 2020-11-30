@@ -97,7 +97,7 @@ module.exports = {
                             bankRobCooldown: Date.now()
                         })
 
-                        newData = data
+                        data = newData
                     }
                     if (data.job === null) data.job === "Unemployed"
                     if (data.job !== "Unemployed") return message.channel.send("You already have a job assigned.")
@@ -156,8 +156,10 @@ module.exports = {
                             bankRobCooldown: Date.now()
                         })
     
-                        newData = data
+                        data = newData
                     }
+
+                    
                     if (data.job === "Unemployed") return message.channel.send("You already are unemployed!")
 
                     await profileSchema.findOneAndUpdate({

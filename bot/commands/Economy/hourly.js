@@ -45,7 +45,7 @@ module.exports = {
                     let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))
                     let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000)
 
-                    return message.reply(`You must wait **${minutes} minutes and ${seconds} seconds** before claiming your monthly coins again!`)
+                    return message.reply(`You must wait **${minutes} minutes and ${seconds} seconds** before claiming your hourly coins again!`)
                 } else {
                     await profileSchema.findOneAndUpdate({
                         userId: userId
