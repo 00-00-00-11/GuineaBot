@@ -35,7 +35,8 @@ module.exports = {
             if (song.video_url && song.video_url.includes("youtube.com")) {
                 stream = await ytdlDiscord(song.video_url, {
                     quality: 'highestaudio',
-                    highWaterMark: 1 << 25
+                    highWaterMark: 1 << 25,
+                    filter: "audioonly",
                 })
             //If the song is from soundcloud
             } else if (song.video_url && song.video_url.includes("soundcloud.com")) {

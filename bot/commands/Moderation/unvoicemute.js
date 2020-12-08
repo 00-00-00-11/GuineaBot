@@ -1,168 +1,106 @@
 const Discord = require('discord.js')
-module.exports= {
+const muteSchema = require('../../schemas/voicemute')
+const mongo = require('../../mongo')
+
+module.exports = {
     name: 'unvoicemute',
-    aliases: [ "uvm" ],
+    aliases: ["uvm"],
+    requiredPermissions: [ "MUTE_MEMBERS" ],
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<mention> [reason]",
-    description: "Allow a user to talk in voice chats",
+    description: 'Alow user to talk in voice channels',
     category: "Moderation",
-    run: async(message, args, text, client, prefix, instance) => {
+    run: async (message, args, text, client, prefix, instance) => {
+        let modlog = message.guild.channels.cache.find(channel => {
+            return channel.name === "g-modlog"
+        })
 
-        let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")
-        let vmuteuser = message.mentions.members.first();
+        let target = message.mentions.members.first()
+        let targetId = target.id
+        let targetTag = `${target.user.username}#${target.user.discriminator}`
+
+        if (!target) return message.channel.send("You need to mention a valid user.")
+        if (targetId === client.user.id) return message.reply("You cannot unmute me using me.")
+        if (targetId === message.author.id) return message.reply("You cannot unmute yourself.")
+            
+        let staff = message.member
+        let staffId = staff.id
+        let staffTag = `${staff.user.username}#${staff.user.discriminator}`
+
         let reason = args.slice(1).join(" ")
 
+        if (!modlog) return message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\`.`)
+        if (!reason) reason = "No reason provided."
+        if (staff.roles.highest.position < target.roles.highest.position) return message.reply(`You cannot mute ${targetTag} due to role hierarchy.`)
 
-        if (!modlog) {
-            const modlogEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Un voice mute unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL)
-                .setDescription('It looks like \`setup\` command has not been performed yet. Please contact an administrator')
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(modlogEmbed)
-            return
-        }
+        if (!target.voice.channel) return message.reply(`${targetTag} is not connected to a voice channel.`)
+        if (!target.voice.serverMute) return message.reply(`${targetTag} is already not server muted.`)
 
-        if (!vmuteuser) {
-            const errorEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Un voice mute unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription('Specify who to un voice mute.')
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(errorEmbed)        
-            return;
-        }
-    
-        if (message.author === vmuteuser) {
-            const errorEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Un voice mute unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription('You cannot un voice mute yourself. Why would you do that?')
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(errorEmbed)
-            return;
-        }
-    
-        if (!reason) {
-            reason = 'No reason given'
-        }
+        await mongo().then(async (mongoose) => {
+            try {
+                let data = await muteSchema.findOneAndDelete({
+                    muteId: targetId,
+                    guildId: message.guild.id,
+                })
 
-        if (!message.member.hasPermission("MUTE_MEMBERS", explicit = true)) {
-            const vmutepermEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Un voice mute unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription("You don't have the correct permissions.")
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(vmutepermEmbed)
-            return
-        } else if (!message.member.hasPermission("MUTE_MEMBERS", explicit = true)) {
-            const vmutepermEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Un voice mute unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription("I don't have the correct permissions. Try re-inviting me and adding `Mute members` permission. If this problem occurs, do info command with support argument.")
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(vmutepermEmbed)
-            return
-        }
+                const DMEmbed = new Discord.MessageEmbed()
+                    .setColor("RANDOM")
+                    .setTitle(`You have been un voice muted in ${data.guildName}`)
+                    .setAuthor("Automated Guineabot message", message.client.user.avatarURL())
+                    .setTimestamp()
+                    .setFooter("Shoulda followed the rules... :/")
+                    .addFields({
+                        name: "Moderator",
+                        value: staffTag
+                    }, {
+                        name: "Reason",
+                        value: reason
+                    }, {
+                        name: "Date",
+                        value: data.muteDate.toLocaleString()
+                    })
 
-        if (message.member.roles.highest.position < vmuteuser.roles.highest.position || message.member.roles.highest.position === vmuteuser.roles.highest.position) {
-            const superiorEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Un voice mute unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription('The person you are trying to un voice mute has a role superior or equal to you.')
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(superiorEmbed)
-            return
-        }
+                target
+                    .createDM()
+                    .then((DM) => {
+                        DM.send(DMEmbed)
+                            .then(() => {
+                                target.voice.setMute(false, reason)
 
-        if (vmuteuser.id === message.author.id) {
-            const errorEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Un voice mute unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription('You cannot un voice mute yourself. Why would you do that?')
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(errorEmbed)
-            return
-        }
+                                const success = new Discord.MessageEmbed()
+                                    .setColor("RANDOM")
+                                    .setDescription(`Successfully un voice muted **${data.muteTag}** for **${reason}**`)
+                                    .setFooter("Thank you for using GuineaBot!")
+                                    .setTimestamp()
+                                message.channel.send(success)
 
-        if (vmuteuser.id === message.guild.id) {
-            message.channel.send("Nice try voice muting everyone... :)")
-            return
-        }
-
-        if (!vmuteuser.voice.channel) {
-            const novcembed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Un voice mute unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription('The member you specified is not connected to a voice channel.')
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(novcembed)
-            return
-        }
-
-        if (!vmuteuser.voice.serverMute) {
-            const alreadyEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Un voice mute unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription('The member you specified is already un voice muted.')
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(alreadyEmbed)
-            return
-        } else {
-            vmuteuser.voice.setMute(false, reason)
-            const vmuteEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Un voice mute successful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription(`Successfully un voice muted **${vmuteuser.user.username}** for **${reason}**.`)
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(vmuteEmbed)
-            vmuteuser.send(`You are un voice muted in **${message.guild.name}** for **${reason}**`).catch(() => message.channel.send("I wasn't able to send a DM to the un voice muted user. Don't worry! He was un voice muted anyway."))
-        }
-    
-        const logEmbed = new Discord.MessageEmbed()
-            .setColor("RANDOM")
-            .setTitle('Un voice mute command executed')
-            .setAuthor('Modlog')
-            .addFields(
-                { name: 'Moderator: ', value: `${message.author.tag} (${message.author.id})`},
-                { name: 'Moderated on: ', value: `${vmuteuser.user.tag} (${vmuteuser.id})`},
-                { name: 'Reason: ', value: `${reason}`},
-                { name: 'Date: ', value: `${message.createdAt.toLocaleString()}`}
-            )
-            .setThumbnail(message.client.user.avatarURL())
-            .setTimestamp()
-            .setFooter('Thank you for using GuineaBot!')
-        modlog.send(logEmbed)
-        console.log(`${vmuteuser.user.tag} un voice muted in ${message.guild.name} (${message.guild.id}) for ${reason}.`)
+                                const modlogEmbed = new Discord.MessageEmbed()
+                                    .setColor("RANDOM")
+                                    .setTitle("Member un voice muted")
+                                    .setAuthor("Guineabot Modlog", message.client.user.avatarURL())
+                                    .setTimestamp()
+                                    .setFooter("Thank you for using GuineaBot!")
+                                    .addFields({
+                                        name: "Unmuted member",
+                                        value: `${targetTag} (${targetId})`
+                                    }, {
+                                        name: "Responsible moderator",
+                                        value: `${staffTag} (${staffId})`
+                                    }, {
+                                        name: "Reason",
+                                        value: `${reason}`
+                                    }, {
+                                        name: "Date",
+                                        value: `${data.muteDate.toLocaleString()}`
+                                    })
+                                modlog.send(modlogEmbed)
+                            })
+                    })
+            } catch (err) {
+                console.log(err)
+                message.channel.send(`An error occurred: \`${err.message}\``)
+            }
+        })
     }
 }

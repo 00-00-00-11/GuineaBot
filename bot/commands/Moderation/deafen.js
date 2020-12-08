@@ -1,175 +1,111 @@
 const Discord = require('discord.js')
+const mongo = require('../../mongo')
+const deafSchema = require('../../schemas/deafen')
+
 module.exports = {
-    name: 'deafen',
-    aliases: [ "deaf" ],
+    name: "deafen",
+    aliases: ["deaf"],
+    requiredPermissions: ["DEAFEN_MEMBERS"],
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<mention> [reason]",
-    description: "Prevent user from talking and hearing in a voice chat",
+    description: "Prevent user from hearing in voice channels",
     category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
+        let modlog = message.guild.channels.cache.find(channel => {
+            return channel.name === "g-modlog"
+        })
 
-        let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")
-        let vmuteuser = message.mentions.members.first();
+        let target = message.mentions.members.first()
+        let targetId = target.id
+        let targetTag = `${target.user.username}#${target.user.discriminator}`
+
+        if (targetId === client.user.id) return message.reply("You cannot mute me using me.")
+        if (targetId === message.author.id) return message.reply("You cannot mute yourself.")
+
+        let staff = message.member
+        let staffId = staff.id
+        let staffTag = `${staff.user.username}#${staff.user.discriminator}`
+
         let reason = args.slice(1).join(" ")
 
+        if (!modlog) return message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\`.`)
+        if (!reason) reason = "No reason provided."
+        if (staff.roles.highest.position < target.roles.highest.position) return message.reply(`You cannot mute ${targetTag} due to role hierarchy.`)
 
-        if (!modlog) {
-            const modlogEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Deafen unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL)
-                .setDescription('It looks like \`setup\` command has not been performed yet. Please contact an administrator')
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(modlogEmbed)
-            return
-        }
+        if (!target.voice.channel) return message.reply(`${targetTag} is not connected to a voice channel.`)
+        if (target.voice.serverDeaf) return message.reply(`${targetTag} is already server deafened.`)
 
-        if (!vmuteuser) {
-            const errorEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Deafen unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription('Specify who to deafen.')
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(errorEmbed)
-            return;
-        }
+        await mongo().then(async (mongoose) => {
+            try {
+                let data = await deafSchema.create({
+                    deafId: targetId,
+                    deafTag: targetTag,
+                    staffId: staffId,
+                    staffTag: staffTag,
+                    reason: reason,
+                    guildId: message.guild.id,
+                    guildName: message.guild.name,
+                    deafDate: Date.now()
+                })
 
-        if (message.author === vmuteuser) {
-            const errorEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Deafen unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription('You cannot deafen yourself. Why would you do that?')
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(errorEmbed)
-            return;
-        }
+                const DMEmbed = new Discord.MessageEmbed()
+                    .setColor("RANDOM")
+                    .setTitle(`You have been deafened in ${data.guildName}`)
+                    .setAuthor("Automated Guineabot message", message.client.user.avatarURL())
+                    .setTimestamp()
+                    .setFooter("Shoulda followed the rules... :/")
+                    .addFields({
+                        name: "Moderator",
+                        value: staffTag
+                    }, {
+                        name: "Reason",
+                        value: reason
+                    }, {
+                        name: "Date",
+                        value: data.deafDate.toLocaleString()
+                    })
+                
+                target
+                    .createDM()
+                    .then((DM) => {
+                        DM.send(DMEmbed)
+                            .then(() => {
+                                target.voice.setDeaf(true, reason)
 
-        if (!reason) {
-            reason = 'No reason given'
-        }
+                                const success = new Discord.MessageEmbed()
+                                    .setColor("RANDOM")
+                                    .setDescription(`Successfully deafened **${data.deafTag}** for **${data.reason}**`)
+                                    .setFooter("Thank you for using GuineaBot!")
+                                    .setTimestamp()
+                                message.channel.send(success)
 
-        if (!message.member.hasPermission("MUTE_MEMBERS", explicit = true)) {
-            const vmutepermEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Deafen unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription("You don't have the correct permissions.")
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(vmutepermEmbed)
-            return
-        } else if (!message.member.hasPermission("MUTE_MEMBERS", explicit = true)) {
-            const vmutepermEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Deafen unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription("I don't have the correct permissions. Try re-inviting me and adding `Mute members` permission. If this problem occurs, do info command with support argument.")
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(vmutepermEmbed)
-            return
-        }
-
-        if (message.member.roles.highest.position < vmuteuser.roles.highest.position || message.member.roles.highest.position === vmuteuser.roles.highest.position) {
-            const superiorEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Deafen unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription('The person you are trying to deafen has a role superior or equal to you.')
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(superiorEmbed)
-            return
-        }
-
-        if (vmuteuser.id === message.author.id) {
-            const errorEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Deafen unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription('You cannot deafen yourself. Why would you do that?')
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(errorEmbed)
-            return
-        }
-
-        if (vmuteuser.id === message.guild.id) {
-            message.channel.send("Nice try voice muting everyone... :)")
-            return
-        }
-
-        if (!vmuteuser.voice.channel) {
-            const novcembed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Deafen unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription('The member you specified is not connected to a voice channel.')
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(novcembed)
-            return
-        }
-
-        if (vmuteuser.voice.serverMute) {
-            const alreadyEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Deafen unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription('The member you specified is already deafened.')
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(alreadyEmbed)
-            return
-        } else {
-            vmuteuser.voice.setDeaf(true, reason)
-            const vmuteEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Deafen successful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription(`Successfully deafened **${vmuteuser.user.username}** for **${reason}**.`)
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(vmuteEmbed)
-            vmuteuser.send(`You are deafened in **${message.guild.name}** for **${reason}**`).catch(() => message.channel.send("I wasn't able to send a DM to the deafened user. Don't worry! He was deafened anyway."))
-        }
-
-        const logEmbed = new Discord.MessageEmbed()
-            .setColor("RANDOM")
-            .setTitle('Deafen command executed')
-            .setAuthor('Modlog')
-            .addFields({
-                name: 'Moderator: ',
-                value: `${message.author.tag} (${message.author.id})`
-            }, {
-                name: 'Moderated on: ',
-                value: `${vmuteuser.user.tag} (${vmuteuser.id})`
-            }, {
-                name: 'Reason: ',
-                value: `${reason}`
-            }, {
-                name: 'Date: ',
-                value: `${message.createdAt.toLocaleString()}`
-            })
-            .setThumbnail(message.client.user.avatarURL())
-            .setTimestamp()
-            .setFooter('Thank you for using GuineaBot!')
-        modlog.send(logEmbed)
-        console.log(`${vmuteuser.user.tag} deafened in ${message.guild.name} (${message.guild.id}) for ${reason}.`)
+                                const modlogEmbed = new Discord.MessageEmbed()
+                                    .setColor("RANDOM")
+                                    .setTitle("Member deafened")
+                                    .setAuthor("Guineabot Modlog", message.client.user.avatarURL())
+                                    .setTimestamp()
+                                    .setFooter("Thank you for using GuineaBot!")
+                                    .addFields({
+                                        name: "Deafened member",
+                                        value: `${targetTag} (${targetId})`
+                                    }, {
+                                        name: "Responsible moderator",
+                                        value: `${staffTag} (${staffId})`
+                                    }, {
+                                        name: "Reason",
+                                        value: `${reason}`
+                                    }, {
+                                        name: "Date",
+                                        value: `${data.deafDate.toLocaleString()}`
+                                    })
+                                modlog.send(modlogEmbed)
+                            })
+                    })
+            } catch (err) {
+                console.log(err)
+                message.channel.send(`An error occurred: \`${err.message}\``)
+            }
+        })
     }
 }

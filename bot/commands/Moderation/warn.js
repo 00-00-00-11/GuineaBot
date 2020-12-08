@@ -1,118 +1,134 @@
 const mongo = require('../../mongo')
-const warnSchema = require("../../schemas/warn-schema")
+const warnSchema = require("../../schemas/warn")
 const Discord = require("discord.js")
 
 module.exports = {
     name: "warn",
     minArgs: 1,
     maxArgs: -1,
+    requiredPermissions: [ "KICK_MEMBERS"],
     expectedArgs: "<mention> [reason]",
     description: "Give a warning to a user",
     category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
-        let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")
+        let modlog = message.guild.channels.cache.find(channel => {
+            return channel.name === "g-modlog"
+        })
 
-        if (!modlog) {
-            const modlogEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Warn unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription(`It looks like \`setup\` command has not been performed yet. Please contact an administrator`)
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(modlogEmbed)
-            return
-        }
+        let target = message.mentions.members.first()
+        let targetId = target.id
+        let targetTag = `${target.user.username}#${target.user.discriminator}`
 
-        if (!message.member.hasPermission("KICK_MEMBERS", explicit = true)) {
-            const warnpermEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Warn unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL())
-                .setDescription("You don't have the correct permissions.")
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(warnpermEmbed)
-            return
-        }
+        if (targetId === client.user.id) return message.reply("You cannot warn me.")
+        if (targetId === message.author.id) return message.reply("You cannot warn yourself.")
 
-        let target = message.mentions.users.first()
-        if (!target) {
-            message.reply('Please specify someone to warn.')
-            return
-        }
+        let staff = message.member
+        let staffId = staff.id
+        let staffTag = `${staff.user.username}#${staff.user.discriminator}`
 
-        const guildId = message.guild.id
-        const userId = target.id
         let reason = args.slice(1).join(" ")
 
-        if (!reason) {
-            reason = "No reason given"
-        }
-
-        const warning = {
-            author: message.member.user.tag,
-            timestamp: new Date().getTime(),
-            reason,
-        }
+        if (!modlog) return message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\`.`)
+        if (!reason) reason = "No reason provided."
+        if (staff.roles.highest.position < target.roles.highest.position) return message.reply(`You cannot warn ${targetTag} due to role hierarchy.`)
 
         await mongo().then(async (mongoose) => {
             try {
-                await warnSchema.findOneAndUpdate({
-                    guildId,
-                    userId,
+                let data = await warnSchema.findOne({ 
+                    warnId: targetId,
+                    guildId: message.guild.id,
+                })
+
+                if (!data) {
+                    let newData = await warnSchema.create({
+                        warnId: targetId,
+                        warnTag: targetTag,
+                        guildId: message.guild.id,
+                        guildName: message.guild.name,
+                        warnings: [Object],
+                        lastUpdated: Date.now()
+                    })
+
+                    data = newData
+                }
+
+                let warning = {
+                    warnDate: Date.now(),
+                    staffId: staffId,
+                    staffTag: staffTag,
+                    reason: reason,
+                    warnId: targetId
+                }
+
+                let newWarn = await warnSchema.findOneAndUpdate({
+                    warnId: targetId,
+                    guildId: message.guild.id,
                 }, {
-                    guildId,
-                    userId,
+                    warnId: targetId,
+                    guildId: message.guild.id,
+                    lastUpdated: Date.now(),
                     $push: {
-                        warnings: warning,
-                    },
+                        warnings: warning
+                    }  
                 }, {
                     upsert: true,
                 })
-            } catch (e) {
-                console.log(e)
+
+                const DMEmbed = new Discord.MessageEmbed()
+                    .setColor("RANDOM")
+                    .setTitle(`You have been warned in ${data.guildName}`)
+                    .setAuthor("Automated Guineabot message", message.client.user.avatarURL())
+                    .setTimestamp()
+                    .setFooter("Shoulda followed the rules... :/")
+                    .addFields({
+                        name: "Moderator",
+                        value: staffTag
+                    }, {
+                        name: "Reason",
+                        value: reason
+                    }, {
+                        name: "Date",
+                        value: newWarn.lastUpdated.toLocaleString()
+                    })
+
+                target
+                    .createDM()
+                    .then((DM) => {
+                        DM.send(DMEmbed)
+                            .then(() => {
+                                const success = new Discord.MessageEmbed()
+                                    .setColor("RANDOM")
+                                    .setDescription(`Successfully warned **${newWarn.warnTag}** for **${warning.reason}**`)
+                                    .setFooter("Thank you for using GuineaBot!")
+                                    .setTimestamp()
+                                message.channel.send(success)
+
+                                const modlogEmbed = new Discord.MessageEmbed()
+                                    .setColor("RANDOM")
+                                    .setTitle("Member warned")
+                                    .setAuthor("Guineabot Modlog", message.client.user.avatarURL())
+                                    .setTimestamp()
+                                    .setFooter("Thank you for using GuineaBot!")
+                                    .addFields({
+                                        name: "Warned member",
+                                        value: `${targetTag} (${targetId})`
+                                    }, {
+                                        name: "Responsible moderator",
+                                        value: `${staffTag} (${staffId})`
+                                    }, {
+                                        name: "Reason",
+                                        value: `${reason}`
+                                    }, {
+                                        name: "Date",
+                                        value: `${newWarn.lastUpdated.toLocaleString()}`
+                                    })
+                                modlog.send(modlogEmbed)
+                            })
+                    })
+            } catch (err) {
+                console.log(err)
+                message.channel.send(`An error occurred: \`${err.message}\``)
             }
         })
-
-        const embed = new Discord.MessageEmbed()
-            .setColor("RANDOM")
-            .setAuthor(message.author.tag, message.author.avatarURL())
-            .addFields({
-                name: "Warned member: ",
-                value: `${target}`
-            }, {
-                name: "Reason: ",
-                value: `${warning.reason}`
-            })
-            .setThumbnail(message.client.user.avatarURL())
-            .setTimestamp()
-            .setFooter('Thank you for using GuinneaBot!')
-        
-        message.channel.send(embed)
-
-        const logEmbed = new Discord.MessageEmbed()
-            .setColor("RANDOM")
-            .setTitle('Warn command executed')
-            .setAuthor('Modlog')
-            .addFields({
-                name: 'Moderator: ',
-                value: `${message.author} (${message.author.id})`
-            }, {
-                name: 'Moderated on: ',
-                value: `${target} (${target.id})`
-            }, {
-                name: 'Reason: ',
-                value: `${warning.reason}`
-            }, {
-                name: 'Date: ',
-                value: `${message.createdAt.toLocaleString()}`
-            })
-            .setThumbnail(message.client.user.avatarURL())
-            .setTimestamp()
-            .setFooter('Thank you for using GuineaBot!')
-        modlog.send(logEmbed)
     }
 }

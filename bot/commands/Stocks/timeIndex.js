@@ -7,8 +7,7 @@ module.exports = {
     minArgs: 4,
     maxArgs: 4,
     expectedArgs: "<symbol> <time interval> <time> <amount>",
-    syntaxError: "*Arguments wrapped in <> are required, [] means it is optional*\n\nYou provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} {ARGUMENTS}`\nFor a list of all commands, do `{PREFIX}help`\n\nHere is the documentation for the stocks API: <https://www.alphavantage.co/documentation/>",
-    description: "See how a stock is performing over time",
+    description: "See how a stock is performing over time, documentation: <https://www.alphavantage.co/documentation/>",
     category: "Stocks",
     run: async (message, args, text, client, prefix, instance) => {
         message.channel.send("If no data is given to you, it probably means that you provided invalid data.\n\nHere is the documentation for the stocks API: <https://www.alphavantage.co/documentation/>").then(emsg => emsg.delete({

@@ -30,16 +30,15 @@ discordXP.setURL(`${config.mongodb}`)
 //This is required so the music commands work properly
 client.queue = new Map()
 
-// TODO: Dank memer images
+// TODO: Moderation, spotify support, spotify playlist print, messages.json for every message sent
 
 let recentMsg = new Set();
 
 client.on('ready', async () => {
     //Initiate the command handler and many more features including a prebuilt prefix command, all data is stored in mongoDB
-    new WOKCommands(client, "commands", "listeners")
+    new WOKCommands(client, "commands", "listeners", "messages.json")
         .setMongoPath(`${config.mongodb}`)
         .setDefaultPrefix("g?")
-        .setSyntaxError("*Arguments wrapped in <> are required, [] means it is optional*\n\nYou provided invalid syntax. Valid syntax for this command is `{PREFIX}{COMMAND} {ARGUMENTS}`\nFor a list of all commands, do `{PREFIX}help`")
         .setDisplayName("Guineabot")
         .setColor("RANDOM")
         .setCategoryEmoji("Bot Owner", "🤖")
@@ -61,7 +60,7 @@ client.on('ready', async () => {
         activity: {
             name: `g?help | ${client.guilds.cache.size} servers`,
             type: "STREAMING",
-            url: `https://www.youtube.com/watch?v=dQw4w9WgXcQ`,
+            url: `https://www.youtube.com/watch?v=dQw4w9WgXcQ`, //get noobed
         },
         status: "online"
     })

@@ -25,11 +25,12 @@ module.exports = {
             .setFooter('Thank you for using GuineaBot!')
             .addField(
                 "\u200b",
+                "`" + 
                 new Date(seek * 1000).toISOString().substr(11, 8) +
-                "[" +
-                createBar(song.duration === 0 ? seek : song.duration, seek, 20)[0] +
-                "]" +
-                (song.duration == 0 ? "◉ LIVE" : new Date(song.duration * 1000).toISOString().substr(11, 8)),
+                "〚" +
+                createBar(song.duration === 0 ? seek : song.duration, seek, 20, "—", "🔵")[0] +
+                "〛" +
+                (song.duration == 0 ? "🔴 LIVE" : new Date(song.duration * 1000).toISOString().substr(11, 8)) + "`",
                 false
             )
 
