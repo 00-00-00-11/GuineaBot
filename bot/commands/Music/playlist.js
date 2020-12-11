@@ -10,14 +10,14 @@ const playlistconfig = {
 }
 const YoutubeAPI = require("simple-youtube-api")
 const youtube = new YoutubeAPI(playlistconfig.YOUTUBE_API_KEY)
-const scdl = require("soundcloud-downloader")
+const scdl = require("soundcloud-downloader").default
 
 module.exports = {
     name: "playlist",
-    aliases: [ "pl"],
+    aliases: ["pl"],
     minArgs: 1,
     maxArgs: -1,
-    expectedArgs: "<one of the following: Youtube search, Youtube playlist URL, Soundcloud playlist URL>",
+    expectedArgs: "<one of the following: Youtube search, Youtube playlist URL, soundcloud playlist URL>",
     description: "Play a playlist",
     category: "Music",
     run: async (message, args, text, client, prefix, instance) => {
@@ -66,6 +66,8 @@ module.exports = {
         let playlist = null
         let videos = []
 
+        
+
         if (urlValid) {
             try {
                 playlist = await youtube.getPlaylist(url, {
@@ -78,16 +80,16 @@ module.exports = {
                 console.error(error);
                 return message.reply("Playlist not found :(").catch(console.error);
             }
-        } else if (scdl.isValidUrl(args[0])) {
-            if (args[0].includes('/sets/')) {
-                message.channel.send('⌛ Fetching the playlist...')
-                playlist = await scdl.getSetInfo(args[0], playlistconfig.SOUNDCLOUD_CLIENT_ID)
-                videos = playlist.tracks.map(track => ({
+        } else if (scdl.isValidUrl(url)/*scdl.isValidUrl(url)*/) {
+            if (url && url.includes("/sets/")) {
+                message.channel.send("⌛ fetching the playlist...");
+                playlist = await scdl.getSetInfo(args[0], playlistconfig.SOUNDCLOUD_CLIENT_ID);
+                videos = playlist.tracks.map((track) => ({
                     title: track.title,
                     url: track.permalink_url,
                     duration: track.duration / 1000
-                }))
-            }
+                }));
+            } else return message.channel.send("This URL is not for a SoundCloud playlist.")
         } else {
             try {
                 const results = await youtube.searchPlaylists(search, 1, {
@@ -107,7 +109,8 @@ module.exports = {
             song = {
                 title: video.title,
                 video_url: video.url,
-                duration: video.durationSeconds
+                duration: video.durationSeconds,
+                thumbnail: video.thumbnails.medium.url
             }
 
             if (serverQueue) {
@@ -122,15 +125,15 @@ module.exports = {
 
         let playlistEmbed = new MessageEmbed()
             .setColor("RANDOM")
-            .setTitle(`${playlist.title}`)
-            .setURL(playlist.url)
             .setAuthor(message.author.tag, message.author.avatarURL())
             .setThumbnail(message.client.user.avatarURL())
             .setTimestamp()
             .setFooter('Thank you for using GuineaBot!')
+            .setTitle(playlist.title)
+            .setURL(playlist.url)
 
         if (!PRUNING) {
-            playlistEmbed.setDescription(queueConstruct.songs.map((song, index) => `${index + 1}. ${song,title}`))
+            playlistEmbed.setDescription(queueConstruct.songs.map((song, index) => `${index + 1}. ${song.title}`))
             if (playlistEmbed.description.length >= 2048) {
                 playlistEmbed.description = playlistEmbed.description.substr(0, 2007) + "\nPlaylist larger than character limit..."
             }

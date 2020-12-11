@@ -30,7 +30,7 @@ discordXP.setURL(`${config.mongodb}`)
 //This is required so the music commands work properly
 client.queue = new Map()
 
-// TODO: Moderation, spotify support, spotify playlist print, messages.json for every message sent
+// TODO: spotify playlist print, messages.json for every message sent
 
 let recentMsg = new Set();
 

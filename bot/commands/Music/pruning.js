@@ -7,6 +7,7 @@ module.exports = {
     maxArgs: 0,
     description: "Prevents spam when it comes to playing playlists",
     category: "Music",
+    requiredPermissions: ['ADMINISTRATOR'],
     run: async (message, args, text, client, prefix, instance) => {
         config.PRUNING = !config.PRUNING
 

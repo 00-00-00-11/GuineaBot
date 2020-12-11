@@ -6,6 +6,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 1,
     expectedArgs: "[mention]",
+    requiredPermissions: ['ADMINISTRATOR'],
     description: "Deletes xp entry in the database",
     category: "Leveling",
     run: async (message, args, text, client, prefix, instance) => {

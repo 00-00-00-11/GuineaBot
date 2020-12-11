@@ -6,6 +6,7 @@ module.exports = {
     minArgs: 1,
     maxArgs: 2,
     expectedArgs: "[mention] <amount>",
+    requiredPermissions: ['ADMINISTRATOR'],
     description: "Add levels to someone's xp profile",
     category: "Leveling",
     run: async (message, args, text, client, prefix, instance) => {

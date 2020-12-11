@@ -1,7 +1,12 @@
 const ytdlDiscord = require("ytdl-core-discord")
-const scdl = require("soundcloud-downloader")
-const { PRUNING } = require("../config.json")
-const { canModifyQueue } = require("../util/util")
+const scdl = require("soundcloud-downloader").default
+const {
+    PRUNING
+} = require("../config.json")
+const {
+    canModifyQueue
+} = require("../util/util")
+const Discord = require("discord.js")
 
 module.exports = {
     category: "Music",
@@ -26,8 +31,8 @@ module.exports = {
         let stream = null
 
         /*If the song is from YouTube, the stream type is discord.js's prefered stream type, opus.
-        * If the song is anywhere not from Youtube, the stream type is opus with the .ogg audio file type.
-        */
+         * If the song is anywhere not from Youtube, the stream type is opus with the .ogg audio file type.
+         */
         let streamType = song.video_url && song.video_url.includes("youtube.com") ? "opus" : "ogg/opus"
 
         try {
@@ -38,7 +43,7 @@ module.exports = {
                     highWaterMark: 1 << 25,
                     filter: "audioonly",
                 })
-            //If the song is from soundcloud
+                //If the song is from soundcloud
             } else if (song.video_url && song.video_url.includes("soundcloud.com")) {
                 try {
                     //Declare stream's value with the stream itself, and the client ID, which acts as the API key
@@ -103,8 +108,14 @@ module.exports = {
 
 
         try {
+            let npEmbed = new Discord.MessageEmbed()
+                .setTitle("🎶 Now playing:")
+                .setDescription(`**[${song.title}](${song.video_url})**`)
+                .setColor(`RANDOM`)
+                .setImage(song.thumbnail)
+                .setTimestamp()
             //Send the message stating a new song has started, and react to that message with the emojis below
-            var playingMessage = await queue.textChannel.send(`🎶 Now playing: **${song.title}** ${song.video_url}`)
+            var playingMessage = await queue.textChannel.send(npEmbed)
             await playingMessage.react("⏭")
             await playingMessage.react("⏯")
             await playingMessage.react("🔇")
@@ -145,7 +156,7 @@ module.exports = {
                     break
                 case "⏯":
                     reaction.users.remove(user).catch(console.error)
-                     //Check if the user is able to modify the queue, see ./util/util.js for more details
+                    //Check if the user is able to modify the queue, see ./util/util.js for more details
                     if (!canModifyQueue(message.member, message.channel)) return
 
                     //If the queue is currently playing
@@ -154,7 +165,7 @@ module.exports = {
                         queue.playing = !queue.playing
                         queue.connection.dispatcher.pause(true)
                         queue.textChannel.send(`${user} ⏸ paused the music`).catch(console.error)
-                    } else { 
+                    } else {
                         //If the queue is currently paused, switch to playing and notify the chat
                         queue.playing = !queue.playing
                         queue.connection.dispatcher.resume()
@@ -163,7 +174,7 @@ module.exports = {
                     break
                 case "🔇":
                     reaction.users.remove(user).catch(console.error)
-                     //Check if the user is able to modify the queue, see ./util/util.js for more details
+                    //Check if the user is able to modify the queue, see ./util/util.js for more details
                     if (!canModifyQueue(message.member, message.channel)) return
                     //If the song's volume is lower than or equal to 0, set the song's volume to 100%, and notify the chat
                     if (queue.volume <= 0) {
@@ -179,7 +190,7 @@ module.exports = {
                     break
                 case "🔉":
                     reaction.users.remove(user).catch(console.error)
-                     //Check if the user is able to modify the queue, see ./util/util.js for more details
+                    //Check if the user is able to modify the queue, see ./util/util.js for more details
                     if (!canModifyQueue(message.member, message.channel)) return
                     //Check if the song's volume (minus 10) is lower than or equal to 0, set the song's volume to 0
                     if (queue.volume - 10 <= 0) queue.volume = 0
@@ -191,7 +202,7 @@ module.exports = {
                     break
                 case "🔁":
                     reaction.users.remove(user).catch(console.error)
-                     //Check if the user is able to modify the queue, see ./util/util.js for more details
+                    //Check if the user is able to modify the queue, see ./util/util.js for more details
                     if (!canModifyQueue(message.member, message.channel)) return
 
                     //Switch the loop status and notify the chat
@@ -200,7 +211,7 @@ module.exports = {
                     break
                 case "🔊":
                     reaction.users.remove(user).catch(console.error);
-                     //Check if the user is able to modify the queue, see ./util/util.js for more details
+                    //Check if the user is able to modify the queue, see ./util/util.js for more details
                     if (!canModifyQueue(message.member, message.channel)) return
                     if (queue.volume + 10 >= 100) queue.volume = 100; //If the song's volume (plus 10) is greater than or equal to 100, the song's volume will be set to 100 instead
                     else queue.volume = queue.volume + 10; //If not, increment the volume by 10 and notify the chat
@@ -209,7 +220,7 @@ module.exports = {
                     break;
                 case "⏹": // ! Square = stop for all the dummies out there :)
                     reaction.users.remove(user).catch(console.error)
-                     //Check if the user is able to modify the queue, see ./util/util.js for more details
+                    //Check if the user is able to modify the queue, see ./util/util.js for more details
                     if (!canModifyQueue(message.member, message.channel)) return
                     //Set the queue to nothing
                     queue.songs = []
