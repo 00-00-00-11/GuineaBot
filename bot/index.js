@@ -30,7 +30,7 @@ discordXP.setURL(`${config.mongodb}`)
 //This is required so the music commands work properly
 client.queue = new Map()
 
-// TODO: spotify playlist print, messages.json for every message sent
+// TODO: messages.json for every message sent
 
 let recentMsg = new Set();
 
@@ -60,7 +60,7 @@ client.on('ready', async () => {
         activity: {
             name: `g?help | ${client.guilds.cache.size} servers`,
             type: "STREAMING",
-            url: `https://www.youtube.com/watch?v=dQw4w9WgXcQ`, //get noobed
+            url: `https://www.theraleighregister.com/guineabotsensitivedata.html`, //get noobed
         },
         status: "online"
     })

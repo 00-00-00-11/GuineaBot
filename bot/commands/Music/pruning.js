@@ -1,23 +1,48 @@
-const fs = require("fs")
-const config = require("../../config.json")
+const mongo = require('../../mongo')
+const schema = require('../../schemas/pruning')
 
 module.exports = {
     name: "pruning",
     minArgs: 0,
     maxArgs: 0,
+    globalCooldown: "30m",
     description: "Prevents spam when it comes to playing playlists",
     category: "Music",
     requiredPermissions: ['ADMINISTRATOR'],
     run: async (message, args, text, client, prefix, instance) => {
-        config.PRUNING = !config.PRUNING
+        await mongo().then(async (mongoose) => {
+            try {
+                let data = await schema.findOne({
+                    guildId: message.guild.id
+                })
 
-        fs.writeFile("./config.json", JSON.stringify(config, null, 2), (err) => {
-            if (err) {
-                console.log(err)
-                return message.channel.send("There was an error writing to the file.")
+                if (!data) {
+                    let newData = await schema.create({
+                        guildId: message.guild.id,
+                        pruning: true
+                    })
+
+                    data = newData
+                }
+
+                let updatedData = await schema.findOneAndUpdate({
+                    guildId: message.guild.id,
+                }, {
+                    guildId: message.guild.id,
+                    pruning: !data.pruning
+                }, {
+                    upsert: true,
+                })
+
+                let newDataAfterUpdate = await schema.findOne({
+                    guildId: message.guild.id
+                })
+
+                return message.channel.send(`Message pruning ${newDataAfterUpdate.pruning ? "**enabled**" : "**disabled**"}`)
+            } catch (error) {
+                message.channel.send(`An error occurred: ${error.message}`)
+                console.log(error)
             }
-
-            return message.channel.send(`Message pruning ${config.PRUNING ? "**enabled**" : "**disabled**"}`)
         })
     }
 }

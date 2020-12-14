@@ -1,4 +1,5 @@
 const Jimp = require("jimp")
+const Discord = require("discord.js")
 module.exports = {
     name: 'emboss',
     minArgs: 0,
@@ -9,7 +10,6 @@ module.exports = {
         let attachments = message.attachments.array()
         if (attachments.length === 0) return message.reply("Please upload an image, the caption should be this command.")
         if (attachments.length > 1) return message.reply("One image please!")
-        console.log(attachments[0].url)
 
         Jimp.read(`${attachments[0].url}`, (err, lenna) => {
             if (err) throw err
@@ -18,10 +18,17 @@ module.exports = {
                 [-2, -1, 0],
                 [-1, 1, 1],
                 [0, 1, 2]
-            ]).write("./image cache/emboss/modifiedIMG.png")
+            ])
 
-            message.channel.send(``, {
-                files: ["./image cache/emboss/modifiedIMG.png"]
+            lenna.getBuffer(Jimp.MIME_PNG, (err, result) => {
+                if (err) { 
+                    message.channel.send("An error occurred: " + err.message)
+                    console.log(err)
+                    return
+                }
+                
+                const attachment = new Discord.MessageAttachment(result, "modifiedImage.png")
+                message.channel.send(attachment)
             })
         })
     }

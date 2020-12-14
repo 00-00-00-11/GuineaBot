@@ -120,5 +120,13 @@
             "english": "Syntax",
             "spanish": "Sintaxis"
         }
+    },
+    "NOT_OWNER": {
+        "english": "You are not the owner of the bot, also known as ${Cy1der}#0001.",
+        "spanish": "No eres el propietario del bot, también conocido como ${Cy1der}#0001."
+    },
+    "PLEASE_WAIT": {
+        "english": "Please wait...",
+        "spanish": "Por favor espera..."
     }
 }

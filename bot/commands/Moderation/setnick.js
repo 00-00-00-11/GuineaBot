@@ -12,7 +12,7 @@ module.exports = {
     category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
         let modlog = message.guild.channels.cache.find(channel => {
-            return channel.name === "g-modlog"
+            return channel.name && channel.name.includes("g-modlog")
         })
         if (!modlog) return message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\`.`)
 

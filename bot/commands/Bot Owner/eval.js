@@ -1,6 +1,6 @@
 const process = require("child_process")
 module.exports = {
-    name: 'cmd',
+    name: 'eval',
     minArgs: 1,
     maxArgs: -1,
     expectedArgs: "<command to run>",
@@ -8,12 +8,7 @@ module.exports = {
     category: 'Bot Owner',
     run: async (message, args, text, client, prefix, instance) => {
         //Check if you are not me (Cy1der)
-        if (message.author.id !== "423222193032396801") return message.channel.send("You are not ${Cy1der}#0001.")
-
-        //Please wait
-        message.channel.send("Please wait...").then(m => m.delete({
-            timeout: 2000
-        }))
+        if (message.author.id !== "423222193032396801") return message.channel.send(instance.messageHandler.get(message.guild, 'NOT_OWNER'))
 
         //Execute command specified and send the result
         process.exec(args.join(" "), (error, stdout) => {

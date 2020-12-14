@@ -16,7 +16,6 @@ module.exports = {
 
         const memberCount = message.guild.memberCount
         const maxMembers = message.guild.maximumMembers
-        const onlineCount = message.guild.members.cache.filter(m => m.presence.status === "online").size
         const id = message.guild.id
         const shardID = message.guild.shardID
         const name = message.guild.name
@@ -52,9 +51,6 @@ module.exports = {
         embed.addFields({
             name: "Member count: ",
             value: `${memberCount}`
-        }, {
-            name: "Online count: ",
-            value: `${onlineCount}`
         }, {
             name: "Maximum members: ",
             value: `${maxMembers}`

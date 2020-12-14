@@ -13,7 +13,7 @@ module.exports = {
     category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
         let modlog = message.guild.channels.cache.find(channel => {
-            return channel.name === "g-modlog"
+            return channel.name && channel.name.includes("g-modlog")
         })
         let role = message.guild.roles.cache.find(role => {
             return role.name === "gmuted"
@@ -25,6 +25,7 @@ module.exports = {
 
         if (targetId === client.user.id) return message.reply("You cannot mute me using me.")
         if (targetId === message.author.id) return message.reply("You cannot mute yourself.")
+        if (target.user.bot) return message.reply("Target is a bot, failed to unmute.")
 
         let staff = message.member
         let staffId = staff.id

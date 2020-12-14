@@ -1,9 +1,6 @@
 const ytdlDiscord = require("ytdl-core-discord")
 const scdl = require("soundcloud-downloader").default
 const {
-    PRUNING
-} = require("../config.json")
-const {
     canModifyQueue
 } = require("../util/util")
 const Discord = require("discord.js")
@@ -69,7 +66,7 @@ module.exports = {
                 module.exports.play(queue.songs[0], message)
             }
 
-            console.error(error)
+            console.log(error)
             return message.channel.send(`Error: ${error.message ? error.message : error}`);
         }
 
@@ -109,8 +106,8 @@ module.exports = {
 
         try {
             let npEmbed = new Discord.MessageEmbed()
-                .setTitle("🎶 Now playing:")
-                .setDescription(`**[${song.title}](${song.video_url})**`)
+                .setTitle("🎶  Now playing  🎶")
+                .setDescription(`**[${song.title}](${song.video_url})**\n\n**Duration:** ${song.duration == 0 ? "🔴 LIVE" : new Date(song.duration * 1000).toISOString().substr(11, 8)}`)
                 .setColor(`RANDOM`)
                 .setImage(song.thumbnail)
                 .setTimestamp()
@@ -129,7 +126,7 @@ module.exports = {
         }
 
         //Filter who can react to the reactions, and the code will be run if the user reacted before the song ended
-        const filter = (reaction, user) => user.id !== message.client.user.id
+        const filter = (user) => user.id !== message.client.user.id
         var collector = playingMessage.createReactionCollector(filter, {
             time: song.duration > 0 ? song.duration * 1000 : 600000
         })

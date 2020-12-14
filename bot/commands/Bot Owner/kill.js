@@ -6,7 +6,7 @@ module.exports = {
     category: "Bot Owner",
     run: async (message, args, text, client, prefix, instance) => {
         //Check if you are not me (Cy1der)
-        if (message.author.id !== "423222193032396801") return message.reply("You are not the owner of the bot, also known as ${Cy1der}#0001.")
+        if (message.author.id !== "423222193032396801") return message.reply(instance.messageHandler.get(message.guild, 'NOT_OWNER'))
 
         //Filter the person to respond to the message author, me
         const filter = msg => msg.author.id === message.author.id;

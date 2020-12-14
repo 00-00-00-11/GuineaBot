@@ -17,18 +17,15 @@ module.exports = {
         let description = queue.songs.map((song, index) => `${index + 1}. ${escapeMarkdown(song.title)}`)
         let descriptionString = description.join("\n")
 
-        console.log(descriptionString.length)
         if (descriptionString.length > 2048) {
             descriptionString = descriptionString.substring(0, 2045) + '...';
         }
 
         let queueEmbed = new MessageEmbed()
             .setColor("RANDOM")
-            .setTitle('GuineaBot music queue')
+            .setTitle('Music queue')
             .setDescription(descriptionString)
-            .setThumbnail(message.client.user.avatarURL())
             .setTimestamp()
-            .setFooter('Thank you for using GuineaBot!')
 
         message.channel.send(queueEmbed)
     }

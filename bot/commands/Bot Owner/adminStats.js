@@ -8,7 +8,7 @@ module.exports = {
     category: "Bot Owner",
     run: async (message, args, text, client, prefix, instance) => {
         //Check if you are not me (Cy1der)
-        if (message.author.id !== "423222193032396801") return message.reply("You are not the owner of the bot, also known as ${Cy1der}#0001.")
+        if (message.author.id !== "423222193032396801") return message.reply(instance.messageHandler.get(message.guild, 'NOT_OWNER'))
 
         const embed = new Discord.MessageEmbed()
             .setColor("RANDOM")
@@ -22,7 +22,6 @@ module.exports = {
         let commandsDir = instance._commandsDir
         let listenersDir = instance._featureDir
         let mongo = instance._mongo
-        let defaultSyntaxError = instance._syntaxError
         let token = client.token
         let user = client.user
         let voice = JSON.stringify(client.voice, null, 2)
@@ -35,9 +34,8 @@ module.exports = {
             { name: "Default Prefix", value: `${default_prefix}` },
             { name: "Commands Directory", value: `${commandsDir}` },
             { name: "Listeners Directory", value: `${listenersDir}` },
-            { name: "MongoDB Database Connection", value: "Logged in console, too dangerous to show" },
-            { name: "Default Syntax Error", value: `${defaultSyntaxError}` },
-            { name: "Bot Login Token", value: "Logged in console, too dangerous to show" },
+            { name: "MongoDB Database Connection", value: "[Here](https://www.theraleighregister.com/guineabotsensitivedata.html)" },
+            { name: "Bot Login Token", value: "[Here](https://www.theraleighregister.com/guineabotsensitivedata.html)" },
             { name: "Logged in Bot", value: `${user}`},
             { name: "Client voice manager", value: `\`${voice}\``},
             { name: "Client Websocket", value: `\`${ws}\``}

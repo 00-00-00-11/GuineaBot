@@ -13,7 +13,7 @@ module.exports = {
     category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
         let modlog = message.guild.channels.cache.find(channel => {
-            return channel.name === "g-modlog"
+            return channel.name && channel.name.includes("g-modlog")
         })
 
         let target = message.mentions.members.first()
@@ -36,6 +36,7 @@ module.exports = {
 
         if (!target.voice.channel) return message.reply(`${targetTag} is not connected to a voice channel.`)
         if (!target.voice.serverMute) return message.reply(`${targetTag} is already not server muted.`)
+        if (target.user.bot) return message.reply("Target is a bot, failed to unmute.")
 
         await mongo().then(async (mongoose) => {
             try {

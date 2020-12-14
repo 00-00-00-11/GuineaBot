@@ -19,10 +19,9 @@ module.exports = {
 
         let nowPlaying = new MessageEmbed()
             .setColor("RANDOM")
-            .setTitle('Now playing')
-            .setDescription(`${song.title}\n${song.video_url}`)
+            .setTitle(song.title)
+            .setURL(song.video_url)
             .setTimestamp()
-            .setFooter('Thank you for using GuineaBot!')
             .addField(
                 "\u200b",
                 "`" + 

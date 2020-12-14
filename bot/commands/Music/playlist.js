@@ -11,6 +11,8 @@ const playlistconfig = {
 const YoutubeAPI = require("simple-youtube-api")
 const youtube = new YoutubeAPI(playlistconfig.YOUTUBE_API_KEY)
 const scdl = require("soundcloud-downloader").default
+const mongo = require('../../mongo')
+const schema = require('../../schemas/pruning')
 
 module.exports = {
     name: "playlist",
@@ -21,9 +23,6 @@ module.exports = {
     description: "Play a playlist",
     category: "Music",
     run: async (message, args, text, client, prefix, instance) => {
-        const {
-            PRUNING
-        } = require("../../config.json")
         const {
             channel
         } = message.member.voice
@@ -66,7 +65,7 @@ module.exports = {
         let playlist = null
         let videos = []
 
-        
+
 
         if (urlValid) {
             try {
@@ -80,7 +79,7 @@ module.exports = {
                 console.error(error);
                 return message.reply("Playlist not found :(").catch(console.error);
             }
-        } else if (scdl.isValidUrl(url)/*scdl.isValidUrl(url)*/) {
+        } else if (scdl.isValidUrl(url)) {
             if (url && url.includes("/sets/")) {
                 message.channel.send("⌛ fetching the playlist...");
                 playlist = await scdl.getSetInfo(args[0], playlistconfig.SOUNDCLOUD_CLIENT_ID);
@@ -105,6 +104,27 @@ module.exports = {
             }
         }
 
+        let pruning = await mongo().then(async (mongoose) => {
+            try {
+                let data = await schema.findOne({
+                    guildId: message.guild.id
+                })
+
+                if (!data) {
+                    let newData = await schema.create({
+                        guildId: message.guild.id,
+                        pruning: true
+                    })
+
+                    data = newData
+                }
+
+                return data.pruning
+            } catch (error) {
+                message.channel.send(`An error occurred: ${error.message}`)
+            }
+        })
+
         videos.forEach((video) => {
             song = {
                 title: video.title,
@@ -115,7 +135,7 @@ module.exports = {
 
             if (serverQueue) {
                 serverQueue.songs.push(song)
-                if (!PRUNING) {
+                if (!pruning) {
                     message.channel.send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
                 }
             } else {
@@ -132,7 +152,7 @@ module.exports = {
             .setTitle(playlist.title)
             .setURL(playlist.url)
 
-        if (!PRUNING) {
+        if (!pruning) {
             playlistEmbed.setDescription(queueConstruct.songs.map((song, index) => `${index + 1}. ${song.title}`))
             if (playlistEmbed.description.length >= 2048) {
                 playlistEmbed.description = playlistEmbed.description.substr(0, 2007) + "\nPlaylist larger than character limit..."

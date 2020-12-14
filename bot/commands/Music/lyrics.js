@@ -22,8 +22,6 @@ module.exports = {
             lyrics = `No lyrics found for ${queue.songs[0].title}.`
         }
 
-        console.log(lyrics.length)
-
         if (lyrics.length > 2048) {
             lyrics = lyrics.substring(0, 2045) + '...';
         }

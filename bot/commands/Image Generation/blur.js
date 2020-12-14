@@ -1,3 +1,4 @@
+const Discord = require("discord.js")
 const Jimp = require("jimp")
 module.exports = {
     name: 'blur',
@@ -17,10 +18,17 @@ module.exports = {
                 [0.111, 0.111, 0.111],
                 [0.111, 0.111, 0.111],
                 [0.111, 0.111, 0.111]
-            ]).write("./image cache/blur/modifiedIMG.png")
+            ])
 
-            message.channel.send(``, {
-                files: ["./image cache/blur/modifiedIMG.png"]
+            lenna.getBuffer(Jimp.MIME_PNG, (err, result) => {
+                if (err) { 
+                    message.channel.send("An error occurred: " + err.message)
+                    console.log(err)
+                    return
+                }
+                
+                const attachment = new Discord.MessageAttachment(result, "modifiedImage.png")
+                message.channel.send(attachment)
             })
         })
     }
