@@ -121,12 +121,64 @@
             "spanish": "Sintaxis"
         }
     },
-    "NOT_OWNER": {
-        "english": "You are not the owner of the bot, also known as ${Cy1der}#0001.",
-        "spanish": "No eres el propietario del bot, también conocido como ${Cy1der}#0001."
+    "ENCRYPTED": {
+        "english": "ENCRYPTED",
+        "spanish": "CIFRADO"
     },
-    "PLEASE_WAIT": {
-        "english": "Please wait...",
-        "spanish": "Por favor espera..."
+    "THANKS": {
+        "english": "Thank you for using GuineaBot!",
+        "spanish": "¡Gracias por usar GuineaBot!"
+    },
+    "ADMIN_STATS_TITLE": {
+        "english": "Administrative bot stats",
+        "spanish": "Estadísticas de bot administrativas"
+    },
+    "DEFAULT_PREFIX": {
+        "english": "Default Prefix",
+        "spanish": "Prefijo predeterminado"
+    },
+    "CMD_DIR": {
+        "english": "Commands Directory", 
+        "spanish": "Directorio de comandos"
+    },
+    "LIS_DIR": {
+        "english": "Listeners Directory",
+        "spanish": "Directorio de oyentes"
+    },
+    "MDB": {
+        "english": "MongoDB Database Connection", 
+        "spanish": "Conexión a la base de datos MongoDB"
+    },
+    "HERE": {
+        "english": "Here",
+        "spanish": "Aquí"
+    },
+    "BOT_LOGIN_TOKEN": {
+        "english": "Bot Login Token", 
+        "spanish": "Token de inicio de sesión de bot"
+    },
+    "LOGGED_IN": {
+        "english": "Logged in Bot", 
+        "spanish": "Bot registrado"
+    },
+    "CLIENT_VM": {
+        "english": "Client voice manager", 
+        "spanish": "Administrador de voz del cliente"
+    },
+    "CLIENT_WS": {
+        "english": "Client Websocket", 
+        "spanish": "Websocket del cliente"
+    },
+    "SURE?": {
+        "english": "**Are you sure? Enter \"yes\" or \"no\". Enter `cancel` to cancel.**",
+        "spanish": "**¿Estás seguro? Ingrese \"yes\" o \"no\". Ingrese \"cancel\" para cancelar. **"
+    },
+    "KILL_ENDED": {
+        "english": "**Kill process ended, requested by bot owner**",
+        "spanish": "**Finalizó el proceso de eliminación, solicitado por el propietario del bot**"
+    },
+    "SHUT_DOWN": {
+        "english": "📴 Shutting down in 3 seconds...",
+        "spanish": "📴 Apagando en 3 segundos ..."
     }
 }

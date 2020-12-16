@@ -2,11 +2,17 @@
 module.exports = (client) => {
     client.on("guildDelete", deletedGuild => {
         //Updates status to match server count, however, there is a rate limit, so sometimes the bot will not update the status
+        let shardText = "shards"
+        if (client.ws.totalShards > 2) shardText = "shard"
+
+        let serverText = "servers"
+        if (client.guilds.cache.size > 2) serverText = "server"
+
         client.user.setPresence({
             activity: {
-                name: `g?help | ${client.guilds.cache.size} servers`,
+                name: `${client.guilds.cache.size} ${serverText} | ${client.ws.totalShards} ${shardText}`,
                 type: "STREAMING",
-                url: `https://www.youtube.com/watch?v=dQw4w9WgXcQ`,
+                url: `https://www.youtube.com/watch?v=dQw4w9WgXcQ`, //get noobed
             },
             status: "online"
         })
@@ -14,7 +20,7 @@ module.exports = (client) => {
 }
 
 module.exports.config = {
-    displayName: "Server Leave", 
+    displayName: "Server Leave",
     dbName: "GBOTguilddelete",
     loadDBFirst: true
 }

@@ -483,7 +483,7 @@ class Chess {
 module.exports = {
     Chess, 
     description: "Chess game against an AI",
-    category: "Games",
+    category: "Fun & Games",
 }
 
 const pawnEvalWhite =

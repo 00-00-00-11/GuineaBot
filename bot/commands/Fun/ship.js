@@ -4,7 +4,7 @@ module.exports = {
     maxArgs: 2,
     expectedArgs: "<first mention> <second mention>",
     description: "owo what's this",
-    category: "Fun",
+    category: "Fun & Games",
     run: async (message, args, text, client, prefix, instance) => {
         var mentionedUsers = message.mentions.members.array()
         var firstUser = mentionedUsers[0] || message.guild.members.cache.get(args[0]);

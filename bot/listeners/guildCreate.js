@@ -4,11 +4,13 @@ const Discord = require("discord.js")
 module.exports = (client) => {
     client.on('guildCreate', async joinedGuild => {
         //Creates a channel
-        await joinedGuild.channels.create('read-me', { type: 'text' })
+        await joinedGuild.channels.create('read-me', {
+            type: 'text'
+        })
 
         //Looks for the channel
         let readme = joinedGuild.channels.cache.find(channel => channel.name === "read-me")
-        
+
         const readmeEmbed = new Discord.MessageEmbed()
             .setColor("RANDOM")
             .setTitle('Read before using GuineaBot')
@@ -21,11 +23,17 @@ module.exports = (client) => {
         readme.send(readmeEmbed)
 
         //Updates status to match server count, however, there is a rate limit, so sometimes the bot will not update the status
+        let shardText = "shards"
+        if (client.ws.totalShards > 2) shardText = "shard"
+
+        let serverText = "servers"
+        if (client.guilds.cache.size > 2) serverText = "server"
+
         client.user.setPresence({
             activity: {
-                name: `g?help | ${client.guilds.cache.size} servers`,
+                name: `${client.guilds.cache.size} ${serverText} | ${client.ws.totalShards} ${shardText}`,
                 type: "STREAMING",
-                url: `https://www.youtube.com/watch?v=dQw4w9WgXcQ`,
+                url: `https://www.youtube.com/watch?v=dQw4w9WgXcQ`, //get noobed
             },
             status: "online"
         })
@@ -33,7 +41,7 @@ module.exports = (client) => {
 };
 
 module.exports.config = {
-    displayName: "Server Join", 
+    displayName: "Server Join",
     dbName: "GBOTguildcreate",
     loadDBFirst: true
 }

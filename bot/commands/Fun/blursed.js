@@ -5,7 +5,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 0,
     description: 'Random image from r/blursedimages',
-    category: 'Fun',
+    category: 'Fun & Games',
     run: async (message, args, text, client, prefix, instance) => {
         const embed = new Discord.MessageEmbed()
         got("https://www.reddit.com/r/blursedimages/random/.json").then(response => {

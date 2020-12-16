@@ -1,18 +1,33 @@
 // ? https://discord.com/oauth2/authorize?client_id=745047221099036724&scope=bot&permissions=2146958847 alpha
 // ! https://discord.com/oauth2/authorize?client_id=727288620221857843&scope=bot&permissions=2146958847
 
-//Initiate dependencies required to run index.js and create a new client
-const Discord = require('discord.js');
-const client = new Discord.Client({
-    partials: ['MESSAGE', 'CHANNEL', 'REACTION']
-});
 const fetch = require("node-fetch");
 const WOKCommands = require("wokcommands");
 const discordXP = require("discord-xp");
 const cleverbot = require("cleverbot-free");
 
-//Hide sensitive information from the public using dotenv-flow, all the "passwords" are stored in a file named ".env" located in the root directory
-require('dotenv-flow').config()
+//Initiate dependencies required to run index.js and create a new client
+const Discord = require('discord.js');
+const client = new Discord.Client({
+    partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+    retryLimit: 1,
+    restSweepInterval: 60,
+    restRequestTimeout: 15000,
+    restTimeOffset: 500,
+    restWsBridgeTimeout: 5000,
+    fetchAllMembers: false,
+    messageEditHistoryMaxSize: -1,
+    messageSweepInterval: 0,
+    messageCacheLifetime: 0,
+    messageCacheMaxSize: 200,
+    http: {
+        version: 7,
+        api: "https://discord.com/api",
+        cdn: "https://cdn.discordapp.com",
+        invite: "https://discord.gg",
+        template: "https://discord.new"
+    },
+});
 
 //Instead of writing process.env every time you have to declare a password, I declared them all in an object
 const config = {
@@ -27,12 +42,10 @@ const config = {
 
 discordXP.setURL(`${config.mongodb}`)
 
-//This is required so the music commands work properly
 client.queue = new Map()
-
-// TODO: messages.json for every message sent
-
 let recentMsg = new Set();
+
+// TODO: messages.json for every message sent, giveaways
 
 client.on('ready', async () => {
     //Initiate the command handler and many more features including a prebuilt prefix command, all data is stored in mongoDB
@@ -40,27 +53,58 @@ client.on('ready', async () => {
         .setMongoPath(`${config.mongodb}`)
         .setDefaultPrefix("g?")
         .setDisplayName("Guineabot")
+        .setDefaultLanguage("english")
         .setColor("RANDOM")
-        .setCategoryEmoji("Bot Owner", "🤖")
-        .setCategoryEmoji("Fun", "😂")
-        .setCategoryEmoji("Games", "🎮")
-        .setCategoryEmoji("Economy", "💸")
-        .setCategoryEmoji("Server Owner", "👑")
-        .setCategoryEmoji("Images", "📷")
-        .setCategoryEmoji("Information", "ℹ")
-        .setCategoryEmoji("Leveling", "🌀")
-        .setCategoryEmoji("Moderation", "🔨")
-        .setCategoryEmoji("Music", "🎶")
-        .setCategoryEmoji("Riola", "🐦")
-        .setCategoryEmoji("Server Management", "⚡")
-        .setCategoryEmoji("Stocks", "📈")
-        .setCategoryEmoji("Utility", "🧠")
+        .setBotOwner(config.owner)
+        .setCategorySettings(
+            [{
+                    name: "Bot Owner",
+                    emoji: "🤖",
+                    hidden: true
+                },
+                {
+                    name: "Fun & Games",
+                    emoji: "🎮"
+                },
+                {
+                    name: "Economy",
+                    emoji: "💵"
+                },
+                {
+                    name: "Moderation",
+                    emoji: "🔨"
+                },
+                {
+                    name: "Utility",
+                    emoji: "🧠"
+                },
+                {
+                    name: "Images",
+                    emoji: "📸"
+                },
+                {
+                    name: "Leveling",
+                    emoji: "💬"
+                },
+                {
+                    name: "Music",
+                    emoji: "🎵"
+                },
+                {
+                    name: "Information",
+                    emoji: "ℹ"
+                }
+            ]
+        )
+
+    let serverText = "servers"
+    if (client.guilds.cache.size > 2) serverText = "server"
 
     client.user.setPresence({
         activity: {
-            name: `g?help | ${client.guilds.cache.size} servers`,
+            name: `g?help | ${client.guilds.cache.size} ${serverText}`,
             type: "STREAMING",
-            url: `https://www.theraleighregister.com/guineabotsensitivedata.html`, //get noobed
+            url: `https://www.youtube.com/watch?v=dQw4w9WgXcQ`, //get noobed
         },
         status: "online"
     })

@@ -8,7 +8,7 @@ module.exports = {
     maxArgs: 4,
     expectedArgs: "<symbol> <time interval> <time> <amount>",
     description: "See how a stock is performing over time, documentation: <https://www.alphavantage.co/documentation/>",
-    category: "Stocks",
+    category: "Utility",
     run: async (message, args, text, client, prefix, instance) => {
         message.channel.send("If no data is given to you, it probably means that you provided invalid data.\n\nHere is the documentation for the stocks API: <https://www.alphavantage.co/documentation/>").then(emsg => emsg.delete({
             timeout: 30000

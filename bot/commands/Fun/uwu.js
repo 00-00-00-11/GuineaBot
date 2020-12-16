@@ -5,7 +5,7 @@ module.exports = {
     minArgs: 1,
     maxArgs: -1,
     description: "Uwuify everything",
-    category: "Fun",
+    category: "Fun & Games",
     expectedArgs: "<text>",
     run: async (message, args, text, client, prefix, instance) => {
         message.channel.send(owo(text, "uwu"))

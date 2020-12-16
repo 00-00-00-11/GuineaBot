@@ -5,7 +5,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 0,
     description: "Create a text channel",
-    category: "Server Management",
+    category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
         if (!message.member.hasPermission("MANAGE_CHANNELS", explicit = true)) {
             const permEmbed = new Discord.MessageEmbed()

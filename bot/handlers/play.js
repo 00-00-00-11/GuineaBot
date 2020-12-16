@@ -4,13 +4,14 @@ const {
     canModifyQueue
 } = require("../util/util")
 const Discord = require("discord.js")
+const mongo = require("../mongo")
+const schema = require('../schemas/pruning')
 
 module.exports = {
     category: "Music",
     description: "Music handler",
     async play(song, message) {
         const playconfig = {
-            PRUNING: process.env.PRUNING,
             SOUNDCLOUD_CLIENT_ID: process.env.SOUNDCLOUD_CLIENT_ID
         }
 
@@ -258,9 +259,31 @@ module.exports = {
         })
 
         //When the song ends, remove all the reactions and delete the message
-        collector.on("end", () => {
+        collector.on("end", async () => {
             playingMessage.reactions.removeAll().catch(console.error)
-            if (PRUNING && playingMessage && !playingMessage.deleted) {
+
+            let pruning = await mongo().then(async (mongoose) => {
+                try {
+                    let data = await schema.findOne({
+                        guildId: message.guild.id
+                    })
+    
+                    if (!data) {
+                        let newData = await schema.create({
+                            guildId: message.guild.id,
+                            pruning: true
+                        })
+    
+                        data = newData
+                    }
+    
+                    return data.pruning
+                } catch (error) {
+                    message.channel.send(`An error occurred: ${error.message}`)
+                }
+            })
+            
+            if (pruning && playingMessage && !playingMessage.deleted) {
                 playingMessage.delete({
                     timeout: 3000
                 }).catch(console.error)

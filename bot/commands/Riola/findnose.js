@@ -3,8 +3,8 @@ module.exports = {
     name: "findnose",
     minArgs: 0,
     maxArgs: 0,
-    description: "Find Magyk14's nose",
-    category: "Riola",
+    description: "[Find Magyk14's nose](https://discord.gg/GWu42km)",
+    category: "Fun & Games",
     run: async (message, args, text, client, prefix, instance) => {
         if (message.guild.id !== "618454511685599268") {
             const riolaEmbed = new Discord.MessageEmbed()
@@ -27,9 +27,9 @@ module.exports = {
         }
 
         if (message.author.id === "561661162715086848") {
-            message.reply("I have gone on a worldwide search to find your beloved nose, check this channel in 12 hours.")
+            message.reply("I have gone on a worldwide search to find your beloved nose, check this channel in 3 hours.")
         } else {
-            message.reply("Thanks for helping magyk14 search his nose! Check this channel in 12 hours.")
+            message.reply("Thanks for helping magyk14 search his nose! Check this channel in 3 hours.")
         }
 
         setTimeout(() => {
@@ -45,6 +45,6 @@ module.exports = {
                 console.log(results)
                 return
             }
-        }, 43200000)
+        }, 10800000)
     }
 }

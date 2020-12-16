@@ -5,7 +5,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 0,
     description: "Hang man game, the whole chat can play",
-    category: "Games",
+    category: "Fun & Games",
     run: async (message, args, text, client, prefix, instance) => {
         //Call a new instance of Hangman
         const game = new HangmanGame(client)

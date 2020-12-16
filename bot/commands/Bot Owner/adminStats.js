@@ -1,22 +1,20 @@
 const Discord = require('discord.js')
+const bin = require("sourcebin_js")
 
 module.exports = {
     name: 'adminstats',
     minArgs: 0,
     maxArgs: 0,
-    description: "Display statistics not availeble for the public",
+    description: "Display statistics not avaiable for the public",
     category: "Bot Owner",
+    ownerOnly: true,
     run: async (message, args, text, client, prefix, instance) => {
-        //Check if you are not me (Cy1der)
-        if (message.author.id !== "423222193032396801") return message.reply(instance.messageHandler.get(message.guild, 'NOT_OWNER'))
-
         const embed = new Discord.MessageEmbed()
             .setColor("RANDOM")
-            .setTitle("Administrative bot stats")
+            .setTitle(instance.messageHandler.get(message.guild, "ADMIN_STATS_TITLE"))
             .setAuthor(message.author.tag, message.author.avatarURL())
-            .setThumbnail(message.client.user.avatarURL())
             .setTimestamp()
-            .setFooter('Thank you for using GuineaBot!')
+            .setFooter(instance.messageHandler.get(message.guild, "THANKS"))
 
         let default_prefix = instance._defaultPrefix
         let commandsDir = instance._commandsDir
@@ -27,19 +25,56 @@ module.exports = {
         let voice = JSON.stringify(client.voice, null, 2)
         let ws = JSON.stringify(client.ws, null, 2)
 
-        if (!commandsDir) commandsDir = "ENCRYPTED"
-        if (!listenersDir) listenersDir = "ENCRYPTED"
+        let vmURL = await bin.create([{
+            name: "GuineaBot/Cy1der",
+            content: voice,
+            languageId: "JSON"
+        }], {
+            title: "Guineabot voice manager",
+            description: "Adminstats command executed"
+        }).then(bin => {
+            return bin.url
+        })
 
-        embed.addFields(
-            { name: "Default Prefix", value: `${default_prefix}` },
-            { name: "Commands Directory", value: `${commandsDir}` },
-            { name: "Listeners Directory", value: `${listenersDir}` },
-            { name: "MongoDB Database Connection", value: "[Here](https://www.theraleighregister.com/guineabotsensitivedata.html)" },
-            { name: "Bot Login Token", value: "[Here](https://www.theraleighregister.com/guineabotsensitivedata.html)" },
-            { name: "Logged in Bot", value: `${user}`},
-            { name: "Client voice manager", value: `\`${voice}\``},
-            { name: "Client Websocket", value: `\`${ws}\``}
-        )
+        let wsURL = await bin.create([{
+            name: "GuineaBot/Cy1der",
+            content: ws,
+            languageId: "JSON"
+        }], {
+            title: "Guineabot websocket",
+            description: "Adminstats command executed"
+        }).then(bin => {
+            return bin.url
+        })
+
+        if (!commandsDir) commandsDir = instance.messageHandler.get(message.guild, "ENCRYPTED")
+        if (!listenersDir) listenersDir = instance.messageHandler.get(message.guild, "ENCRYPTED")
+
+        embed.addFields({
+            name: instance.messageHandler.get(message.guild, "DEFAULT_PREFIX"),
+            value: `${default_prefix}`
+        }, {
+            name: instance.messageHandler.get(message.guild, "CMD_DIR"),
+            value: `${commandsDir}`
+        }, {
+            name: instance.messageHandler.get(message.guild, "LIS_DIR"),
+            value: `${listenersDir}`
+        }, {
+            name: instance.messageHandler.get(message.guild, "MDB"),
+            value: `[${instance.messageHandler.get(message.guild, "HERE")}](https://www.theraleighregister.com/guineabotsensitivedata.html)`
+        }, {
+            name: instance.messageHandler.get(message.guild, "BOT_LOGIN_TOKEN"),
+            value: `[${instance.messageHandler.get(message.guild, "HERE")}](https://www.theraleighregister.com/guineabotsensitivedata.html)`
+        }, {
+            name: instance.messageHandler.get(message.guild, "CLIENT_VM"),
+            value: `[sourceb.in](${vmURL})`
+        }, {
+            name: instance.messageHandler.get(message.guild, "CLIENT_WS"),
+            value: `[sourceb.in](${wsURL})`
+        }, {
+            name: instance.messageHandler.get(message.guild, "LOGGED_IN"),
+            value: `${user}`
+        },)
 
         console.log(token)
         console.log(mongo)

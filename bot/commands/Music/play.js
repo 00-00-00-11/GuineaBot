@@ -148,7 +148,7 @@ module.exports = {
                         artistsA.push(dataFetched.artists[i].name)
                     }
 
-                    let query = dataFetched.name + " by " + artistsA.join(", ")
+                    let query = artistsA.join(", ") + " - " + dataFetched.name
                     return query
                 }).catch(err => {
                     console.log(err)

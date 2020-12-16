@@ -2,10 +2,10 @@
   "name": "guinea-bot",
   "version": "1.0.0",
   "description": "Discord bot",
-  "main": "index.js",
+  "main": "shard.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "node .": "node run index.js",
+    "node .": "node run shard.js",
     "type": "module",
     "lint": "eslint ."
   },
@@ -70,6 +70,7 @@
     "simple-youtube-api": "^5.2.1",
     "snakecord": "0.0.6",
     "soundcloud-downloader": "^0.2.1",
+    "sourcebin_js": "0.0.3-ignore",
     "spotify-web-api-node": "^5.0.0",
     "stocks.js": "0.0.19",
     "string-progressbar": "^1.0.1",

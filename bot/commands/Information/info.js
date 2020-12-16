@@ -5,11 +5,11 @@ module.exports = {
     maxArgs: 1,
     expectedArgs: "<one of the following: version, server, support, riola>",
     description: "information about Guineabot",
-    category: "Help",
+    category: "Information",
     run: async (message, args, text, client, prefix, instance) => {
         if (args[0] === 'version') {
 
-            const version = '0.5.0'
+            const version = '0.7.3'
 
             const versionEmbed = new Discord.MessageEmbed()
                 .setColor("RANDOM")

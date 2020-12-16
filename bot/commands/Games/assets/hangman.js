@@ -122,5 +122,5 @@ class HangmanGame {
 module.exports = {
     HangmanGame, 
     description: "Hang man game, everyone can play",
-    category: "Games"
+    category: "Fun & Games"
 }

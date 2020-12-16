@@ -42,7 +42,7 @@ module.exports = {
 
                 const embed = new Discord.MessageEmbed()
                     .setColor("RANDOM")
-                    .setTitle(`${target.tag}'s profie`)
+                    .setTitle(`${target.tag}'s profile`)
                     .addFields({
                         name: "Current job",
                         value: `${data.job}`

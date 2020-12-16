@@ -6,7 +6,7 @@ module.exports = {
     minArgs: 0,
     maxArgs: 0,
     description: 'Random meme from r/dankmemes',
-    category: 'Fun',
+    category: 'Fun & Games',
     run: async (message, args, text, client, prefix, instance) => {
         const embed = new Discord.MessageEmbed()
         got("https://www.reddit.com/r/dankmemes/random/.json").then(response => {

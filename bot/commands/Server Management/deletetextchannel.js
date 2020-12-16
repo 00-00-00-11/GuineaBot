@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: 1,
     expectedArgs: "<channel mention or ID>",
     description: "Delete a text channel",
-    category: "Server Management",
+    category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
         if (!message.member.hasPermission("MANAGE_CHANNELS", explicit = true)) {
             const permEmbed = new Discord.MessageEmbed()

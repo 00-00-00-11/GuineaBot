@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: 1,
     expectedArgs: "<channel ID>",
     description: "Delete a voice channel",
-    category: "Server Management",
+    category: "Moderation",
     run: async (message, args, text, client, prefix, instance) => {
         if (!message.member.hasPermission("MANAGE_CHANNELS", explicit = true)) {
             const permEmbed = new Discord.MessageEmbed()

@@ -8,7 +8,7 @@ module.exports = {
     maxArgs: -1,
     expectedArgs: "<query>",
     description: 'Random image from a search',
-    category: 'Fun',
+    category: 'Fun & Games',
     run: async (message, args, text, client, prefix, instance) => {
         //Combine the command arguments together
         let imagesearch = args.slice(0).join(" ")

@@ -201,5 +201,5 @@ class Connect4 {
 module.exports = {
     Connect4,
     description: "Connect Four game against an opponent",
-    category: "Games",
+    category: "Fun & Games",
 }
