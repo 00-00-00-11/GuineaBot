@@ -5,6 +5,7 @@ const fetch = require("node-fetch");
 const WOKCommands = require("wokcommands");
 const discordXP = require("discord-xp");
 const cleverbot = require("cleverbot-free");
+const { GiveawayCreator, DropCreator } = require("discord-giveaway")
 
 //Initiate dependencies required to run index.js and create a new client
 const Discord = require('discord.js');
@@ -41,11 +42,16 @@ const config = {
 }
 
 discordXP.setURL(`${config.mongodb}`)
+const Creator = new GiveawayCreator(client, config.mongodb)
+const Creator2 = new DropCreator(client, config.mongodb)
 
 client.queue = new Map()
+client.giveaways = Creator
+client.drops = Creator2
+
 let recentMsg = new Set();
 
-// TODO: messages.json for every message sent, giveaways
+// TODO: messages.json for every message sent, item usage for economy, listeners
 
 client.on('ready', async () => {
     //Initiate the command handler and many more features including a prebuilt prefix command, all data is stored in mongoDB
@@ -93,12 +99,16 @@ client.on('ready', async () => {
                 {
                     name: "Information",
                     emoji: "ℹ"
+                },
+                {
+                    name: "Giveaways",
+                    emoji: "🎉"
                 }
             ]
         )
 
     let serverText = "servers"
-    if (client.guilds.cache.size > 2) serverText = "server"
+    if (client.guilds.cache.size === 1) serverText = "server"
 
     client.user.setPresence({
         activity: {

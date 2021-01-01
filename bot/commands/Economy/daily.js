@@ -67,7 +67,7 @@ module.exports = {
                         upsert: true,
                     })
 
-                    return message.reply(`$${roundedCoins} have been added to your wallet!`)
+                    return message.reply(`$${formatNumber(roundedCoins)} have been added to your wallet!`)
                 }
             } catch (err) {
                 console.error(err)
@@ -75,4 +75,8 @@ module.exports = {
             }
         })
     }
+}
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 }

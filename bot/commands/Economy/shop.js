@@ -160,19 +160,19 @@ module.exports = {
 
         if (args[0].toLowerCase() === "food") {
             for (let i = 0; i < foodItems.length; i++) {
-                str += `${foodItems[i].name} | ${foodItems[i].cost} | ${foodItems[i].worth}\n`
+                str += `${foodItems[i].name} | ${formatNumber(foodItems[i].cost)} | ${formatNumber(foodItems[i].worth)}\n`
             }
         } else if (args[0].toLowerCase() === "fun") {
             for (let i = 0; i < funItems.length; i++) {
-                str += `${funItems[i].name} | ${funItems[i].cost} | ${funItems[i].worth}\n`
+                str += `${funItems[i].name} | ${formatNumber(funItems[i].cost)} | ${formatNumber(funItems[i].worth)}\n`
             }
         } else if (args[0].toLowerCase() === "tech") {
             for (let i = 0; i < techItems.length; i++) {
-                str += `${techItems[i].name} | ${techItems[i].cost} | ${techItems[i].worth}\n`
+                str += `${techItems[i].name} | ${formatNumber(techItems[i].cost)} | ${formatNumber(techItems[i].worth)}\n`
             }
         } else if (args[0].toLowerCase() === "flex") {
             for (let i = 0; i < flexItems.length; i++) {
-                str += `${flexItems[i].name} | ${flexItems[i].cost} | ${flexItems[i].worth}\n`
+                str += `${flexItems[i].name} | ${formatNumber(flexItems[i].cost)} | ${formatNumber(flexItems[i].worth)}\n`
             }
         } else return message.channel.send("Invalid category")
 
@@ -190,4 +190,8 @@ module.exports = {
 
         message.channel.send(embed)
     }
+}
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 }

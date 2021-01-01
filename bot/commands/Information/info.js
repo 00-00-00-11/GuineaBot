@@ -29,7 +29,7 @@ module.exports = {
                 .setThumbnail(message.client.user.avatarURL())
                 .addFields({
                     name: 'Official GuineaBot server: ',
-                    value: 'Coming soon!'
+                    value: '[Here](https://discord.gg/6KpZhR3SRP)'
                 })
                 .setTimestamp()
                 .setFooter('Thank you for using GuineaBot!')

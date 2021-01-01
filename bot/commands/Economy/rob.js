@@ -7,12 +7,14 @@ module.exports = {
     aliases: ["steal"],
     minArgs: 1,
     maxArgs: 1,
-    expectedArgs: "<mention>",
+    expectedArgs: "<mention or ID>",
     description: "Steal money",
     category: "Economy",
     run: async (message, args, text, client, prefix, instance) => {
         const target1 = message.author
-        const target2 = message.mentions.members.first()
+        const target2 = message.mentions.members.first() || client.users.cache.get(args[0])
+
+        if (!target2) return message.channel.send("User does not exist.")
 
         const userId1 = target1.id
         const userId2 = target2.id
@@ -108,7 +110,7 @@ module.exports = {
                         upsert: true,
                     })
 
-                    return message.channel.send(`**${target1}** has stolen ${roundedStolen} from **${target2.displayName}**'s wallet!`)
+                    return message.channel.send(`**${target1}** has stolen ${formatNumber(roundedStolen)} from **${target2.displayName}**'s wallet!`)
                 }
             } catch (err) {
                 console.log(err)
@@ -116,4 +118,8 @@ module.exports = {
             }
         })
     }
+}
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 }

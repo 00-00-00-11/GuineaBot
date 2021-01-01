@@ -48,13 +48,13 @@ module.exports = {
                         value: `${data.job}`
                     }, {
                         name: "Coin balance",
-                        value: `\nWallet: $${data.wallet}\nBank: $${data.bank}`
+                        value: `\nWallet: $${formatNumber(data.wallet)}\nBank: $${formatNumber(data.bank)}`
                     }, {
                         name: "Coin multiplier",
                         value: `${data.multiplier}`
                     }, {
                         name: "Inventory item count",
-                        value: `${data.inventory.length} items`
+                        value: `${formatNumber(data.inventory.length)} items`
                     })
                     .setThumbnail(target.displayAvatarURL({
                         format: 'png',
@@ -69,4 +69,8 @@ module.exports = {
             }
         })
     }
+}
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 }

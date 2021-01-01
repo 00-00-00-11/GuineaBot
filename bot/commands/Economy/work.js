@@ -71,7 +71,7 @@ module.exports = {
                         upsert: true,
                     })
 
-                    return message.reply(`You worked ${hours} hours as a ${afterWork.job} and gained $${roundedPaycheck}. You now have $${afterWork.wallet + roundedPaycheck} in your wallet.`)
+                    return message.reply(`You worked ${hours} hours as a ${afterWork.job} and gained $${formatNumber(roundedPaycheck)}. You now have $${formatNumber(afterWork.wallet + roundedPaycheck)} in your wallet.`)
                 }
             } catch (e) {
                 console.log(e)
@@ -79,4 +79,8 @@ module.exports = {
             }
         })
     }
+}
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 }

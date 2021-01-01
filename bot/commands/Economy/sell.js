@@ -197,7 +197,7 @@ module.exports = {
                             upsert: true,
                         })
 
-                        return message.reply(`Successfully sold 1 **${Items[i].name}** for ${Items[i].worth} coins.\nYou now have ${currentWallet + Items[i].worth} coins in your wallet.`)
+                        return message.reply(`Successfully sold 1 **${Items[i].name}** for ${formatNumber(Items[i].worth)} coins.\nYou now have ${formatNumber(currentWallet + Items[i].worth)} coins in your wallet.`)
                     }
                 }
                 return message.reply(`Could not find a **${chosenItem}** in the shop.\nMake sure you entered your choice case sensitive!`)
@@ -208,4 +208,8 @@ module.exports = {
             }
         })
     }
+}
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 }

@@ -199,7 +199,7 @@ module.exports = {
                             upsert: true,
                         })
 
-                        return message.reply(`Successfully purchased 1 **${Items[i].name}** for ${Items[i].cost} coins.\nYou now have ${currentWallet - Items[i].cost} coins in your wallet.`)
+                        return message.reply(`Successfully purchased 1 **${Items[i].name}** for ${formatNumber(Items[i].cost)} coins.\nYou now have ${formatNumber(currentWallet - Items[i].cost)} coins in your wallet.`)
                     }
                 }
 
@@ -210,4 +210,8 @@ module.exports = {
             }
         })
     }
+}
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 }

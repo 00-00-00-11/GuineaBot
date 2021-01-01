@@ -42,7 +42,7 @@ module.exports = {
                 const embed = new Discord.MessageEmbed()
                 .setColor("RANDOM")
                 .setTitle(`${target.tag}'s coin balance`)
-                .setDescription(`\n**Wallet:** $${data.wallet}\n**Bank:** $${data.bank}`)
+                .setDescription(`\n**Wallet:** $${formatNumber(data.wallet)}\n**Bank:** $${formatNumber(data.bank)}`)
                 .setThumbnail(target.displayAvatarURL({
                     format: 'png',
                     dynamic: true
@@ -55,4 +55,8 @@ module.exports = {
             }
         })
     }
+}
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 }

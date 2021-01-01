@@ -59,11 +59,15 @@ module.exports = {
                     upsert: true,
                 })
 
-                return message.reply(`Successfully withdrawn **${args[0]}** coins from the bank.`)
+                return message.reply(`Successfully withdrawn **${formatNumber(parseInt(args[0]))}** coins from the bank.`)
             } catch (err) {
                 console.log(err)
                 message.channel.send(`An error occurred: \`${err.message}\`\nUsually this happens once, please try again.`)
             }
         })
     }
+}
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 }

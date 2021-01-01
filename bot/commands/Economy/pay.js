@@ -95,11 +95,15 @@ module.exports = {
                     upsert: true,
                 })
 
-                return message.channel.send(`**From:** ${target1}\n**To:** ${target2}\n**Amount:** ${roundedAmount}`)
+                return message.channel.send(`**From:** ${target1}\n**To:** ${target2}\n**Amount:** ${formatNumber(roundedAmount)}`)
             } catch (err) {
                 console.log(err)
                 message.channel.send(`An error occurred: \`${err.message}\`\nUsually this happens once, please try again.`)
             }
         })
     }
+}
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 }

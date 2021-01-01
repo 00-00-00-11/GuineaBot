@@ -74,7 +74,7 @@ module.exports = {
                             upsert: true,
                         })
 
-                        return message.reply(`\nI gave you $${roundedCoins}.\nNow leave me alone.`)
+                        return message.reply(`\nI gave you $${formatNumber(roundedCoins)}.\nNow leave me alone.`)
                     } else if (begornobeg === false) {
                         return message.reply("No, go away.")
                     }
@@ -85,4 +85,8 @@ module.exports = {
             }
         })
     }
+}
+
+function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1 ')
 }

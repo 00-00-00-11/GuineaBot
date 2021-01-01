@@ -28,6 +28,7 @@ module.exports = {
 
             //After 3 seconds, the bot will automatically shut down, if the bot is hosted on heroku, it restarts instead
             setTimeout(() => {
+                client.destroy()
                 process.exit()
             }, 3000)
         }
