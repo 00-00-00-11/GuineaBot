@@ -38,7 +38,7 @@ module.exports = {
                     .setColor("RANDOM")
                     .setTitle(result.data.title)
                     .setTimestamp()
-                    .setDescription(`**Year:** ${result.data.year}\n**Length:** ${result.data.length}\n**Rating:** ${result.data.rating} out of 10 (${result.data.rating_votes} votes)`)
+                    .setDescription(`**Year:** ${result.data.year}\n**Length:** ${result.data.length}\n**Rating:** ${result.data.rating ? result.data.rating : "`unknown`"} out of 10 (${result.data.rating_votes ? result.data.rating_votes : "`unknown`"} votes)`)
                     .setImage(result.data.poster)
                     .addFields(
                         { 
@@ -51,7 +51,7 @@ module.exports = {
                         },
                         {
                             name: "Technical Specifications",
-                            value: `**Sound Mix:** ${result.data.technical_specs[1][1]}\n**Color:** ${result.data.technical_specs[2][1]}\n**Aspect Ratio:** ${result.data.technical_specs[3][1]}\n**Printed Film Format:** ${result.data.technical_specs[8][1]}`
+                            value: `**Sound Mix:** ${result.data.technical_specs[1][1]}\n**Color:** ${result.data.technical_specs[2][1]}\n**Aspect Ratio:** ${result.data.technical_specs[3][1]}`
                         }
                     )
 
