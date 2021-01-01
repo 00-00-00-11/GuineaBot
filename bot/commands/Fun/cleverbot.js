@@ -8,7 +8,7 @@ module.exports = {
     expectedArgs: "<query>",
     description: "Smart chat bot with no context",
     category: "Fun & Games",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         //Combine all the arguments it receives
         const textIn = args.slice(0).join(" ")
 

@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: 0,
     description: "Sharpen an image",
     category: "Images",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let attachments = message.attachments.array()
         if (attachments.length === 0) return message.reply("Please upload an image, the caption should be this command.")
         if (attachments.length > 1) return message.reply("One image please!")

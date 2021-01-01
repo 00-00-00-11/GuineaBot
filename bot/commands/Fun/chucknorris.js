@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: 0,
     description: 'Chuck Norris Io thingy',
     category: 'Fun & Games',
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         var options = {
             method: 'GET',
             url: 'https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com/jokes/random',

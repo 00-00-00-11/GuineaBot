@@ -9,7 +9,7 @@ module.exports = {
     maxArgs: 0,
     description: "View your inventory",
     category: "Economy",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const target = message.mentions.users.first() || message.author
         const userId = target.id
 

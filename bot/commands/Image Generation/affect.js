@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: 0,
     description: "This does not affect my baby",
     category: "Images",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         //See abandon.js
         var image = "./assets/images/affect/affect.bmp"
 

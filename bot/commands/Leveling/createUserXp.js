@@ -9,7 +9,7 @@ module.exports = {
     requiredPermissions: ['ADMINISTRATOR'],
     description: 'Create an XP entry in the database',
     category: "Leveling",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         if (message.author.id !== message.guild.ownerID) {
             const nopermsEmbed = new Discord.MessageEmbed()
                 .setColor("RANDOM")

@@ -9,7 +9,7 @@ module.exports = {
     expectedArgs: "<rows> <columns> <mine count>",
     description: 'Minesweeper game using spoilers',
     category: 'Fun & Games',
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const rows = parseInt(args[0]);
         const columns = parseInt(args[1]);
         const mines = parseInt(args[2]);

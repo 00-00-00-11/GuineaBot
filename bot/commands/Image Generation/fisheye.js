@@ -11,8 +11,7 @@ module.exports = {
     maxArgs: 0,
     description: "Bulge an image's center",
     category: "Images",
-    run: async (message, args, text, client, prefix, instance) => {
-        message.channel.startTyping(true)
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let attachments = message.attachments.array();
 
         var level = 50
@@ -31,7 +30,6 @@ module.exports = {
             const attachment = canvas.toBuffer()
             if (Buffer.byteLength(attachment) > 8e+6) return message.channel.send("After adding the effects, the file was too large to send.")
 
-            message.channel.stopTyping(true)
             return message.channel.send({
                 files: [{
                     attachment: attachment,

@@ -7,7 +7,7 @@ module.exports = {
     expectedArgs: "<channel mention or ID>",
     description: "Delete a text channel",
     category: "Moderation",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         if (!message.member.hasPermission("MANAGE_CHANNELS", explicit = true)) {
             const permEmbed = new Discord.MessageEmbed()
                 .setColor("RANDOM")

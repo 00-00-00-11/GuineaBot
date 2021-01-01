@@ -7,7 +7,7 @@ module.exports = {
     expectedArgs: "<movie search query>",
     description: "Search for a movie",
     category: "Utility",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         var options = {
             method: 'GET',
             url: `https://imdb-internet-movie-database-unofficial.p.rapidapi.com/search/${text}`,

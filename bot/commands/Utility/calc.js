@@ -7,7 +7,7 @@ module.exports = {
     expectedArgs: "<math input>",
     description: "Math calculator",
     category: "Utility",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         if (!args[0]) return message.channel.send("Input a calculaton")
 
         let resp

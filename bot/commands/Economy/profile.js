@@ -9,7 +9,7 @@ module.exports = {
     expectedArgs: "[mention]",
     description: "Display your economy profile",
     category: "Economy",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const target = message.mentions.users.first() || message.author
         const userId = target.id
 

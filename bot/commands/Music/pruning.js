@@ -9,7 +9,7 @@ module.exports = {
     description: "Prevents spam when it comes to playing playlists",
     category: "Music",
     requiredPermissions: ['ADMINISTRATOR'],
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         await mongo().then(async (mongoose) => {
             try {
                 let data = await schema.findOne({

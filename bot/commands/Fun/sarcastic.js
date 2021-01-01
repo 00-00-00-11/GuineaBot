@@ -8,7 +8,7 @@ module.exports = {
     expectedArgs: "<text>",
     description: "BrO yOu ArE sO fUnNy",
     category: "Fun & Games",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         //Simple as this, what to I describe here?
         let sarcasticText = sarc.getSarcastic(text)
         message.channel.send(sarcasticText)

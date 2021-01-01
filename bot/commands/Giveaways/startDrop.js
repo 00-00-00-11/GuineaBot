@@ -6,7 +6,7 @@ module.exports = {
     description: 'Start a drop',
     category: "Giveaways",
     requiredPermissions: ['MENTION_EVERYONE'],
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const channel = message.mentions.channels.first()
         const prize = args.slice(1).join(" ")
 

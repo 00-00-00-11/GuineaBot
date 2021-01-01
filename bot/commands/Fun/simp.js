@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: 0,
     description: "Bro have you been watching pokimaine recently?",
     category: "Fun & Games",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         //Get a random precentage
         let precent = Math.floor(Math.random() * 101)
 

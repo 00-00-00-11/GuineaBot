@@ -11,7 +11,7 @@ module.exports = {
     expectedArgs: "<mention>",
     description: "Remove all warnings from a member",
     category: "Moderation",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let modlog = message.guild.channels.cache.find(channel => {
             return channel.name && channel.name.includes("g-modlog")
         })

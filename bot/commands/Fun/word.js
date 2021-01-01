@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: 0,
     description: "Get a random word",
     category: "Fun & Games",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         message.channel.send(await bruh(`/word`))
     }
 }

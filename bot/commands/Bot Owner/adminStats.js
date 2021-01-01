@@ -8,7 +8,7 @@ module.exports = {
     description: "Display statistics not avaiable for the public",
     category: "Bot Owner",
     ownerOnly: true,
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const embed = new Discord.MessageEmbed()
             .setColor("RANDOM")
             .setTitle(instance.messageHandler.get(message.guild, "ADMIN_STATS_TITLE"))

@@ -10,7 +10,7 @@ module.exports = {
     expectedArgs: "<symbol> <time interval> <amount> <time period> <indicator> <series type>",
     description: "DM ${Cy1der}#0001 if you know, documentation: <https://www.alphavantage.co/documentation/>",
     category: "Utility",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         message.channel.send("If no data is given to you, it probably means that you provided invalid data.\n\nHere is the documentation for the stocks API: <https://www.alphavantage.co/documentation/>").then(emsg => emsg.delete({
             timeout: 30000
         }))

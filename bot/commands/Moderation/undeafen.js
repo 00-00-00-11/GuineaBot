@@ -11,7 +11,7 @@ module.exports = {
     expectedArgs: "<mention> [reason]",
     description: "Allow a user to hear others in a voice channel",
     category: "Moderation",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let modlog = message.guild.channels.cache.find(channel => {
             return channel.name && channel.name.includes("g-modlog")
         })

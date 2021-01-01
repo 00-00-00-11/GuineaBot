@@ -7,7 +7,7 @@ module.exports = {
     description: 'Run a child process in Discord',
     category: 'Bot Owner',
     ownerOnly: true,
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         //Execute command specified and send the result
         process.exec(args.join(" "), (error, stdout) => {
             let response = (error || stdout)

@@ -12,7 +12,7 @@ module.exports = {
     expectedArgs: "<Youtube search>",
     description: "Search for a song on YouTube",
     category: "Music",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         if (!args.length) return message.reply(`Usage: g?${module.exports.name} <video name>`)
 
         const search = args.join(" ")

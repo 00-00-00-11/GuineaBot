@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: 0,
     description: 'Create all the channels/roles the bot needs',
     category: 'Moderation',
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         //Check for permissions
         if (message.author.id !== message.guild.ownerID) {
             const nopermsEmbed = new Discord.MessageEmbed()

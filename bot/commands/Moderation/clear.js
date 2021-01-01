@@ -7,7 +7,7 @@ module.exports = {
     expectedArgs: "<amount (2-100)>",
     description: "Delete messages in bulk",
     category: "Moderation",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const msgdel = parseInt(args[0])
         if (!message.member.hasPermission("MANAGE_MESSAGES", explicit = true)) {
             const clearpermEmbed = new Discord.MessageEmbed()

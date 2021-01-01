@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: 0,
     description: "Guess the number",
     category: "Fun & Games",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         //Random number from 1 to 25
         var number = Math.floor(Math.random() * 24) + 1
 

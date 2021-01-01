@@ -5,7 +5,7 @@ module.exports = {
     expectedArgs: "<either encode or decode> <value>",
     description: "Convert hex to text or the other way around",
     category: "Utility",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         if (!args[0]) return message.channel.send("Please specify a valid codec, either decode or encode.")
 
         let choices = ["encode", "decode"]

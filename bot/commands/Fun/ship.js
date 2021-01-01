@@ -5,7 +5,7 @@ module.exports = {
     expectedArgs: "<first mention> <second mention>",
     description: "owo what's this",
     category: "Fun & Games",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         var mentionedUsers = message.mentions.members.array()
         var firstUser = mentionedUsers[0] || message.guild.members.cache.get(args[0]);
         var secondUser = mentionedUsers[1] || message.guild.members.cache.get(args[1]);

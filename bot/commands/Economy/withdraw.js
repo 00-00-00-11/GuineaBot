@@ -9,7 +9,7 @@ module.exports = {
     expectedArgs: "<amount of coins>",
     description: "Withdraw coins from the bank",
     category: "Economy",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let target = message.author
         let userId = target.id
 

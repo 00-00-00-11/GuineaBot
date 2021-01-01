@@ -8,7 +8,7 @@ module.exports = {
     expectedArgs: "<search query>",
     description: "Surf the web",
     category: "Utility",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let config = {
             GOOGLE_API_KEY: process.env.GOOGLE_API_KEY
         }

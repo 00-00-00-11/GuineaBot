@@ -6,7 +6,7 @@ module.exports = {
     expectedArgs: "<one of the following: version, server, support, riola>",
     description: "information about Guineabot",
     category: "Information",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         if (args[0] === 'version') {
 
             const version = '0.7.3'

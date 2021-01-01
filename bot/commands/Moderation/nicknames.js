@@ -10,7 +10,7 @@ module.exports = {
     expectedArgs: "[mention]",
     description: "View past nicknames of a member",
     category: "Moderation",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let target = message.mentions.members.first() || message.member
         let targetId = target.id
         let targetTag = `${target.user.username}#${target.user.discriminator}`

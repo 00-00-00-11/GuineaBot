@@ -6,7 +6,7 @@ module.exports = {
     description: 'Start a giveaway',
     category: "Giveaways",
     requiredPermissions: ['MENTION_EVERYONE'],
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const filter = msg => msg.author.id === message.author.id;
         const options = {
             max: 1

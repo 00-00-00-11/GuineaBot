@@ -4,7 +4,7 @@ module.exports = {
     maxArgs: 0,
     description: "Rock paper scissors against AI",
     category: "Fun & Games",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         //Notify the author that the game is running
         message.reply("Enter `r` for rock, `p` for paper, or `s` for scissors.")
 

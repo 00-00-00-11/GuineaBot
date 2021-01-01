@@ -7,7 +7,7 @@ module.exports = {
     description: 'Reroll a giveaway',
     category: "Giveaways",
     requiredPermissions: ['MENTION_EVERYONE'],
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const ended = await client.giveaways.rerollGiveaway(args[0])
 
         if (!ended) return message.channel.send("That giveaway has not ended or is not a giveaway.")

@@ -8,7 +8,7 @@ module.exports = {
     maxArgs: 0,
     description: "Work to earn money",
     category: "Economy",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let target = message.author
         let userId = target.id
 

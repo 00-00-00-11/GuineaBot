@@ -7,7 +7,7 @@ module.exports = {
     expectedArgs: "<from> <to> <query>",
     description: "Translate between languages",
     category: "Utility",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let textt = args.slice(2).join(" ")
 
         translate(textt, {

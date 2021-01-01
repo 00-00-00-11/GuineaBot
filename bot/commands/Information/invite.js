@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: 0,
     description: "Invite link to add the bot to a server",
     category: "Information",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const embed = new Discord.MessageEmbed()
             .setColor("RANDOM")
             .setTitle("[Guineabot OAUTH2 Invite Link]")

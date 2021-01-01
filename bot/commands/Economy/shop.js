@@ -7,7 +7,7 @@ module.exports = {
     expectedArgs: "<category: food, fun, tech, flex>",
     description: "View the shop for items to buy",
     category: "Economy",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const foodItems = [{
                 name: "Banana",
                 cost: 30,

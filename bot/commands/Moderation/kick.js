@@ -8,7 +8,7 @@ module.exports = {
     expectedArgs: "<mention> [reason]",
     description: "Kick a user from the Discord server",
     category: "Moderation",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let modlog = message.guild.channels.cache.find(channel => {
             return channel.name && channel.name.includes("g-modlog")
         })

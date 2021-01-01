@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: 0,
     description: "Fetch your profile avatar",
     category: "Utility",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let webp16 = message.author.displayAvatarURL({
             format: "webp",
             size: 16

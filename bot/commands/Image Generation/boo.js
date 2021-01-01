@@ -7,7 +7,7 @@ module.exports = {
     expectedArgs: '<first panel text> | <second panel text>',
     description: "Ghost saying some facts",
     category: "Images",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         args = message.content.slice(6).trim().split("|")
         let firstText = args[0]
         let secondText = args[1]

@@ -22,7 +22,7 @@ module.exports = {
     expectedArgs: "<one of the following: Youtube search, Youtube playlist URL, soundcloud playlist URL>",
     description: "Play a playlist",
     category: "Music",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const {
             channel
         } = message.member.voice

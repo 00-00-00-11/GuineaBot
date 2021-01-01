@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: 0,
     description: "Current server stats",
     category: "Information",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const embed = new Discord.MessageEmbed()
             .setColor("RANDOM")
             .setTitle("Server stats")

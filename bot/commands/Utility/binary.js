@@ -6,7 +6,7 @@ module.exports = {
     expectedArgs: "<either encode or decode> <value>",
     description: "Convert binary to text or the other way around",
     category: "Utility",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         if (!args[0]) return message.channel.send("Unknown parameter. Please choose the method first, either decode or encode it.");
 
         let choice = ["encode", "decode"];

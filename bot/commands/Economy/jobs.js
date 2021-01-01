@@ -9,7 +9,7 @@ module.exports = {
     expectedArgs: "<either resign, assign or list (<job name> if assign)>",
     description: "Change jobs or display them",
     category: "Economy",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const target = message.author
         const userId = target.id
 

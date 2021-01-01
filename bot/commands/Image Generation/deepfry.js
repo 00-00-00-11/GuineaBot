@@ -11,8 +11,7 @@ module.exports = {
     maxArgs: 0,
     description: "want some fries?",
     category: "Images",
-    run: async (message, args, text, client, prefix, instance) => {
-        message.channel.startTyping(true)
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let image = message.attachments.array()
         if (image.length === 0) return message.reply("Please upload an image, the caption should be this command.")
         if (image.length > 1) return message.reply("One image please!")
@@ -36,7 +35,6 @@ module.exports = {
 
             if (Buffer.byteLength(attachment) > 8e+6) return message.channel.send("Processed image was too large.")
 
-            message.channel.stopTyping(true)
             return message.channel.send({
                 files: [{
                     attachment,

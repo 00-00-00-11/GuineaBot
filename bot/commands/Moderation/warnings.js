@@ -10,7 +10,7 @@ module.exports = {
     expectedArgs: "[mention]",
     description: "Display a user's warnings",
     category: "Moderation",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let target = message.mentions.users.first() || message.author
         let guildId = message.guild.id
         let userId = target.id

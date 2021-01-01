@@ -9,7 +9,7 @@ module.exports = {
     expectedArgs: "<mention> <amount>",
     description: "Give someone else money",
     category: "Economy",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const target1 = message.author
         const target2 = message.mentions.members.first()
 

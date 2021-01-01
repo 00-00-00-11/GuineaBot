@@ -12,7 +12,7 @@ module.exports = {
     maxArgs: 0,
     description: "Random trivia questions",
     category: "Fun & Games",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         trivia.getQuestions({
                 type: "multiple"
             })

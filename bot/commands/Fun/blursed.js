@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: 0,
     description: 'Random image from r/blursedimages',
     category: 'Fun & Games',
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const embed = new Discord.MessageEmbed()
         got("https://www.reddit.com/r/blursedimages/random/.json").then(response => {
             //Fetch most of the data from the reddit post it recieves

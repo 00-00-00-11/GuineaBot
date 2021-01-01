@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: 0,
     description: "bongocat overlay on your profile picture",
     category: "Images",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         var image = "./assets/images/bongocat/bongocat.bmp"
 
         const canvas = Canvas.createCanvas(750, 750)

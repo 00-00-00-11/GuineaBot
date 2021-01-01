@@ -7,7 +7,7 @@ module.exports = {
     expectedArgs: '<balloon text> | <arrow text>',
     description: "Baloon and arrow meme",
     category: "Images",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         args = message.content.slice(9).trim().split("|")
         let balloonText = args[0]
         let arrowText = args[1]

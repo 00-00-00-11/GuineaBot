@@ -11,12 +11,9 @@ module.exports = {
     maxArgs: 0,
     description: 'American flag over your profile picture',
     category: "Images",
-    run: async (message, args, text, client, prefix, instance) => {
-        message.channel.startTyping(true)
+    run: async ({ message, args, text, client, prefix, instance }) => {
         message.channel.send("Please allow 30 - 45 seconds.").then(msg => msg.delete({
             timeout: 10000
-        }).then(() => {
-            message.channel.startTyping(true)
         }))
 
         const canvas = Canvas.createCanvas(480, 480)
@@ -52,7 +49,6 @@ module.exports = {
         writeFile(path.join(__dirname, "output", `${message.author} america.gif`), buffer, error => {})
 
         const attachment = new Discord.MessageAttachment(encoder.out.getData(), `${message.author} america.gif`)
-        message.channel.stopTyping(true)
         message.channel.send(attachment)
     }
 }

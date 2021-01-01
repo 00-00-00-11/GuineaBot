@@ -7,7 +7,7 @@ module.exports = {
     expectedArgs: "[mention]",
     description: "Batman slapping Robin",
     category: "Images",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let batAvatar
         let robAvatar
 

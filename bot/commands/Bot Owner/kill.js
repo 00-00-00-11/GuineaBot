@@ -5,7 +5,7 @@ module.exports = {
     description: "Shut down the bot, restart if hosted on heroku",
     category: "Bot Owner",
     ownerOnly: true,
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         //Filter the person to respond to the message author, me
         const filter = msg => msg.author.id === message.author.id;
         const options = {

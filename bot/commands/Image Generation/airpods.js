@@ -9,8 +9,7 @@ module.exports = {
     maxArgs: 0,
     description: "Flex on your friends",
     category: "Images",
-    run: async (message, args, text, client, prefix, instance) => {
-        message.channel.startTyping(true)
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const canvas = Canvas.createCanvas(384, 128)
         const ctx = canvas.getContext("2d")
         const encoder = new GIFEncoder(384, 128, "octree", true, 23)
@@ -44,7 +43,6 @@ module.exports = {
         writeFile(path.join(__dirname, "output", `${message.author} airpods.gif`), buffer, error => {})
 
         const attachment = new Discord.MessageAttachment(encoder.out.getData(), `${message.author} airpods.gif`)
-        message.channel.stopTyping(true)
         message.channel.send(attachment)
     }
 }

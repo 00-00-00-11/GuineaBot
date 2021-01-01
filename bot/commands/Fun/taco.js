@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: 0,
     description: "Get a random taco image",
     category: "Fun & Games",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         message.channel.send(await bruh(`/taco`))
     }
 }

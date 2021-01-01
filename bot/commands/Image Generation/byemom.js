@@ -7,7 +7,7 @@ module.exports = {
     expectedArgs: "<text>",
     description: "boy better be not searching naughty videos",
     category: "Images",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         var imageText = args.slice(0).join(" ")
         if (!imageText) {
             message.channel.send("Please specify what text to add.")

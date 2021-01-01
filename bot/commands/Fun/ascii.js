@@ -6,7 +6,7 @@ module.exports = {
     expectedArgs: "<text>",
     description: 'Convert text to fancy text',
     category: 'Fun & Games',
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         //Combine all the arguments to a single string
         const arg = args.slice(0).join(" ")
 

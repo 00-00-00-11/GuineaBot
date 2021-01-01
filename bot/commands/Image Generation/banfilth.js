@@ -7,7 +7,7 @@ module.exports = {
     maxArgs: 0,
     description: "Ban this SICK FILTH",
     category: "Images",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const canvas = Canvas.createCanvas(536, 751)
         const ctx = canvas.getContext("2d")
 

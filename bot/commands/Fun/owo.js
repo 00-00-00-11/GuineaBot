@@ -7,7 +7,7 @@ module.exports = {
     description: "Owoify everything",
     category: "Fun & Games",
     expectedArgs: "<text>",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         message.channel.send(owo(text))
     }
 }

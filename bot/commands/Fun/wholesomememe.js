@@ -7,7 +7,7 @@ module.exports = {
     maxArgs: 0,
     description: 'Random meme from r/wholesomememes',
     category: "Fun & Games",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         //See dankmeme.js it's literally the same thing
         const embed = new Discord.MessageEmbed()
         got("https://www.reddit.com/r/wholesomememes/random/.json").then(response => {

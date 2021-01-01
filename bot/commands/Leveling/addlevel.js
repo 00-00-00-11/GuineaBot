@@ -9,7 +9,7 @@ module.exports = {
     requiredPermissions: ['ADMINISTRATOR'],
     description: "Add levels to someone's xp profile",
     category: "Leveling",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         let target = message.mentions.members.first()
 
         if (target) {

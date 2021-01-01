@@ -7,7 +7,7 @@ module.exports = {
     expectedArgs: "<mention>",
     description: "Connect4 game with others",
     category: "Fun & Games",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         //Call a new instance of the class
         const connect4 = new Connect4(client)
 

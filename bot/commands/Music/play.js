@@ -30,7 +30,7 @@ module.exports = {
     expectedArgs: "<one of the following: Youtube search, Youtube video URL, soundcloud song URL, spotify song URL, spotify song URI>",
     description: "Play a song",
     category: "Music",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const channel = message.member.voice.channel
 
         const serverQueue = message.client.queue.get(message.guild.id)

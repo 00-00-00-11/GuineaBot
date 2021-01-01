@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: 0,
     description: "Fetch latency",
     category: "Information",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const m = await message.channel.send("Fetching ping...")
         const msglate = m.createdTimestamp - message.createdTimestamp
         const msguser = message.client.users.cache.get(message.author.id)

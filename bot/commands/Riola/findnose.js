@@ -5,7 +5,7 @@ module.exports = {
     maxArgs: 0,
     description: "[Find Magyk14's nose](https://discord.gg/GWu42km)",
     category: "Fun & Games",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         if (message.guild.id !== "618454511685599268") {
             const riolaEmbed = new Discord.MessageEmbed()
                 .setColor("RANDOM")

@@ -7,7 +7,7 @@ module.exports = {
     expectedArgs: "<search query (one word)>",
     description: "Urban dictionary",
     category: "Utility",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         if (!args[0]) return message.channel.send("Please specify the query.")
 
         let result = await urban(args[0]).catch(e => {

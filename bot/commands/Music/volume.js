@@ -10,7 +10,7 @@ module.exports = {
     expectedArgs: "<number (0-100)>",
     description: "Set the volume",
     category: "Music",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const queue = message.client.queue.get(message.guild.id)
 
         if (!queue) return message.reply("No song is playing right now.")

@@ -7,7 +7,7 @@ module.exports = {
     maxArgs: 0,
     description: "Snake game using reactions",
     category: "Fun & Games",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         //Initiate the new class
         const snakeGame = new snake({
             title: "Snake Game",

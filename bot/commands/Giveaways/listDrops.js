@@ -7,7 +7,7 @@ module.exports = {
     maxArgs: 0,
     description: 'List all drops',
     category: "Giveaways",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const list = await client.drops.listDrops(message.guild.id);
 
         if (!list) {

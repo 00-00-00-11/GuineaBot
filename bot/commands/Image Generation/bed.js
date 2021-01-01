@@ -6,7 +6,7 @@ module.exports = {
     maxArgs: 0,
     description: "Mommy theres a monster under my bed",
     category: "Images",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         var image = "./assets/images/bed/bed.jpg"
 
         const canvas = Canvas.createCanvas(316, 768)

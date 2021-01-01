@@ -7,7 +7,7 @@ module.exports = {
     expectedArgs: "[mention]",
     description: "Display your/someone's xp profile",
     category: "Leveling",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         const target = message.mentions.users.first() || message.author
         let XPuser = await discordXP.fetch(target.id, message.guild.id)
 

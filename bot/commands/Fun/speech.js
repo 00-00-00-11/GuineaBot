@@ -8,7 +8,7 @@ module.exports = {
     expectedArgs: "<text to speech>",
     description: "Convert text to speech",
     category: "Fun & Games",
-    run: async (message, args, text, client, prefix, instance) => {
+    run: async ({ message, args, text, client, prefix, instance }) => {
         return message.channel.send("This command is disabled until the endpoint is restored.")
         message.reply("Please wait as your text is being processed.").then(emsg => emsg.delete({
             timeout: 10000
