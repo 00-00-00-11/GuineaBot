@@ -23,15 +23,12 @@ module.exports = (client) => {
         readme.send(readmeEmbed)
 
         //Updates status to match server count, however, there is a rate limit, so sometimes the bot will not update the status
-        let shardText = "shards"
-        if (client.ws.totalShards > 2) shardText = "shard"
-
         let serverText = "servers"
-        if (client.guilds.cache.size > 2) serverText = "server"
+        if (client.guilds.cache.size === 1) serverText = "server"
 
         client.user.setPresence({
             activity: {
-                name: `${client.guilds.cache.size} ${serverText} | ${client.ws.totalShards} ${shardText}`,
+                name: `g?help | ${client.guilds.cache.size} ${serverText}`,
                 type: "STREAMING",
                 url: `https://www.youtube.com/watch?v=dQw4w9WgXcQ`, //get noobed
             },
