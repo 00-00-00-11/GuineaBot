@@ -11,6 +11,8 @@ module.exports = {
 
         let msg = args.slice(0).join(" ")
 
+        if (msg.includes("@everyone")) return message.channel.send("Message cannot include mentioning everyone.")
+
         if (!msg) return message.channel.send("Don't send an empty message")
 
         let linkregex = /(ftp|http|https):\/\/[^ "]+/g
