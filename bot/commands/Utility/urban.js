@@ -14,11 +14,14 @@ module.exports = {
             return message.channel.send(`Unknown word phrase of **${text}**, please try again.`)
         })
 
+        let definition = result.definition.replace(/\[/g, '').replace(/\]/g, '');
+        let example = result.example.replace(/\[/g, '').replace(/\]/g, '');
+
         const embed = new Discord.MessageEmbed()
             .setColor("RANDOM")
             .setTitle(result.word)
             .setURL(result.urbanURL)
-            .setDescription(`**Definition:**\n${result.definition}\n\n**Example:**\n${result.example}`)
+            .setDescription(`**Definition:**\n${definition}\n\n**Example:**\n${example}`)
             .addField("Author", result.author, true)
             .addField("Rating", `👍 ${result.thumbsUp.toLocaleString()} | 👎 ${result.thumbsDown.toLocaleString()}`)
 
