@@ -4,7 +4,7 @@ const bin = require("sourcebin_js")
 module.exports = {
     name: "define",
     minArgs: 1,
-    maxArgs: 1,
+    maxArgs: -1,
     expectedArgs: "<word>",
     description: "Get a word's definition",
     category: "Utility",
@@ -16,7 +16,7 @@ module.exports = {
         prefix,
         instance
     }) => {
-        let word = args[0]
+        let word = text
 
         axios.get(`https://dictionaryapi.com/api/v3/references/thesaurus/json/${word}?key=${process.env.DICTIONARY1}`).then(async (data, err) => {
             let alldata = data.data

@@ -3,199 +3,202 @@ module.exports = {
     name: 'avatar',
     aliases: [ 'pfp' ],
     minArgs: 0,
-    maxArgs: 0,
+    maxArgs: 1,
+    expectedArgs: "[mention]",
     description: "Fetch your profile avatar",
     category: "Utility",
     run: async ({ message, args, text, client, prefix, instance }) => {
-        let webp16 = message.author.displayAvatarURL({
+        let target = message.mentions.users.first() || message.author
+
+        let webp16 = target.displayAvatarURL({
             format: "webp",
             size: 16
         })
-        let webp32 = message.author.displayAvatarURL({
+        let webp32 = target.displayAvatarURL({
             format: "webp",
             size: 32
         })
-        let webp64 = message.author.displayAvatarURL({
+        let webp64 = target.displayAvatarURL({
             format: "webp",
             size: 64
         })
-        let webp128 = message.author.displayAvatarURL({
+        let webp128 = target.displayAvatarURL({
             format: "webp",
             size: 128
         })
-        let webp256 = message.author.displayAvatarURL({
+        let webp256 = target.displayAvatarURL({
             format: "webp",
             size: 256
         })
-        let webp512 = message.author.displayAvatarURL({
+        let webp512 = target.displayAvatarURL({
             format: "webp",
             size: 512
         })
-        let webp1024 = message.author.displayAvatarURL({
+        let webp1024 = target.displayAvatarURL({
             format: "webp",
             size: 1024
         })
-        let webp2048 = message.author.displayAvatarURL({
+        let webp2048 = target.displayAvatarURL({
             format: "webp",
             size: 2048
         })
-        let webp4096 = message.author.displayAvatarURL({
+        let webp4096 = target.displayAvatarURL({
             format: "webp",
             size: 4096
         })
 
-        let png16 = message.author.displayAvatarURL({
+        let png16 = target.displayAvatarURL({
             format: "png",
             size: 16
         })
-        let png32 = message.author.displayAvatarURL({
+        let png32 = target.displayAvatarURL({
             format: "png",
             size: 32
         })
-        let png64 = message.author.displayAvatarURL({
+        let png64 = target.displayAvatarURL({
             format: "png",
             size: 64
         })
-        let png128 = message.author.displayAvatarURL({
+        let png128 = target.displayAvatarURL({
             format: "png",
             size: 128
         })
-        let png256 = message.author.displayAvatarURL({
+        let png256 = target.displayAvatarURL({
             format: "png",
             size: 256
         })
-        let png512 = message.author.displayAvatarURL({
+        let png512 = target.displayAvatarURL({
             format: "png",
             size: 512
         })
-        let png1024 = message.author.displayAvatarURL({
+        let png1024 = target.displayAvatarURL({
             format: "png",
             size: 1024
         })
-        let png2048 = message.author.displayAvatarURL({
+        let png2048 = target.displayAvatarURL({
             format: "png",
             size: 2048
         })
-        let png4096 = message.author.displayAvatarURL({
+        let png4096 = target.displayAvatarURL({
             format: "png",
             size: 4096
         })
 
-        let jpeg16 = message.author.displayAvatarURL({
+        let jpeg16 = target.displayAvatarURL({
             format: "jpeg",
             size: 16
         })
-        let jpeg32 = message.author.displayAvatarURL({
+        let jpeg32 = target.displayAvatarURL({
             format: "jpeg",
             size: 32
         })
-        let jpeg64 = message.author.displayAvatarURL({
+        let jpeg64 = target.displayAvatarURL({
             format: "jpeg",
             size: 64
         })
-        let jpeg128 = message.author.displayAvatarURL({
+        let jpeg128 = target.displayAvatarURL({
             format: "jpeg",
             size: 128
         })
-        let jpeg256 = message.author.displayAvatarURL({
+        let jpeg256 = target.displayAvatarURL({
             format: "jpeg",
             size: 256
         })
-        let jpeg512 = message.author.displayAvatarURL({
+        let jpeg512 = target.displayAvatarURL({
             format: "jpeg",
             size: 512
         })
-        let jpeg1024 = message.author.displayAvatarURL({
+        let jpeg1024 = target.displayAvatarURL({
             format: "jpeg",
             size: 1024
         })
-        let jpeg2048 = message.author.displayAvatarURL({
+        let jpeg2048 = target.displayAvatarURL({
             format: "jpeg",
             size: 2048
         })
-        let jpeg4096 = message.author.displayAvatarURL({
+        let jpeg4096 = target.displayAvatarURL({
             format: "jpeg",
             size: 4096
         })
 
-        let jpg16 = message.author.displayAvatarURL({
+        let jpg16 = target.displayAvatarURL({
             format: "jpg",
             size: 16
         })
-        let jpg32 = message.author.displayAvatarURL({
+        let jpg32 = target.displayAvatarURL({
             format: "jpg",
             size: 32
         })
-        let jpg64 = message.author.displayAvatarURL({
+        let jpg64 = target.displayAvatarURL({
             format: "jpg",
             size: 64
         })
-        let jpg128 = message.author.displayAvatarURL({
+        let jpg128 = target.displayAvatarURL({
             format: "jpg",
             size: 128
         })
-        let jpg256 = message.author.displayAvatarURL({
+        let jpg256 = target.displayAvatarURL({
             format: "jpg",
             size: 256
         })
-        let jpg512 = message.author.displayAvatarURL({
+        let jpg512 = target.displayAvatarURL({
             format: "jpg",
             size: 512
         })
-        let jpg1024 = message.author.displayAvatarURL({
+        let jpg1024 = target.displayAvatarURL({
             format: "jpg",
             size: 1024
         })
-        let jpg2048 = message.author.displayAvatarURL({
+        let jpg2048 = target.displayAvatarURL({
             format: "jpg",
             size: 2048
         })
-        let jpg4096 = message.author.displayAvatarURL({
+        let jpg4096 = target.displayAvatarURL({
             format: "jpg",
             size: 4096
         })
 
-        let gif16 = message.author.displayAvatarURL({
+        let gif16 = target.displayAvatarURL({
             format: "gif",
             dynamic: true,
             size: 16
         })
-        let gif32 = message.author.displayAvatarURL({
+        let gif32 = target.displayAvatarURL({
             format: "gif",
             dynamic: true,
             size: 32
         })
-        let gif64 = message.author.displayAvatarURL({
+        let gif64 = target.displayAvatarURL({
             format: "gif",
             dynamic: true,
             size: 64
         })
-        let gif128 = message.author.displayAvatarURL({
+        let gif128 = target.displayAvatarURL({
             format: "gif",
             dynamic: true,
             size: 128
         })
-        let gif256 = message.author.displayAvatarURL({
+        let gif256 = target.displayAvatarURL({
             format: "gif",
             dynamic: true,
             size: 256
         })
-        let gif512 = message.author.displayAvatarURL({
+        let gif512 = target.displayAvatarURL({
             format: "gif",
             dynamic: true,
             size: 512
         })
-        let gif1024 = message.author.displayAvatarURL({
+        let gif1024 = target.displayAvatarURL({
             format: "gif",
             dynamic: true,
             size: 1024
         })
-        let gif2048 = message.author.displayAvatarURL({
+        let gif2048 = target.displayAvatarURL({
             format: "gif",
             dynamic: true,
             size: 2048
         })
-        let gif4096 = message.author.displayAvatarURL({
+        let gif4096 = target.displayAvatarURL({
             format: "gif",
             dynamic: true,
             size: 4096
@@ -203,8 +206,8 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
             .setColor("RANDOM")
-            .setTitle(`Profile picture for ${message.author.tag}`)
-            .setAuthor(message.author.tag, message.author.avatarURL())
+            .setTitle(`Profile picture for ${target.tag}`)
+            .setAuthor(target.tag, target.avatarURL())
             .setDescription("Choose your desired file format and size:")
             .addFields({
                 name: "WebP:",

@@ -10,8 +10,8 @@ module.exports = {
     run: async ({ message, args, text, client, prefix, instance }) => {
         if (!args[0]) return message.channel.send("Please specify the query.")
 
-        let result = await urban(args[0]).catch(e => {
-            return message.channel.send(`Unknown word phrase of **${args[0]}**, please try again.`)
+        let result = await urban(text).catch(e => {
+            return message.channel.send(`Unknown word phrase of **${text}**, please try again.`)
         })
 
         const embed = new Discord.MessageEmbed()
