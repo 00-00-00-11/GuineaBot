@@ -40,6 +40,8 @@ module.exports = {
                 str += `[${names[k]}](${urls[k]})\n`
             }
 
+            if (str.length > 2048) str = str.substr(0, 2048)
+
             const embed = new Discord.MessageEmbed()
                 .setColor("RANDOM")
                 .setTitle(`Showing search results for ${res.data[0]}`)

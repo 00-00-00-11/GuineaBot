@@ -12,7 +12,7 @@ module.exports = {
     category: "Economy",
     run: async ({ message, args, text, client, prefix, instance }) => {
         const target1 = message.author
-        const target2 = message.mentions.members.first() || client.users.cache.get(args[0])
+        const target2 = message.mentions.members.first()
 
         if (!target2) return message.channel.send("User does not exist.")
 
