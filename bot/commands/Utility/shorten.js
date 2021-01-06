@@ -1,9 +1,8 @@
 const request = require("request")
-const url = require('url')
 module.exports = {
     name: 'shorten',
     minArgs: 1,
-    maxArgs: 1,
+    maxArgs: -1,
     expectedArgs: "<url>",
     description: "Shorten a URL",
     category: "Utility",
@@ -19,31 +18,32 @@ module.exports = {
         let linkregex = /(http|https):\/\/[^ "]+/g
 
         if (linkregex.test(text)) {
-            let linkRequest = {
-                destination: url.parse(text),
-                domain: {
-                    fullName: "rebrand.ly"
+            const options = {
+                method: 'POST',
+                url: 'https://url-shortener-service.p.rapidapi.com/shorten',
+                headers: {
+                    'content-type': 'application/x-www-form-urlencoded',
+                    'x-rapidapi-key': process.env.RAPID_API,
+                    'x-rapidapi-host': 'url-shortener-service.p.rapidapi.com',
+                    useQueryString: true
+                },
+                form: {
+                    url: text
                 }
-            }
+            };
 
-            let requestHeaders = {
-                "Content-Type": "application/json",
-                "apikey": process.env.REBRANDLY,
-            }
+            request(options, function (error, response, body) {
+                if (error) return message.channel.send(`An error occurred: ${error.message}`)
+                let url = JSON.parse(body)
+                let msg = ""
 
-            request({
-                uri: "https://api.rebrandly.com/v1/links",
-                method: "POST",
-                body: JSON.stringify(linkRequest),
-                headers: requestHeaders
-            }, function (error, response, body) {
-                if (error) return message.channel.send("An error occurred")
-                if (!body.shortUrl) return message.channel.send("Invalid link.")
-                body = JSON.parse(body)
-                message.channel.send("https://" + body.shortUrl)
+                if (url.hasOwnProperty("result_url")) msg = url.result_url
+                else if (url.hasOwnProperty("error")) msg = url.error
+
+                message.channel.send(msg)
             })
         } else {
-            return message.channel.send('For safety reasons, please include the URL\'s protocol of either https, http. (all in lowercase letters)')
+            return message.channel.send('For safety reasons, please include the URL\'s protocol (all in lowercase letters).')
         }
     }
 }

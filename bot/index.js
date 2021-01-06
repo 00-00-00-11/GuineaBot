@@ -119,8 +119,7 @@ client.on('ready', async () => {
         status: "online"
     })
 
-    //Fetch the server's IP address, this is optional
-    fetch("https://api.ipify.org/?format=json").then(results => results.json()).then(data => console.log(`Logged in as [${client.user.tag}]\nServer IP: ${data.ip}`))
+    console.log(`Logged in as [${client.user.tag}]`)
 })
 
 client.on("message", async (message) => {
