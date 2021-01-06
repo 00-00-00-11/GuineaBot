@@ -37,7 +37,7 @@ module.exports = {
                 let url = JSON.parse(body)
                 let msg = ""
 
-                if (url.hasOwnProperty("result_url")) msg = url.result_url
+                if (url.hasOwnProperty("result_url")) msg = "<" + url.result_url + ">"
                 else if (url.hasOwnProperty("error")) msg = url.error
 
                 message.channel.send(msg)
