@@ -8,7 +8,7 @@ module.exports = {
     name: "lyrics",
     aliases: ["ly"],
     minArgs: 0,
-    maxArgs: 1,
+    maxArgs: -1,
     expectedArgs: "[song name]",
     description: "Displays the lyrics of the current song",
     category: "Music",
