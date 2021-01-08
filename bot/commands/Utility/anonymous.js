@@ -13,6 +13,7 @@ module.exports = {
 
         if (msg.includes("@everyone")) return message.channel.send("Message cannot include mentioning everyone.")
         if (msg.includes("@here")) return message.channel.send("Message cannot include mentioning here.")
+        if (msg.includes("g?anonymous")) return message.channel.send("Message cannot include the command itself")
 
         if (!msg) return message.channel.send("Don't send an empty message")
 

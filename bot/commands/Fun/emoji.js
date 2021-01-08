@@ -152,7 +152,7 @@ module.exports = {
                         transColors[i].push(found ? found.E : 'black_large_square');
                     }
                 }
-                return message.channel.send("|" + transColors.map(arr => arr.join('')).join('\n') + "|", {
+                return message.channel.send(transColors.map(arr => arr.join('')).join('\n') + ".", {
                     split: '\n|'
                 });
             })
