@@ -54,6 +54,7 @@
     "lyrics-finder": "^21.4.0",
     "main": "^1000.0.1",
     "mathjs": "^8.1.0",
+    "maze-generation": "^2.1.0",
     "minimist": "^1.2.5",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",

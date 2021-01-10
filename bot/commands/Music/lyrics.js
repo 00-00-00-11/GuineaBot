@@ -35,6 +35,18 @@ module.exports = {
             try {
                 lyrics = await genius.getLyrics(options)
                 if (!lyrics) lyrics = `No lyrics found for ${search}.`
+                if (lyrics.length > 2048) {
+                    lyrics = lyrics.substring(0, 2045) + '...';
+                }
+        
+                let lyricsEmbed = new MessageEmbed()
+                    .setColor("RANDOM")
+                    .setTitle('Song lyrics for search "' + `${search}"`)
+                    .setDescription(lyrics)
+                    .setThumbnail(message.client.user.avatarURL())
+                    .setTimestamp()
+                    .setFooter('Thank you for using GuineaBot!')
+                return message.channel.send(lyricsEmbed).catch(console.error)
             } catch (error) {
                 lyrics = `No lyrics found for ${search}.`
             }
@@ -52,22 +64,21 @@ module.exports = {
             try {
                 lyrics = await genius.getLyrics(options)
                 if (!lyrics) lyrics = `No lyrics found for ${queue.songs[0].title}.`
+                if (lyrics.length > 2048) {
+                    lyrics = lyrics.substring(0, 2045) + '...';
+                }
+        
+                let lyricsEmbed = new MessageEmbed()
+                    .setColor("RANDOM")
+                    .setTitle('Song lyrics for "' + queue.songs[0].title + '"')
+                    .setDescription(lyrics)
+                    .setThumbnail(message.client.user.avatarURL())
+                    .setTimestamp()
+                    .setFooter('Thank you for using GuineaBot!')
+                return message.channel.send(lyricsEmbed).catch(console.error)
             } catch (error) {
                 lyrics = `No lyrics found for ${queue.songs[0].title}.`
             }
         }
-
-        if (lyrics.length > 2048) {
-            lyrics = lyrics.substring(0, 2045) + '...';
-        }
-
-        let lyricsEmbed = new MessageEmbed()
-            .setColor("RANDOM")
-            .setTitle('Song lyrics')
-            .setDescription(lyrics)
-            .setThumbnail(message.client.user.avatarURL())
-            .setTimestamp()
-            .setFooter('Thank you for using GuineaBot!')
-        return message.channel.send(lyricsEmbed).catch(console.error)
     }
 }
