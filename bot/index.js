@@ -1,7 +1,6 @@
 // ? https://discord.com/oauth2/authorize?client_id=745047221099036724&scope=bot&permissions=2146958847 alpha
 // ! https://discord.com/oauth2/authorize?client_id=727288620221857843&scope=bot&permissions=2146958847
 
-const fetch = require("node-fetch");
 const WOKCommands = require("wokcommands");
 const discordXP = require("discord-xp");
 const cleverbot = require("cleverbot-free");
