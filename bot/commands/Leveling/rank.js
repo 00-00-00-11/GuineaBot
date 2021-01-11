@@ -38,7 +38,7 @@ module.exports = {
             }))
             .setCurrentXP(XPuser.xp)
             .setRequiredXP(requiredXP)
-            .setStatus(target.presence.status)
+            .setStatus(target.presence.status, true)
             .setProgressBar("#FFBA49", "COLOR", rounded = true)
             .setUsername(target.username)
             .setDiscriminator(target.discriminator)
