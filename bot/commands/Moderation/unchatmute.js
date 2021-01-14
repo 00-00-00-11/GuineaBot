@@ -11,7 +11,14 @@ module.exports = {
     expectedArgs: "<mention> [reason]",
     description: "Allow user to chat in channels",
     category: "Moderation",
-    run: async ({ message, args, text, client, prefix, instance }) => {
+    run: async ({
+        message,
+        args,
+        text,
+        client,
+        prefix,
+        instance
+    }) => {
         let modlog = message.guild.channels.cache.find(channel => {
             return channel.name && channel.name.includes("g-modlog")
         })
@@ -46,59 +53,14 @@ module.exports = {
                     guildId: message.guild.id,
                 })
 
-                const DMEmbed = new Discord.MessageEmbed()
+                target.roles.remove(role)
+
+                const success = new Discord.MessageEmbed()
                     .setColor("RANDOM")
-                    .setTitle(`You have been un chat muted in ${data.guildName}`)
-                    .setAuthor("Automated Guineabot message", message.client.user.avatarURL())
+                    .setDescription(`Successfully un muted **${data.muteTag}** from chatting for **${reason}**`)
+                    .setFooter("Thank you for using GuineaBot!")
                     .setTimestamp()
-                    .setFooter("Shoulda followed the rules... :/")
-                    .addFields({
-                        name: "Moderator",
-                        value: staffTag
-                    }, {
-                        name: "Reason",
-                        value: reason
-                    }, {
-                        name: "Date",
-                        value: data.muteDate.toLocaleString()
-                    })
-                
-                target
-                    .createDM()
-                    .then((DM) => {
-                        DM.send(DMEmbed)
-                            .then(() => {
-                                target.roles.remove(role)
-
-                                const success = new Discord.MessageEmbed()
-                                    .setColor("RANDOM")
-                                    .setDescription(`Successfully un muted **${data.muteTag}** from chatting for **${reason}**`)
-                                    .setFooter("Thank you for using GuineaBot!")
-                                    .setTimestamp()
-                                message.channel.send(success)
-
-                                const modlogEmbed = new Discord.MessageEmbed()
-                                    .setColor("RANDOM")
-                                    .setTitle("Member un chat muted")
-                                    .setAuthor("Guineabot Modlog", message.client.user.avatarURL())
-                                    .setTimestamp()
-                                    .setFooter("Thank you for using GuineaBot!")
-                                    .addFields({
-                                        name: "Muted member",
-                                        value: `${targetTag} (${targetId})`
-                                    }, {
-                                        name: "Responsible moderator",
-                                        value: `${staffTag} (${staffId})`
-                                    }, {
-                                        name: "Reason",
-                                        value: `${reason}`
-                                    }, {
-                                        name: "Date",
-                                        value: `${data.muteDate.toLocaleString()}`
-                                    })
-                                modlog.send(modlogEmbed)
-                            })
-                    })
+                message.channel.send(success)
             } catch (err) {
                 console.log(err)
                 message.channel.send(`An error occurred: \`${err.message}\``)

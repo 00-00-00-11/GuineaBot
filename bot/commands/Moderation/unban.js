@@ -49,27 +49,6 @@ module.exports = {
                     .setFooter("Thank you for using GuineaBot!")
                     .setTimestamp()
                 message.channel.send(success)
-
-                const modlogEmbed = new Discord.MessageEmbed()
-                    .setColor("RANDOM")
-                    .setTitle("Member unbanned")
-                    .setAuthor("Guineabot Modlog", message.client.user.avatarURL())
-                    .setTimestamp()
-                    .setFooter("Thank you for using GuineaBot!")
-                    .addFields({
-                        name: "Unbanned member",
-                        value: `${targetTag} (${targetId})`
-                    }, {
-                        name: "Responsible moderator",
-                        value: `${staffTag} (${staffId})`
-                    }, {
-                        name: "Reason",
-                        value: `${reason}`
-                    }, {
-                        name: "Date",
-                        value: `${new Date().getTime().toLocaleString()}`
-                    })
-                modlog.send(modlogEmbed)
             } catch (err) {
                 console.log(err)
                 message.channel.send(`An error occurred: \`${err.message}\``)

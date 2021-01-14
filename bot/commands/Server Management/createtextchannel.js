@@ -31,20 +31,9 @@ module.exports = {
             return
         }
 
-        let modlog = message.guild.channels.cache.find(channel => channel.name === "g-modlog")
+        let modlog = message.guild.channels.cache.find(channel => channel.name.includes("g-modlog"))
 
-        if (!modlog) {
-            const modlogEmbed = new Discord.MessageEmbed()
-                .setColor("RANDOM")
-                .setTitle('Create text channel unsuccessful')
-                .setAuthor(message.author.tag, message.author.avatarURL({format: "png", dynamic: true}))
-                .setDescription(`It looks like \`setup\` command has not been performed yet. Please contact an administrator`)
-                .setThumbnail(message.client.user.avatarURL())
-                .setTimestamp()
-                .setFooter('Thank you for using GuineaBot!')
-            message.channel.send(modlogEmbed)
-            return
-        }
+        if (!modlog) message.channel.send("**WARNING:** The owner did not setup Guineabot, this means that actions will not be logged, it is highly recommended that you setup Guineabot.")
 
         let topic;
         let cat;
@@ -221,7 +210,7 @@ module.exports = {
 
         //-----------------------------------
 
-        let channel = await message.guild.channels.create(name, settings)
+        message.guild.channels.create(name, settings)
 
         const setupcomplete = new Discord.MessageEmbed()
             .setColor("RANDOM")
@@ -232,33 +221,5 @@ module.exports = {
             .setTimestamp()
             .setFooter('Thank you for using GuineaBot!')
         message.channel.send(setupcomplete)
-
-        let channelset = JSON.stringify(settings, null, 4)
-        console.log(channelset)
-
-        const logEmbed = new Discord.MessageEmbed()
-            .setColor("RANDOM")
-            .setTitle('Text channel created')
-            .setAuthor('Modlog')
-            .addFields({
-                name: 'Moderator: ',
-                value: `${message.author.tag} (${message.author.id})`
-            }, {
-                name: "Channel name: ",
-                value: `${channel.name}`
-            }, {
-                name: "Channel settings: ",
-                value: `${channelset}`
-            }, {
-                name: 'Reason: ',
-                value: `${reason}`
-            }, {
-                name: 'Date: ',
-                value: `${message.createdAt.toLocaleString()}`
-            })
-            .setThumbnail(message.client.user.avatarURL())
-            .setTimestamp()
-            .setFooter('Thank you for using GuineaBot!')
-        modlog.send(logEmbed)
     }
 }

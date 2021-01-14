@@ -31,6 +31,7 @@
     "color-diff": "^1.2.0",
     "cpu-stat": "^2.0.1",
     "delay": "^4.4.0",
+    "discord-canvas": "^1.4.1",
     "discord-giveaway": "^1.1.2",
     "discord-tictactoe": "^2.0.7",
     "discord-xp": "^1.1.7",

@@ -81,7 +81,7 @@ module.exports = {
         }
 
         //Next step
-        await message.channel.send('Ok. Would you like me to create a welcome channel? Respond with a `yes` or `no`. *actual welcome message in progress*')
+        await message.channel.send('Ok. Would you like me to create a welcome and goodsbye channel? Respond with a `yes` or `no`.')
 
         let collector3 = await message.channel.awaitMessages(filter, options);
         let answer3 = collector3.first().content;
@@ -98,7 +98,11 @@ module.exports = {
                 reason: 'admin said yes',
                 topic: `Welcome to ${message.guild.name} !`
             })
-            channelcount++
+            message.guild.channels.create('g-goodbye', {
+                type: 'text',
+                reason: 'admin said yes',
+            })
+            channelcount += 2
             message.channel.send('Awesome! Enjoy GuineaBot!')
         } else if (answer3 === 'no' || answer3 === 'No') {
             message.channel.send('**Ok then. Enjoy GuineaBot!**')
@@ -119,7 +123,7 @@ module.exports = {
                 },
             ],
             parent: category.id
-        }).then(console.log).catch(console.error)
+        }).catch(console.error)
         
         // Create role
         message.guild.roles.create({
@@ -131,7 +135,7 @@ module.exports = {
                 position: message.guild.me.roles.highest.position
             },
             reason: 'For the bad kids',
-        }).then(console.log).catch(console.error);
+        }).catch(console.error);
 
         //Find readme and send message that it ended
         let readme = message.guild.channels.cache.find(channel => channel.name === "read-me")
@@ -162,8 +166,6 @@ module.exports = {
                 .setThumbnail(message.client.user.avatarURL())
                 .setTimestamp()
                 .setFooter('Thank you for inviting GuineaBot!')
-            console.log(readme)
-            readme.send(readmeEmbed2)
 
             if (message.channel.id !== readme.id) {
                 message.reply('Setup successful, please check #read-me .')

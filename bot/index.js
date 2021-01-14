@@ -4,7 +4,10 @@
 const WOKCommands = require("wokcommands");
 const discordXP = require("discord-xp");
 const cleverbot = require("cleverbot-free");
-const { GiveawayCreator, DropCreator } = require("discord-giveaway")
+const {
+    GiveawayCreator,
+    DropCreator
+} = require("discord-giveaway")
 
 //Initiate dependencies required to run index.js and create a new client
 const Discord = require('discord.js');
@@ -53,8 +56,22 @@ let recentMsg = new Set();
 // TODO: messages.json for every message sent, item usage for economy, listeners
 
 client.on('ready', async () => {
+    const dbOptions = {
+        keepAlive: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useFindAndModify: false,
+    }
+    
+    const messagesPath = "messages.json"
     //Initiate the command handler and many more features including a prebuilt prefix command, all data is stored in mongoDB
-    new WOKCommands(client, "commands", "listeners", "messages.json")
+    new WOKCommands(client, {
+        commandsDir: "commands",
+        featureDir: "listeners",
+        messagesPath,
+        showWarns: true,
+        dbOptions
+    })
         .setMongoPath(`${config.mongodb}`)
         .setDefaultPrefix("g?")
         .setDisplayName("Guineabot")
