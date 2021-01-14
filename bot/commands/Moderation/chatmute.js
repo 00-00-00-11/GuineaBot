@@ -40,7 +40,7 @@ module.exports = {
 
         let reason = args.slice(1).join(" ")
 
-        if (!modlog) return message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\`.`)
+        if (!modlog) message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\` as it is HIGHLY recommended.`)
         if (!role) return message.channel.send(`Could not find role **gmuted**, please install the required values using \`${prefix}setup\`.`)
         if (target.roles.cache.has(role.id)) return message.channel.send(`Target ${targetTag} already has role **gmuted** assigned.`)
         if (!reason) reason = "No reason provided."

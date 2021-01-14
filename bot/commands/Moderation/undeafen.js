@@ -36,6 +36,7 @@ module.exports = {
         let staffTag = `${staff.user.username}#${staff.user.discriminator}`
 
         let reason = args.slice(1).join(" ")
+        if (!modlog) message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\` as it is HIGHLY recommended.`)
 
         if (!target.voice.channel) return message.reply(`${targetTag} is not connected to a voice channel.`)
         if (!target.voice.serverDeaf) return message.reply(`${targetTag} is already not server deafened.`)

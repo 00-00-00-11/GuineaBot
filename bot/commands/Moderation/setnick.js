@@ -14,7 +14,7 @@ module.exports = {
         let modlog = message.guild.channels.cache.find(channel => {
             return channel.name && channel.name.includes("g-modlog")
         })
-        if (!modlog) return message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\`.`)
+        if (!modlog) message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\` as it is HIGHLY recommended.`)
 
         let target = message.mentions.members.first()
 
@@ -114,7 +114,9 @@ module.exports = {
                         .setTimestamp()
                         .setFooter('Thank you for using GuineaBot!')
 
-                    modlog.send(modlogEmbed)
+                    modlog.send(modlogEmbed).catch(e => {
+                        return
+                    }) 
                 } catch (err) {
                     console.log(err)
                     message.channel.send(`An error occurred: \`${err.message}\``)
@@ -216,7 +218,9 @@ module.exports = {
                         .setTimestamp()
                         .setFooter('Thank you for using GuineaBot!')
 
-                    modlog.send(modlogEmbed)
+                    modlog.send(modlogEmbed).catch(e => {
+                        return
+                    }) 
                 } catch (err) {
                     console.log(err)
                     message.channel.send(`An error occurred: \`${err.message}\``)

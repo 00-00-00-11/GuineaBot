@@ -6,11 +6,18 @@ module.exports = {
     name: "warn",
     minArgs: 1,
     maxArgs: -1,
-    requiredPermissions: [ "KICK_MEMBERS"],
+    requiredPermissions: ["KICK_MEMBERS"],
     expectedArgs: "<mention> [reason]",
     description: "Give a warning to a user",
     category: "Moderation",
-    run: async ({ message, args, text, client, prefix, instance }) => {
+    run: async ({
+        message,
+        args,
+        text,
+        client,
+        prefix,
+        instance
+    }) => {
         let modlog = message.guild.channels.cache.find(channel => {
             return channel.name && channel.name.includes("g-modlog")
         })
@@ -28,13 +35,13 @@ module.exports = {
 
         let reason = args.slice(1).join(" ")
 
-        if (!modlog) return message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\`.`)
+        if (!modlog) message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\` as it is HIGHLY recommended.`)
         if (!reason) reason = "No reason provided."
         if (staff.roles.highest.position < target.roles.highest.position) return message.reply(`You cannot warn ${targetTag} due to role hierarchy.`)
 
         await mongo().then(async (mongoose) => {
             try {
-                let data = await warnSchema.findOne({ 
+                let data = await warnSchema.findOne({
                     warnId: targetId,
                     guildId: message.guild.id,
                 })
@@ -69,7 +76,7 @@ module.exports = {
                     lastUpdated: Date.now(),
                     $push: {
                         warnings: warning
-                    }  
+                    }
                 }, {
                     upsert: true,
                 })
@@ -122,7 +129,9 @@ module.exports = {
                                         name: "Date",
                                         value: `${newWarn.lastUpdated.toLocaleString()}`
                                     })
-                                modlog.send(modlogEmbed)
+                                modlog.send(modlogEmbed).catch(e => {
+                                    return
+                                })
                             })
                     })
             } catch (err) {

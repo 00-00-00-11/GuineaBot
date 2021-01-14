@@ -39,7 +39,7 @@ module.exports = {
         const date = new Date()
         date.setDate(date.getDate())
 
-        if (!modlog) return message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\`.`)
+        if (!modlog) message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\` as it is HIGHLY recommended.`)
         if (!reason) reason = "No reason provided."
         if (staff.roles.highest.position < target.roles.highest.position) return message.reply(`You cannot kick ${targetTag} due to role hierarchy.`)
 

@@ -16,7 +16,7 @@ module.exports = {
             return channel.name && channel.name.includes("g-modlog")
         })
 
-        if (!modlog) return message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\`.`)
+        if (!modlog) message.channel.send(`Could not find channel **g-modlog**, please install the required values using \`${prefix}setup\` as it is HIGHLY recommended.`)
 
         let target = message.mentions.users.first()
         if (!target) return message.reply('Please specify someone to remove their warnings for.')
@@ -55,6 +55,8 @@ module.exports = {
             .setThumbnail(message.client.user.avatarURL())
             .setTimestamp()
             .setFooter('Thank you for using GuineaBot!')
-        modlog.send(logEmbed)
+        modlog.send(logEmbed).catch(e => {
+            return
+        }) 
     }
 }
